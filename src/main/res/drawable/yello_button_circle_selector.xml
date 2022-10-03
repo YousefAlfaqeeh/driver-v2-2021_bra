@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="100" android:exitFadeDuration="100">
+
+
+
+    <item android:state_pressed="true">
+        <layer-list>
+
+            <item>
+                <shape  android:shape="rectangle">
+                    <solid android:color="@color/color_student_name" />
+                    <corners android:radius="45dp" />
+                </shape>
+            </item>
+
+            <item android:bottom="2dp">
+                <shape  android:shape="rectangle">
+                    <solid android:color="@color/color_button_login_dark"></solid>
+                    <corners android:radius="54dp"></corners>
+                </shape>
+
+            </item>
+        </layer-list>
+    </item>
+    <!--//////////////-->
+    <item>
+        <layer-list>
+
+            <item>
+                <shape  android:shape="rectangle">
+                    <solid android:color="@color/color_student_name" />
+                    <corners android:radius="45dp" />
+                </shape>
+            </item>
+
+            <item android:bottom="2dp">
+                <shape  android:shape="rectangle">
+                    <solid android:color="@color/color_button_login"></solid>
+                    <corners android:radius="54dp"></corners>
+                </shape>
+
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

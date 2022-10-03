@@ -1,0 +1,6 @@
+<resources>
+<!--    yousef-->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDX8JW2LuHDhaiYUI58tsYw3b6j1gjELKo
+<!--&lt;!&ndash;        AIzaSyA0uXkZoZ7E0bXEIy6EdgnJcUVkSuwnFP0&ndash;&gt;AIzaSyBIIWRuxYIAN0gCYfjUjXg0xqMjDju9Yig-->
+    </string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_gravity="center"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:background="@drawable/tab_bg_selector_green"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:weightSum="2">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/tab_icon"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end|center_vertical"
+        android:layout_weight="1"
+        style="@style/TintableImage"
+        android:scaleType="centerInside"
+        android:gravity="end|center_vertical"
+        android:padding="10dp"
+        app:srcCompat="@drawable/img_pick_up"
+        app:tint="@drawable/tab_text_selector"
+        />
+    <!--android:tint="@drawable/tab_text_selector"-->
+
+    <TextView
+        android:id="@android:id/text1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|center_vertical"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:scaleX="@integer/scale_x"
+        android:text="---"
+        android:textColor="@drawable/tab_text_selector"
+        android:textSize="16dp" />
+</LinearLayout>

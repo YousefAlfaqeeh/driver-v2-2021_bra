@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/green_tabs"
+    android:gravity="center"
+    android:padding="16dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+       >
+
+        <!--<View-->
+            <!--android:layout_width="16dp"-->
+            <!--android:layout_height="match_parent" />-->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCall"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_circle_fade_to_dark"
+            android:padding="@dimen/swip_icons_padding"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/img_call"
+            app:tint="@drawable/green_to_white_text_selector" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgChangeLocation"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_circle_fade_to_dark"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/change_home"
+            app:tint="@drawable/green_to_white_text_selector" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/send_arrive_alarm"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_circle_fade_to_dark"
+            android:padding="@dimen/swip_icons_padding"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/bell"
+            app:tint="@drawable/green_to_white_text_selector" />
+
+        <!--<View-->
+            <!--android:layout_width="16dp"-->
+            <!--android:layout_height="match_parent" />-->
+    </LinearLayout>
+
+</LinearLayout>

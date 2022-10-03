@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--<integer name="layer_type_hardware">2</integer>-->
+    <!--<integer name="layer_type_none">0</integer>-->
+    <!--<integer name="layer_type_software">1</integer>-->
+
+    <integer name="layer_type">2</integer>
+
+</resources>

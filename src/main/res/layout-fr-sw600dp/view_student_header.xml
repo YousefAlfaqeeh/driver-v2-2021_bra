@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/color_header">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:id="@+id/linBack"
+        android:layout_margin="@dimen/padding_10"
+        android:padding="5dp"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/img_back" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:id="@+id/linNotification"
+        android:padding="5dp"
+        android:layout_margin="@dimen/padding_10"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/img_notification" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:padding="5dp"
+        android:layout_margin="@dimen/padding_10"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/imgSendMessage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/img_msg" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:padding="5dp"
+        android:layout_margin="@dimen/padding_10"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imgLocation"
+            android:layout_weight="0.8"
+            android:visibility="invisible"
+            android:padding="5dp"
+            android:src="@drawable/img_map"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="@dimen/padding_10"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+
+        <ImageView
+            android:id="@+id/imgLogout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/img_logout"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/logout"
+            android:visibility="gone"
+            android:gravity="center"
+            android:textColor="@color/color_img_logout"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:layout_margin="@dimen/padding_10"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible"
+        >
+        <TextView
+            android:id="@+id/labTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:textColor="@color/color_black"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:text="00:00:00"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="7dp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="visible"
+        >
+
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imgTypeRound"
+            android:visibility="visible"
+            android:textSize="11dp"
+            android:textAllCaps="false"
+            android:text="@string/start"
+            android:textColor="@color/color_white"
+            android:background="@drawable/img_start_round">
+
+        </Button>
+
+
+    </LinearLayout>
+
+</LinearLayout>

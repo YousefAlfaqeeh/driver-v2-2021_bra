@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRevealLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="140dp">
+
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/bottom_wrapper"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <include-->
+<!--            layout="@layout/pick_up_swip_layout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="140dp" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/real_item_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/studentslist.normal_bg"-->
+<!--        android:clickable="true"-->
+<!--        android:focusableInTouchMode="true">-->
+
+        <RelativeLayout
+            android:id="@+id/real_item_view"
+            android:layout_width="match_parent"
+            android:background="@color/studentslist.normal_bg"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    android:padding="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imgStudent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="0dp"
+                            android:scaleX="@integer/scale_x"
+                            android:src="@drawable/img_user"
+                            app:civ_border_width="1dp" />
+
+
+                        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                        <!--android:id="@+id/imgStudent"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:padding="0dp"-->
+                        <!--android:scaleX="@integer/scale_x"-->
+                        <!--android:src="@drawable/img_user"-->
+                        <!--app:civ_border_width="1dp" />-->
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/student_error_img"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignBottom="@+id/imgStudent"
+                            android:layout_alignEnd="@+id/imgStudent"
+                            android:layout_alignRight="@+id/imgStudent"
+                            android:layout_margin="5dp"
+                            android:visibility="gone"
+                            app:srcCompat="@drawable/student_error" />
+
+
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="16dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@color/transparent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="0dp"-->
+                        <!--android:layout_gravity="start|center_vertical"-->
+                        <!--android:layout_weight="2"-->
+                        <!--android:gravity="start|center_vertical"-->
+                        <!--android:orientation="horizontal">-->
+
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_gravity="start|center_vertical"-->
+                        <!--android:layout_weight="3"-->
+                        <!--android:gravity="start|center_vertical"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:weightSum="2">-->
+
+
+                        <TextView
+                            android:id="@+id/labStudentName"
+                            style="@style/BoldTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="start|center_vertical"
+                            android:paddingLeft="0dp"
+                            android:paddingRight="0dp"
+                            android:scaleX="@integer/scale_x"
+                            android:singleLine="true"
+                            android:text="Student Name"
+                            android:textColor="#24394A"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/labGrade"
+                            style="@style/LightTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="start|center_vertical"
+                            android:paddingLeft="0dp"
+                            android:paddingRight="0dp"
+                            android:scaleX="@integer/scale_x"
+                            android:singleLine="true"
+                            android:text="7th Grade"
+                            android:textColor="#999999"
+                            android:textSize="14dp"
+                            tools:ignore="MissingPrefix" />
+
+
+                        <!--</LinearLayout>-->
+
+
+                        <!--</LinearLayout>-->
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+
+                >
+
+                <View
+                    android:layout_width="76dp"
+                    android:layout_height="50dp"
+                    android:padding="0dp" />
+
+                <include
+                    android:id="@+id/checkin_and_absent_includeview"
+                    layout="@layout/checkin_and_absent_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="0dp" />
+            </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--<include-->
+                <!--layout="@layout/horizontal_progress_bar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="18dp"-->
+                <!--android:layout_alignParentBottom="true" />-->
+            <!--android:id="@+id/horizontal_progress_bar_includeview"-->
+
+
+            <!--<View-->
+            <!--android:background="@color/red_tabs"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="100dp" />-->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/swap_image_view"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/swap_image"
+                app:tint="@color/green_tabs" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/call_and_changelocation_view_container"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@drawable/trans_to_dark_selector_circle"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/drag_drop_icon"
+                app:tint="@color/md_grey_700" />
+
+
+        </RelativeLayout>
+
+        <!--</FrameLayout>-->
+
+
+<!--    </FrameLayout>-->
+
+    <!--</com.chauthai.swipereveallayout.SwipeRevealLayout>-->
+</LinearLayout><!--</com.chauthai.swipereveallayout.SwipeRevealLayout>-->

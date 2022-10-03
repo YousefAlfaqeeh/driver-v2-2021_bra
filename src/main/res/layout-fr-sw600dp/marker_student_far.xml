@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="130dp">
+
+    <ImageView
+        android:id="@+id/icon_user"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:src="@drawable/img_student_marker" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgStudent"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:civ_border_width="3.5dp"
+        android:paddingTop="2dp"
+        android:src="@drawable/img_user"
+        app:civ_border_color="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/icon_user"
+        android:layout_alignEnd="@+id/icon_user"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp" />
+
+    <TextView
+        android:id="@+id/labNameStudent"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="@drawable/marker_student_round_shape"
+        android:textColor="@color/color_white"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:text="ssss"
+        android:layout_weight="1"
+        android:layout_marginBottom="19dp"
+        android:layout_alignBottom="@+id/imgStudent"
+        android:layout_alignLeft="@+id/imgStudent"
+        android:layout_alignStart="@+id/imgStudent"
+        android:layout_marginLeft="85dp"
+        android:layout_marginStart="85dp" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/marker_student_round_shape"
+        android:textColor="@color/color_white"
+        android:id="@+id/labNoStudent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imgStudent"
+        android:layout_alignEnd="@+id/imgStudent"
+        android:layout_marginRight="21dp"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="10"
+        android:layout_marginEnd="21dp" />
+</RelativeLayout>

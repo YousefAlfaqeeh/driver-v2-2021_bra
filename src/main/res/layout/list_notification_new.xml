@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_gravity="start|center_vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:background="@drawable/trans_to_dark_selector"
+    android:gravity="start|center_vertical"
+    android:orientation="horizontal"
+    android:weightSum="7">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/notification_image"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:src="@drawable/img_bus_track"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="0dp" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_weight="6"
+        android:gravity="start|center_vertical"
+        android:orientation="vertical"
+        tools:ignore="RtlHardcoded"
+       >
+
+        <TextView
+            android:id="@+id/notification_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:ellipsize="end"
+            android:gravity="start|center_vertical"
+            android:maxLines="2"
+            android:scaleX="@integer/scale_x"
+            android:text="sdfasdf;lfj kasdjf klasjdf asdf afsdf asdf asdf  klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asklasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf klasjdf asdf afsdf asdf asdf"
+            android:textColor="@color/color_black_80"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/notification_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/transparent"
+            android:gravity="end|center_vertical"
+            android:scaleX="@integer/scale_x"
+            android:text="7:30m ago"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+

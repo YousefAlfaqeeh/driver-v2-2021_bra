@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start|center_vertical"
+    android:gravity="start|center_vertical"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        style="@style/Gravity_LeftCenterVertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:gravity="start|center_vertical"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:scaleX="@integer/scale_x">
+
+        <RadioButton
+            android:id="@+id/rbtext"
+            style="@style/RadioButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:background="@null"
+            android:gravity="start|center_vertical"
+            android:scaleX="@integer/scale_x"
+            android:text="cbnxcb sdfgsdfgsdfg dfsg sdfgdg dksmfg nsdkj gnsdjkfg sdkg sdkjg sk;djfg k;sdfg ;ksjdfg sdg dxcvb" />
+
+
+        <EditText
+            android:id="@+id/numtext"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/edit_text_rectangle"
+            android:gravity="center"
+            android:hint="__"
+            android:padding="1dp"
+            android:inputType="number"
+            android:scaleX="@integer/scale_x"
+            android:textSize="10dp" />
+    </LinearLayout>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/color_gray"/>-->
+</LinearLayout>

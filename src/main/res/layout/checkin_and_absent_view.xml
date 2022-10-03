@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start|center_vertical"
+    android:gravity="start|center_vertical"
+    android:orientation="horizontal"
+    android:animateLayoutChanges="true"
+    android:padding="0dp"
+    android:weightSum="2">
+
+
+    <TextView
+        android:id="@+id/still_in_bus_view"
+        style="@style/BoldTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|center_vertical"
+        android:layout_weight="2"
+        android:gravity="start|center_vertical"
+        android:scaleX="@integer/scale_x"
+        android:text="@string/there_is_still_a_student_on_the_bus"
+        android:textColor="@drawable/red_to_white_text_selector"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/check_in_done_view"
+        style="@style/BoldTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|center_vertical"
+        android:layout_weight="2"
+        android:gravity="start|center_vertical"
+        android:scaleX="@integer/scale_x"
+        android:text="@string/check_in_done"
+        android:textColor="#1BB15A"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/drop_off_done_view"
+        style="@style/BoldTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|center_vertical"
+        android:layout_weight="2"
+        android:background="@color/transparent"
+        android:gravity="start|center_vertical"
+        android:scaleX="@integer/scale_x"
+        android:text="@string/drop_off_done"
+        android:textColor="#1BB15A"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/absence_done_view"
+        style="@style/BoldTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|center_vertical"
+        android:layout_weight="0.8"
+        android:gravity="start|center_vertical"
+        android:scaleX="@integer/scale_x"
+        android:text="@string/absence"
+        android:textColor="@drawable/red_to_white_text_selector" />
+
+    <TextView
+        android:id="@+id/absence_by_parent_done_view"
+        style="@style/BoldTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:scaleX="@integer/scale_x"
+        android:text="@string/absence"
+        android:textColor="@drawable/red_to_white_text_selector"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/check_in_view"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/check_in_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="@integer/checks_weightSum">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/checkin_image"
+            style="@style/TintableImage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="@integer/checks_icon_layout_weight"
+            android:gravity="end|center_vertical"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:scaleX="@integer/scale_x"
+            app:srcCompat="@drawable/img_check_in"
+            app:tint="@drawable/green_to_white_text_selector" />
+
+        <TextView
+            android:id="@+id/checkin_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_weight="@integer/checks_text_layout_weight"
+            android:gravity="start|center_vertical"
+            android:scaleX="@integer/scale_x"
+            android:text="@string/check_in"
+            android:textColor="@drawable/green_to_white_text_selector"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/absent_view"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/absent_selector"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="@integer/checks_weightSum">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/absent_image"
+            style="@style/TintableImage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="@integer/checks_icon_layout_weight"
+            android:gravity="end|center_vertical"
+
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/img_none"
+            app:tint="@drawable/red_to_white_text_selector" />
+
+
+        <TextView
+            android:id="@+id/acbsent_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_weight="@integer/checks_text_layout_weight"
+            android:gravity="start|center_vertical"
+            android:scaleX="@integer/scale_x"
+            android:text="@string/absence"
+            android:textColor="@drawable/red_to_white_text_selector"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/drop_off_view"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/check_in_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="@integer/checks_weightSum">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            style="@style/TintableImage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="@integer/checks_icon_layout_weight"
+            android:gravity="end|center_vertical"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:scaleX="@integer/scale_x"
+            app:srcCompat="@drawable/img_check_in"
+            app:tint="@drawable/green_to_white_text_selector" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_weight="@integer/checks_text_layout_weight"
+            android:gravity="start|center_vertical"
+            android:scaleX="@integer/scale_x"
+            android:text="@string/drop_off_"
+            android:textColor="@drawable/green_to_white_text_selector"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/undo_absent"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:layout_weight="1.2"
+        android:background="@drawable/undo_absent_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:weightSum="@integer/checks_weightSum">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            style="@style/TintableImage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="@integer/checks_icon_layout_weight"
+            android:gravity="end|center_vertical"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:scaleX="@integer/scale_x"
+            app:srcCompat="@drawable/undo_absent"
+            app:tint="@drawable/blue_to_white_text_selector" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_weight="@integer/checks_text_layout_weight"
+            android:gravity="start|center_vertical"
+            android:scaleX="@integer/scale_x"
+            android:text="@string/undo_absent"
+            android:textColor="@drawable/blue_to_white_text_selector"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

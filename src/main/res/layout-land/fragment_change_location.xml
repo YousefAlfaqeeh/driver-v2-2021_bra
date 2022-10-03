@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:scaleX="@integer/scale_x">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/color_header"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/linBack"
+            style="@style/TintableImage.DarkOnClick"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/trans_to_dark_selector_circle"
+            android:clickable="true"
+            android:padding="20dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/img_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:scaleX="@integer/scale_x"
+            android:text="@string/change_location"
+            android:textColor="@color/color_white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        android:weightSum="2">
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapChangeLocation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layerType="@integer/layer_type"
+            android:scaleX="@integer/scale_x">
+
+        </com.google.android.gms.maps.MapView>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center_vertical|center_horizontal"-->
+                    <!--android:paddingTop="5dp"-->
+                    <!--android:scaleX="@integer/scale_x"-->
+                    <!--android:text="@string/current_location" />-->
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17dp"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="start|center_vertical"
+                    android:scaleX="@integer/scale_x"
+                    android:paddingTop="5dp"
+                    android:text="@string/the_map_shows_your_location" />
+
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="10dp"
+                    android:scaleX="@integer/scale_x"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/this_location_is_for"
+                    android:textColor="@color/color_black" />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal"
+                    android:scaleX="@integer/scale_x">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkPickUp"
+                        style="@style/CheckBoxStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:gravity="start|center_vertical"
+                        android:maxWidth="170dp"
+                        android:text="@string/pic_up" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal"
+                    android:scaleX="@integer/scale_x">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkDropOff"
+                        style="@style/CheckBoxStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/drop_off" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/btnCancleLocattion"
+                        style="@style/Main_Buttons.DialogeOkButton"
+                        android:background="@drawable/absent_selector"
+                        android:scaleX="@integer/scale_x"
+                        android:layout_width="wrap_content"
+                        android:maxWidth="80dp"
+                        android:minWidth="120dp"
+                        android:text="@string/cancel"
+                        android:textColor="@drawable/red_to_white_text_selector" />
+
+                    <androidx.legacy.widget.Space
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent" />
+
+                    <Button
+                        android:id="@+id/btnSaveLocattion"
+                        style="@style/Main_Buttons.DialogeOkButton"
+                        android:background="@drawable/check_in_selector"
+                        android:scaleX="@integer/scale_x"
+                        android:layout_width="wrap_content"
+                        android:maxWidth="80dp"
+                        android:minWidth="120dp"
+                        android:text="@string/save"
+                        android:textColor="@drawable/green_to_white_text_selector" />
+
+
+                </LinearLayout>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

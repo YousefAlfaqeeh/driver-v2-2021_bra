@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+     <item  android:state_selected="true"></item>
+    <solid android:color="@color/color_button_login"></solid>
+    <corners android:topLeftRadius="30dp"
+        android:topRightRadius="30dp"/>
+
+
+
+    <item
+        android:state_pressed="true"
+        android:color="@color/color_button_login">
+        <shape android:shape="rectangle"></shape>
+        <corners android:radius="45dp"></corners>
+    </item>
+    <item
+        android:color="@color/color_edit_text" >
+    </item>
+
+
+    <!--item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <stroke android:color="@color/color_button_login"
+                android:width="2dp"/>
+            <size
+                android:width="20dp"
+                android:height="20dp" />
+        </shape>
+    </item>-->
+
+</selector>

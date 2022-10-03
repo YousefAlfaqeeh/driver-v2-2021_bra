@@ -1,0 +1,9 @@
+package schooldriver.trackware.com.school_bus_driver_android.API.enumApi;
+
+/**
+ * Created by muradtrac on 1/14/17.
+ */
+
+public enum EnumNameApi {
+    LOGIN_DRIVER,LOGIN_BUS, SET_ROUND_STATUS, CHECK_OUT_ALL, NOTIFY, RECENT_NOTIFICATION,   PUSH_NOTIFICATION, CANCEL_ROUND, GEOFENCE, OFFLINE_LOCATION, OFFLINE_STATUS, CHANGE_LOCATION,  ROUND_LIST,LOGIN_DRIVER_REFRESH
+}

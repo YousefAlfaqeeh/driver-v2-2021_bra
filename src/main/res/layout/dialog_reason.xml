@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/dialog_round_shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+        <!---->
+
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/dialoge_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@drawable/stroke_circle"
+            android:padding="20dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/img_error" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/dialoge_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:text=" --- "
+            android:textColor="@color/color_header"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/dialoge_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text=" ----- ----- ----- ----- "
+            android:textColor="@color/color_header"
+            android:textSize="18dp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/linResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_margin="10dp"
+            android:gravity="start|center_vertical"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+        <TextView
+            android:id="@+id/dialoge_additional_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:gravity="start|center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/end_the_round_additional"
+            android:textColor="@color/red_tabs"
+            android:textSize="16dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone" />
+
+        <!--<android.support.v4.widget.Space-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="10dp" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <!--<android.support.v7.widget.AppCompatButton-->
+            <!--android:id="@+id/dialoge_image_close"-->
+            <!--style="@style/Main_Buttons.DialogeCancelButton"-->
+            <!--android:layout_width="70dp"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:padding="0dp"-->
+            <!--android:text="@string/cancel" />-->
+
+            <Button
+                android:id="@+id/dialoge_button_other"
+                style="@style/Main_Buttons.DialogeOkButton"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:enabled="false"
+                android:visibility="gone"
+                android:text="@string/completely_stop_round"
+               />
+
+            <Button
+                android:id="@+id/dialoge_button_yes"
+                style="@style/Main_Buttons.DialogeOkButton"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:enabled="false"
+                android:text="@string/temporary_stop_round" />
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal">-->
+
+
+        <!--<android.support.v7.widget.AppCompatButton-->
+        <!--android:id="@+id/dialoge_button_no"-->
+        <!--style="@style/Main_Buttons.DialogeNoButton"-->
+        <!--android:text="@string/no_value" />-->
+
+        <!--<android.support.v4.widget.Space-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="match_parent" />-->
+        <!--android:visibility="gone"-->
+        <!--<Button-->
+        <!--android:id="@+id/dialoge_button_other"-->
+        <!--style="@style/Main_Buttons.DialogeNoButton"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:visibility="gone"-->
+        <!--android:enabled="false"-->
+        <!--android:text="@string/completely_stop_round" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/dialoge_button_yes"-->
+        <!--style="@style/Main_Buttons.DialogeOkButton"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:enabled="false"-->
+        <!--android:text="@string/yes_value" />-->
+        <!--</LinearLayout>-->
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/dialoge_image_close"
+        style="@style/TintableImage.DarkOnClick"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:background="@drawable/close_button_red_cicle_selector"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/img_none" />
+    <!--app:srcCompat="@drawable/close_button"-->
+    <!--app:tint="@drawable/nochange_to_dark_tint_selector"-->
+</RelativeLayout>

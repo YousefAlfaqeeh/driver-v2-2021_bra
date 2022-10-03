@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:scaleX="@integer/scale_x">
+
+
+    <!--map_header-->
+    <include
+        android:id="@+id/map_header"
+        layout="@layout/map_header_new"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:animateLayoutChanges="true" />
+
+
+    <!--map_tool_header-->
+    <include
+        layout="@layout/map_tool_header_new"
+        android:layout_width="match_parent"
+        android:layout_height="65dp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:background="@color/color_blue"
+        android:scaleX="@integer/scale_x">
+
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layerType="@integer/layer_type" />
+
+        <FrameLayout
+            android:id="@+id/map_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnReCenter"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/trans_to_dark_selector"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    style="@style/TintableImage.DarkOnClick"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/recenter_icon"
+                    app:tint="@color/color_student_name" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/color_student_name"
+                    android:text="Re-CENTER" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

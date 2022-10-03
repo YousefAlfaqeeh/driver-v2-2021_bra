@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="100" android:exitFadeDuration="100">
+
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/color_edit_text_new_dark"></solid>
+            <corners android:radius="45dp" />
+        </shape>
+    </item>
+    <!--//////////////-->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/color_edit_text_new"></solid>
+            <corners android:radius="45dp" />
+        </shape>
+    </item>
+
+</selector>
+

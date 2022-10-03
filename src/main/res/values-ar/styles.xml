@@ -1,0 +1,26 @@
+<resources   xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix">
+
+
+    <style name="CheckBoxStyle" parent="Base.Widget.AppCompat.CompoundButton.CheckBox" >
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableRight">?android:attr/listChoiceIndicatorMultiple</item>
+        <!--<item name="fontPath">@string/font</item>-->
+    </style>
+
+
+    <style name="RadioButtonStyle" parent="Base.Widget.AppCompat.CompoundButton.RadioButton" >
+        <!--<item name="android:fontFamily">@font/custom_font</item>-->
+        <!--<item name="fontPath">@string/font</item>-->
+        <item name="android:button">@null</item>
+        <item name="android:drawableRight">@android:drawable/btn_radio</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
+</resources>
+
+
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">--><!--<item name="switchStyle">@style/Custom_SwitchCompat</item>--><!--<item name="colorPrimary">@color/colorPrimary</item>--><!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>--><!--<item name="colorAccent">@color/colorAccent</item>--><!--<item name="android:textAllCaps">false</item>--><!--<item name="android:textSize">@dimen/default.textSize</item>--><!--<item name="android:windowBackground">@color/default.windowBackground</item>--><!--<item name="colorControlActivated">@color/primary</item>--><!--<item name="borderColor">@color/primary</item>--><!--<item name="homeBoxColor">@color/primary</item>--><!--<item name="homeNewTitleBackground">@color/news.title.background</item>--><!--<item name="headBackground">#00732E </item>--><!--<item name="headTextColor">#FFF</item>--><!--<item name="dividerColor">@color/primary</item>--><!--<item name="iconColor">@color/black</item>--><!--<item name="toolbarIconColor">@color/white</item>--><!--<item name="android:textColor">@color/light.text.primary</item>--><!--<item name="android:textColorPrimary">@color/light.text.primary</item>--><!--<item name="android:textColorSecondary">@color/light.text.secondary</item>--><!--<item name="android:textColorTertiary">@color/light.text.hint</item>--><!--<item name="android:textColorHint">@color/light.text.hint</item>--><!--<item name="android:textColorPrimaryInverse">@color/dark.text.primary</item>--><!--<item name="android:textColorSecondaryInverse">@color/dark.text.secondary</item>--><!--<item name="android:textColorTertiaryInverse">@color/dark.text.hint</item>--><!--<item name="android:textColorHintInverse">@color/dark.text.hint</item>--><!--<item name="backColor">@color/white</item>--><!--<item name="iconActiveColor">@color/black</item>--><!--<item name="iconInactiveColor">@color/light.icon.inactive</item>--><!--<item name="buttonActiveColor">@color/accent</item>--><!--<item name="buttonInactiveColor">@color/light.icon.inactive</item>--><!--<item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>--><!--<item name="popupStyle">@style/PopupTheme.Light</item>--><!--<item name="fontPath">@string/font</item>--><!--<item name="textSizeTitle">@dimen/default.textSizeTitle</item>--><!--<item name="textSize">@dimen/default.textSize</item>--><!--<item name="android:textViewStyle">@style/SingleLineText</item>--><!--<item name="textSizeSec">@dimen/default.textSizeSec</item>--><!--<item name="buttonBackground">@drawable/button_selector</item>--><!--<item name="textSizeHtml">@dimen/default.textSizeHtml</item>--><!--&lt;!&ndash;<item name="mdtp_theme_dark">false</item>&ndash;&gt;--><!--</style>-->

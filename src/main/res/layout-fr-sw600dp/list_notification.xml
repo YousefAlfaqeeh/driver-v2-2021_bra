@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imgStudent"-->
+            <!--android:layout_width="70dp"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:layout_gravity="center_vertical|center_horizontal"-->
+            <!--android:padding="5dp"-->
+            <!--android:src="@drawable/img_user" />-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgStudent"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleX="@integer/scale_x"
+
+            android:padding="5dp"
+            app:civ_border_width="0dp"
+            app:civ_border_color="@color/colorPrimary"
+            android:src="@drawable/img_bus_track"
+            />
+
+        <TextView
+            android:id="@+id/txtDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="mmmmmmmmmm"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/color_black_50"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnTime"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="2.5"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="7:30m ago"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="14dp"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="80dp"
+        android:background="@color/color_header"></View>
+</LinearLayout>

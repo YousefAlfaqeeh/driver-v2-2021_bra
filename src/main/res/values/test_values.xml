@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="pin_"></string>
+
+
+
+    <integer name="prod_dev_button_VISIBLE">8</integer>    <!--not visible-->
+
+</resources>

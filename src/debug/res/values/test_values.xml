@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--<string name="pin_">TMN390</string>-->
+    <string name="pin_"></string>
+
+    <!--<string name="pin_">NTR199</string>-->
+ <integer name="prod_dev_button_VISIBLE">1</integer>    <!--0 is visible-->
+
+</resources>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:clickable="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/end_round_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/trans_to_dark_selector_circle"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:textSize="10dp"
+            app:srcCompat="@drawable/bg_end" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:weightSum="3">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/TintableImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_weight="2"
+                android:gravity="center_horizontal|bottom"
+                android:padding="7dp"
+                android:scaleType="centerInside"
+                android:textSize="10dp"
+                app:srcCompat="@drawable/end_arrow"
+                app:tint="@color/color_white" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|top"
+                android:scaleX="@integer/scale_x"
+                android:text="@string/end_the_round_buuton_text"
+                android:textColor="@color/color_white"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/start_round_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:background="@drawable/trans_to_dark_selector_circle"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:textSize="10dp"
+            app:srcCompat="@drawable/bg_start" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:weightSum="3">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                style="@style/TintableImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_weight="2"
+                android:gravity="center_horizontal|bottom"
+                android:padding="7dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/start_arrow"
+                app:tint="@color/color_white" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|top"
+                android:text="@string/start_the_round_buuton_text"
+                android:scaleX="@integer/scale_x"
+                android:textColor="@color/color_white"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

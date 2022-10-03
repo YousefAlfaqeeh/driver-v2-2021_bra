@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/color_white"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:padding="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/login_logo" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:id="@+id/txtDriverCode"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/edit_text_rectangle"
+            android:gravity="center"
+            android:hint="@string/bus_pin"
+            android:padding="10dp"
+            android:text="@string/pin_"
+            android:textSize="12dp" />
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+            android:background="@drawable/yello_button_circle_selector"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="13dp" />
+
+
+        <!--<android.support.v7.widget.SwitchCompat-->
+            <!--android:id="@+id/dev_prod_Switch"-->
+            <!--android:layout_width="150dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:checked="false"-->
+            <!--android:text="Dev / Prod"-->
+            <!--android:textOff="Prod"-->
+            <!--android:textOn="Dev"-->
+            <!--android:visibility="@integer/prod_dev_button_VISIBLE" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:scaleX="@integer/scale_x">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:gravity="end|center_vertical"
+                android:padding="1dp"
+                android:scaleX="@integer/scale_x"
+                android:text="@string/change_language"
+                android:textSize="13.4dp" />
+
+            <TextView
+                android:id="@+id/btnLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:background="@drawable/trans_to_dark_selector_circle"
+                android:gravity="start|center_vertical"
+                android:padding="1dp"
+                android:scaleX="@integer/scale_x"
+                android:text="@string/en_ar"
+                android:textAllCaps="false"
+                android:textColor="@color/color_blue"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+

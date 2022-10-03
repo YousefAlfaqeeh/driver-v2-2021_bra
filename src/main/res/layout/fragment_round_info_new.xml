@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:scaleX="@integer/scale_x">
+
+
+    <include
+        layout="@layout/view_student_header_new"
+        android:layout_width="match_parent"
+        android:layout_height="65dp" />
+
+
+    <androidx.cardview.widget.CardView
+        android:scaleX="@integer/scale_x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:id="@+id/lliTittle"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@color/color_green"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/labNameRound"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="4"
+                android:gravity="start|center_vertical"
+                android:paddingRight="20dp"
+                android:scaleX="@integer/scale_x"
+                android:text="@string/students"
+                android:textColor="@color/color_white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
+
+
+            <LinearLayout
+                android:id="@+id/imgLocation_imgSendMessage_view_container"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgLocation"
+                    style="@style/TintableImage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/trans_to_dark_selector"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/img_map" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgSendMessage"
+                    style="@style/TintableImage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/trans_to_dark_selector"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/img_msg" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleX="@integer/scale_x"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rsStudent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/color_white"
+            android:scrollbars="vertical" />
+
+
+        <include
+            android:id="@+id/start_end_round_button_view"
+            layout="@layout/start_end_round_button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

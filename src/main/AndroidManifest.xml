@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="schooldriver.trackware.com.school_bus_driver_android">
+
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <!--<uses-sdk-->
+        <!--android:minSdkVersion="17"-->
+        <!--android:targetSdkVersion="25" />-->
+
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
+    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+<!--\    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />-->
+
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <!--<uses-feature-->
+        <!--android:name="android.hardware.telephony"-->
+        <!--android:required="false" />-->
+
+    <permission
+        android:name=".MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name=".MAPS_RECEIVE" />
+
+    <!-- [START gcm_permission] -->
+<!--    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- [END gcm_permission] -->
+
+
+    <!-- <compatible-screens> -->
+
+
+    <!-- <screen -->
+    <!-- android:screenDensity="xhdpi" -->
+    <!-- android:screenSize="large" /> -->
+    <!-- <screen -->
+    <!-- android:screenDensity="xxhdpi" -->
+    <!-- android:screenSize="large" /> -->
+    <!-- <screen -->
+    <!-- android:screenDensity="xxxhdpi" -->
+    <!-- android:screenSize="large" /> -->
+
+
+    <!-- <screen -->
+    <!-- android:screenDensity="xhdpi" -->
+    <!-- android:screenSize="xlarge" /> -->
+    <!-- <screen -->
+    <!-- android:screenDensity="xxhdpi" -->
+    <!-- android:screenSize="xlarge" /> -->
+    <!-- <screen -->
+    <!-- android:screenDensity="xxxhdpi" -->
+    <!-- android:screenSize="xlarge" /> -->
+    <uses-feature
+        android:name="android.hardware.telephony.cdma"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.location"-->
+<!--        android:required="false" />-->
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false" />
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.location.gps"-->
+<!--        android:required="false" />-->
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.telephony"-->
+<!--        android:required="false" />-->
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.permission.READ_PHONE_STATE"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.audio.low_latency"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.audio.output"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.audio.pro"
+        android:required="false" />
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.microphone"-->
+<!--        android:required="false" />-->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.capability.manual_post_processing"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.capability.manual_sensor"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.capability.raw"
+        android:installLocation="preferExternal"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.external"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.type.automotive"-->
+<!--        android:required="false" />-->
+    <uses-feature
+        android:name="android.hardware.type.television"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.gamepad"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.consumerir"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.opengles.aep"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.ambient_temperature"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.barometer"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.compass"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.gyroscope"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.heartrate.ecg"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.proximity"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.landscape"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.usb.accessory"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
+<!--    <uses-feature-->
+<!--        android:name="android.hardware.wifi"-->
+<!--        android:required="false" />-->
+    <uses-feature
+        android:name="android.hardware.wifi.direct"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.sip"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.webview"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.input_methods"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.backup"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.device_admin"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.securely_removes_users"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.verified_boot"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.live_wallpaper"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- </compatible-screens> -->
+
+
+    <!-- <supports-screens -->
+    <!-- android:anyDensity="true" -->
+    <!-- android:largeScreens="true" -->
+    <!-- android:normalScreens="false" -->
+    <!-- android:requiresSmallestWidthDp="600" -->
+    <!-- android:resizeable="true" -->
+    <!-- android:smallScreens="false" -->
+    <!-- android:xlargeScreens="true" /> -->
+<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+    <!--<android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+<!--    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />-->
+    <application
+        android:name=".app.Application"
+        android:allowBackup="false"
+        android:configChanges="keyboardHidden|keyboard|navigation|locale|screenSize|orientation"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:launchMode="singleInstance"
+        android:taskAffinity=""
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+        <!--android:hardwareAccelerated="false"-->
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <!--android:screenOrientation="landscape"-->
+        <activity
+            android:screenOrientation="unspecified"
+            android:configChanges="keyboardHidden|keyboard|navigation|locale|screenSize|orientation"
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+        <!--<meta-data-->
+        <!--android:name="com.google.android.geo.API_KEY"-->
+        <!--android:value="@string/google_maps_key" />-->
+        <!--<meta-data-->
+        <!--android:name="com.getsentry.raven.android.DSN"-->
+        <!--android:value="https://4a5c513c9c754ab9921732a5087b7663:3bc05e02b9464a0e8a3f3e6bf35fe5e4@sentry.io/174447" />-->
+
+        <activity
+            android:name=".MapsActivity"
+
+            android:label="@string/title_activity_maps" />
+
+        <!-- &lt;!&ndash; [START gcm_receiver] &ndash;&gt; -->
+        <!-- <receiver -->
+        <!-- android:name="com.google.android.gms.gcm.GcmReceiver" -->
+        <!-- android:exported="true" -->
+        <!-- android:permission="com.google.android.c2dm.permission.SEND"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
+        <!-- <category android:name="gcm.play.android.samples.com.gcmquickstart" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+        <!-- &lt;!&ndash; [END gcm_receiver] &ndash;&gt; -->
+
+
+        <!-- &lt;!&ndash; [START gcm_listener] &ndash;&gt; -->
+        <!-- <service -->
+        <!-- android:name=".gcmNotification.MyGcmListenerService" -->
+        <!-- android:exported="false"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- &lt;!&ndash; [END gcm_listener] &ndash;&gt; -->
+        <!-- &lt;!&ndash; [START instanceId_listener] &ndash;&gt; -->
+        <!-- <service -->
+        <!-- android:name=".gcmNotification.MyInstanceIDListenerService" -->
+        <!-- android:exported="false"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.android.gms.iid.InstanceID" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- &lt;!&ndash; [END instanceId_listener] &ndash;&gt; -->
+        <!-- <service -->
+        <!-- android:name=".gcmNotification.RegistrationIntentService" -->
+        <!-- android:exported="false"></service> -->
+
+
+        <!-- [START fcm_default_icon] -->
+        <!--
+             Set custom default icon. This is used when no icon is set for incoming notification messages.
+             See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <!-- [END fcm_default_icon] -->
+
+
+        <!-- [START firebase_service] -->
+        <service android:name=".gcmNotification.firebace.MyFirebaseMessagingService_new">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+<!--        <service android:name=".gcmNotification.firebace.MyFirebaseInstanceIDService">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+        <!-- [END firebase_iid_service] -->
+
+        <!--<service-->
+            <!--android:name="beacon.BeaconService"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="false" />-->
+
+        <service
+            android:name=".geofence.GeofenceTransitionIntentService"
+            android:exported="false" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+
+
+        <meta-data android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+
+        <!--<service-->
+            <!--android:name="org.altbeacon.beacon.service.BeaconService"-->
+            <!--android:enabled="true"-->
+            <!--android:isolatedProcess="false"-->
+            <!--android:label="beacon" />-->
+        <!--<service-->
+            <!--android:name="org.altbeacon.beacon.BeaconIntentProcessor"-->
+            <!--android:enabled="true" />-->
+
+
+    </application>
+
+</manifest>

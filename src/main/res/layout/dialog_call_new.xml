@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/dialog_round_shape"
+        android:gravity="center"
+        android:minHeight="250dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <!---->
+
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/dialoge_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:padding="20dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/img_call"
+            app:tint="@color/green_tabs" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/dialoge_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="@string/do_you_want_to_contact_with"
+            android:textColor="@color/color_black"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/mother_number_view"
+                android:layout_width="100dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    style="@style/TintableImage"
+                    android:layout_gravity="center"
+                    android:background="@drawable/stroke_circle_trans_to_green_selector"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/mom"
+                    app:tint="@color/grey_to_white_selector" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/call_mother"
+                    android:textColor="@color/grey_to_green_selector"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/father_number_view"
+                android:layout_width="100dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    style="@style/TintableImage"
+                    android:layout_gravity="center"
+                    android:background="@drawable/stroke_circle_trans_to_green_selector"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/dad"
+                    app:tint="@color/grey_to_white_selector" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/call_father"
+                    android:textColor="@color/grey_to_green_selector"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <!--<android.support.v7.widget.AppCompatButton-->
+            <!--android:id="@+id/dialoge_image_close"-->
+            <!--style="@style/Main_Buttons.DialogeCancelButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:padding="0dp"-->
+            <!--android:text="@string/cancel" />-->
+
+
+            <Button
+                android:id="@+id/dialoge_button_outher"
+                style="@style/Main_Buttons.DialogeOkButton"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/ended_round"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/dialoge_image_close"
+        style="@style/TintableImage.DarkOnClick"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:background="@drawable/close_button_red_cicle_selector"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/img_none" />
+
+    <!--app:srcCompat="@drawable/close_button"-->
+    <!--app:tint="@drawable/nochange_to_dark_tint_selector"-->
+</RelativeLayout>

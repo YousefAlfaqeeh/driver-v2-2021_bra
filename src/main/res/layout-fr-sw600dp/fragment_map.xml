@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/view_student_header"
+        android:id="@+id/include"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"></include>
+
+   <!--<fragment
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>-->
+    <!--<com.google.android.gms.maps.MapView-->
+        <!--android:id="@+id/mapView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/include" />-->
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layerType="@integer/layer_type"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/include" />
+
+    <ImageView
+        android:id="@+id/imgStudentList"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/include"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="34dp"
+        android:padding="20dp"
+        android:src="@drawable/img_student_list"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imgSize"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="3dp"
+        android:src="@drawable/img_full"
+        android:tint="@color/color_white"
+        android:layout_below="@+id/imgStudentList"
+        android:layout_margin="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/normal"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/imgStudentList"
+        android:layout_toLeftOf="@+id/imgSize"
+        android:id="@+id/btnTypeButton"
+        android:textAllCaps="false"
+        android:layout_margin="20dp"
+        android:textColor="@color/color_black"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size"
+        android:gravity="center"
+        android:clickable="true"
+        android:background="@drawable/round_edit_text_shape"/>
+
+
+
+</RelativeLayout>

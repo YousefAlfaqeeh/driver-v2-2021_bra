@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/map_tool_header"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/color_green"
+    android:orientation="horizontal"
+    android:weightSum="7">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/padding_10"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:animateLayoutChanges="true"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tool_back"
+            style="@style/TintableImage.DarkOnClick"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:padding="20dp"
+            android:scaleX="-1"
+            android:scaleType="centerInside"
+            app:tint="@color/white_to_dark_selector"
+            android:background="@drawable/trans_to_dark_selector_circle"
+            app:srcCompat="@drawable/img_back" />
+
+        <TextView
+            android:id="@+id/labTimer"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:scaleX="@integer/scale_x"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="00:00:00"
+            android:textColor="@color/color_black"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!--<android.support.v4.widget.Space-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1" />-->
+
+    <View
+        android:layout_width="0dp"
+
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+
+      />
+
+
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/color_white" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnTypeButton"
+        style="@style/TintableImage.DarkOnClick"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/trans_to_dark_selector"
+        android:padding="16dp"
+        app:srcCompat="@drawable/map_mod_icon_b"
+        app:tint="@color/white_to_dark_selector" />
+
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/color_white" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSize"
+        style="@style/TintableImage.DarkOnClick"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/trans_to_dark_selector"
+        android:padding="16dp"
+        app:srcCompat="@drawable/img_full"
+        app:tint="@color/white_to_dark_selector" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/color_white" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSendMessage"
+        style="@style/TintableImage.DarkOnClick"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/trans_to_dark_selector"
+        android:padding="16dp"
+        app:srcCompat="@drawable/img_msg"
+        app:tint="@color/white_to_dark_selector" />
+
+
+</LinearLayout>
+

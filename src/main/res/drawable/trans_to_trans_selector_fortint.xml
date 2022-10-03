@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="50" android:exitFadeDuration="50">>
+
+    <!-- <bitmap android:src="@drawable/schedual_cl" /> -->
+
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#00FFFFFF" />
+        </shape>
+
+    </item>
+    <!--//////////////////-->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#00FFFFFF" />
+        </shape>
+
+    </item>
+    <!--///////////////-->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#00FFFFFF" />
+
+        </shape>
+    </item>
+    <!--//////////////-->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#00FFFFFF" />
+        </shape>
+
+    </item>
+
+</selector>

@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "404758940845",
+    "firebase_url": "https://trackware-auth0.firebaseio.com",
+    "project_id": "trackware-auth0",
+    "storage_bucket": "trackware-auth0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404758940845:android:3a7eabf446f2f583",
+        "android_client_info": {
+          "package_name": "trackware.schoolbustracker.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404758940845-87jragc9mvjvjqo3tec59brcipmb4nat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "trackware.schoolbustracker.driver",
+            "certificate_hash": "b74439f33135e3311f59cd7f627c1a479003d8d1"
+          }
+        },
+        {
+          "client_id": "404758940845-jg6palfjgoge7lqltebji2e0f83lu11j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "trackware.schoolbustracker.driver",
+            "certificate_hash": "4a6db88e7cca2fa61d5b1152d6f7e00ef1ed6055"
+          }
+        },
+        {
+          "client_id": "404758940845-o6s59bqvudn44aj19dkp80r0p1goth7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS3jG3lxQgTdlgALDPDogins-IAslnzOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404758940845-o6s59bqvudn44aj19dkp80r0p1goth7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

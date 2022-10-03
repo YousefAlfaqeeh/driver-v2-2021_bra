@@ -1,0 +1,319 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "org.jetbrains.kotlin.android.extensions"
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.firebase-crash'
+
+//apply plugin: 'io.sentry.android.gradle'
+
+
+android.applicationVariants.all { variant ->
+
+    configurations.all {
+        exclude module: "play-services-ads-identifier"
+        exclude module: "play-services-measurement"
+        exclude module: "play-services-measurement-sdk"
+        exclude module: "play-services-measurement-api"
+        exclude module: "play-services-measurement-base"
+        exclude module: "play-services-measurement-sdk-api"
+//        exclude module: "play-services-measurement-sdk"
+//        exclude module : 'play-services-ads-identifier'
+//        exclude group:"org.apache.geronimo.specs", module: "geronimo-servlet_2.5_spec"
+//        exclude group:"ch.qos.logback", module:"logback-core"
+    }
+
+//    def formattedDate = new Date().format('yyyyMMddHHmmss')
+    def version_name = variant.name
+    if (variant.name =="debug"){
+        version_name = "dev"
+    }
+
+    variant.outputs.all { //parent3_dev_0.0.1
+        outputFileName = "driver3_${version_name}_0.0.X.apk"
+    }
+}
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        applicationId "trackware.schoolbustracker.driver"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 143
+        versionName "143"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    signingConfigs {
+
+        release {
+            keyPassword 'Driver1234$#@!'
+            storeFile file('../app/driver.jks')
+            storePassword 'Driver1234$#@!'
+            keyAlias 'Driver'
+        }
+    }
+
+
+    buildTypes {
+        release {
+            lintOptions {
+
+                disable 'MissingTranslation'
+                checkReleaseBuilds false
+                abortOnError false
+                signingConfig signingConfigs.release
+                minifyEnabled false
+            }
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            lintOptions {
+
+                minifyEnabled false
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "6g"
+    }
+
+
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'com.google.firebase:firebase-analytics:19.0.2'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+//    implementation project(':JavaPhoenixChannels-master')
+
+
+
+    // Google Support
+    implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
+    implementation 'androidx.legacy:legacy-support-core-ui:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // Google Firebase
+    implementation 'com.google.firebase:firebase-database:19.2.1'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+
+    implementation "com.google.firebase:firebase-core:19.0.2"
+    implementation "com.google.firebase:firebase-messaging:20.1.2"
+    implementation "com.google.firebase:firebase-crash:16.2.1"
+//    implementation "com.google.firebase:firebase-analytics:${firebase_version}"
+
+
+    // Google Play Services
+    implementation "com.google.android.gms:play-services-maps:17.0.1"
+//    implementation "com.google.android.gms:play-services-analytics:17.0.1"
+    implementation "com.google.android.gms:play-services-location:18.0.0"
+
+    // Google Maps Utils
+    implementation "com.google.maps.android:android-maps-utils:0.5+"
+
+    // Google Support Test
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+
+    // Google Constraint Layout
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+
+    ///////////////////
+    def retrofit2_v = '2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_v"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_v"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_v"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'me.linshen.retrofit2:adapter-livedata:1.0.0'
+
+    //Google Glide
+//    implementation 'com.github.bumptech.glide:glide:4.10.0'
+
+    ///////////////////
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
+    /////////////////
+    //glide
+    ////////////////
+    implementation "androidx.activity:activity:1.3.1"
+    implementation 'androidx.fragment:fragment:1.3.6'
+    implementation "androidx.activity:activity-ktx:1.3.1"
+    implementation "androidx.fragment:fragment-ktx:1.3.6"
+    ////////////
+    def glide_v = '4.11.0'
+    implementation "com.github.bumptech.glide:glide:$glide_v"
+    kapt "com.github.bumptech.glide:compiler:$glide_v"
+    implementation "com.github.bumptech.glide:annotations:$glide_v"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_v"
+
+
+    implementation 'com.github.douglasjunior:android-simple-tooltip:0.2.3'
+
+
+//    implementation 'com.loopeer.library:itemtouchhelperextension:1.0.6'
+
+//    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+//    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
+
+    //
+    //    implementation 'com.google.firebase:firebase-core:11.0.1'
+    //    implementation 'com.firebase:firebase-jobdispatcher:0.5.2'
+//    implementation("com.google.firebase:firebase-auth:${google_play_services_version}") {
+//        exclude group: 'com.google.android.gms'
+//    }
+//    implementation "com.android.support:appcompat-v7:${support_library_version}"
+//    implementation "com.android.support:design:${support_library_version}"
+//    implementation "com.android.support:animated-vector-drawable:${support_library_version}"
+//    implementation "com.android.support:mediarouter-v7:${support_library_version}"
+//    implementation "com.android.support:support-core-utils:${support_library_version}"
+//    implementation "com.android.support:design:${support_library_version}"
+
+
+//    implementation"com.google.firebase:firebase-core:${google_play_services_version}"
+//    implementation"com.google.firebase:firebase-messaging:${google_play_services_version}"
+//    implementation"com.google.firebase:firebase-auth:${google_play_services_version}"
+//    implementation"com.google.firebase:firebase-config:${google_play_services_version}"
+
+//    implementation "com.google.android.gms:play-services:${google_play_services_version}"
+//    implementation "com.google.firebase:firebase-core:${google_play_services_version}"
+//    implementation "com.google.android.gms:play-services:${google_play_services_version}"
+
+//    implementation "com.google.android.gms:play-services:${google_play_services_version}"
+
+//    com.google.android.gms:play-services-analytics
+
+//    implementation "com.google.android.gms:play-services-fitness:${google_play_services_version}"
+//    implementation "com.google.android.gms:play-services-wearable:${google_play_services_version}"
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+//    implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+    implementation 'com.android.volley:volley:1.2.1'
+
+    //    implementation 'com.google.android.support:wearable:2.0.3'
+    //    implementation 'com.google.maps.android:android-maps-utils:0.4+'
+    //    implementation 'com.google.android.gms:play-services-ads:8.3.0'
+    //    implementation 'com.google.android.gms:play-services-identity:8.3.0'
+    //    implementation 'com.google.android.gms:play-services-gcm:8.3.0'
+    //    implementation 'com.getsentry.raven:raven-android:8.0.3'
+    //    implementation 'com.txusballesteros:bubbles:1.2.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    testImplementation 'junit:junit:4.13.2'
+//    implementation 'com.google.maps.android:android-maps-utils:0.5+'
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+    /**/
+    implementation "com.afollestad.material-dialogs:core:0.9.6.0"
+    implementation "com.afollestad.material-dialogs:commons:0.9.6.0"
+    implementation 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    //Google Glide
+//    annotationProcessor "com.github.bumptech.glide:compiler:${glide_version}"
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation files('libs/MTBeaconPlus.jar')
+//    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+//    implementation 'com.github.bosphere.android-filelogger:filelogger:1.0.5'
+//    implementation 'com.github.javiersantos:AppUpdater:2.6.5'
+    implementation 'org.altbeacon:android-beacon-library:2.13.1'
+//    implementation 'io.sentry:sentry-android:1.7.28'
+
+
+    implementation 'com.mikepenz:materialize:1.2.1'
+
+    implementation 'io.nlopez.smartlocation:library:3.3.3'
+
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation "androidx.annotation:annotation:1.2.0"
+    implementation "androidx.preference:preference-ktx:1.1.1"
+    /////////////
+    def lifecycle_v = "2.3.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_v"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_v"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_v"
+//    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_v"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_v"
+    ///////////////
+//    implementation 'com.thefinestartist:finestwebview:1.2.7'
+
+
+//    implementation 'com.mikepenz:fastadapter:3.2.7'
+
+//    implementation ('com.amazonaws:aws-android-sdk-mobile-client:2.6.+@aar')
+//            { transitive = true }
+//    implementation 'com.amazonaws:aws-android-sdk-pinpoint:2.6.+'
+
+//    implementation 'mobi.inthepocket.android:ibeaconscanner:1.2.2'
+
+}
+
+//sentry {
+//    // Disables or enables the automatic configuration of proguard
+//    // for Sentry.  This injects a default config for proguard so
+//    // you don't need to do it manually.
+//    autoProguardConfig true
+//
+//    // Enables or disables the automatic upload of mapping files
+//    // during a build.  If you disable this you'll need to manually
+//    // upload the mapping files with sentry-cli when you do a release.
+//    autoUpload true
+//}
+
+android {
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+        exclude("META-INF/*")
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'META-INF/rxjava.properties'
+    }
+//    buildFeatures {
+//        viewBinding true
+//    }
+    dataBinding {
+        enabled = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+//    buildToolsVersion '30.0.0'
+
+}
+//
+apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}
+//apply plugin: 'com.google.firebase.firebase-perf'
+
