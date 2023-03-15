@@ -107,7 +107,7 @@ public class LoginFragment extends BaseFragment implements IActionLogin {
 
     private void login() {
 
-        String driverCode = txtDriverCode.getText().toString().trim().toUpperCase();
+        String driverCode = txtDriverCode.getText().toString().trim();
         if (UtilityDriver.isEmptyString(driverCode)) {
             UtilViews.shakeViews(txtDriverCode);
             UtilityDriver.showMessage(getMainActivity(), mActivity.getString(R.string.please_enter_driver_code));

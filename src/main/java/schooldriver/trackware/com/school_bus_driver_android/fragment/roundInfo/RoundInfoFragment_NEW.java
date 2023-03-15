@@ -319,12 +319,12 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                     List<StudentBean> mustListTakenStudent = getMustTakenStudentList();
 //                    yousef
                     String school_order = UtilityDriver.getStringShared(UtilityDriver.SCHOOL_ORDER);
-//                    Log.d("mustListTakenStudent", String.valueOf(school_order));
+                    Log.d("mustListTakenStudent", String.valueOf(school_order));
                     if (school_order.equals("false")) {
                         for (int i = 0; i <= mustListTakenStudent.size(); i++) {
 //                            Log.d("mustListTakenStudent.size()1111ss", String.valueOf(mustListTakenStudent.get(i).getLongitude()));
                             if (isIn_500M_Range(currentLongitude, currentLatitude, mustListTakenStudent.get(i).getLongitude(), mustListTakenStudent.get(i).getLatitude())) {
-//                            Log.d("isIn_500M_Range1111ss", String.valueOf(mustListTakenStudent.get(i).getNameStudent()));
+                            Log.d("isIn_500M_Range1111ss", String.valueOf(isIn_500M_Range(currentLongitude, currentLatitude, mustListTakenStudent.get(i).getLongitude(), mustListTakenStudent.get(i).getLatitude())));
                                 sendNearByNotification(mustListTakenStudent.get(i), roundBean.getIdAsString());
                                 sendNotificationForNextStudent(mustListTakenStudent.get(i));
                                 for (int j = 0; j <= mustListTakenStudent.size(); j++) {
@@ -339,9 +339,10 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                     }
                     /**/
                     else {
-//                        Log.d("isIn_500M_Range_else", String.valueOf(mustTakenStudent.getLongitude()));
+                        Log.d("isIn_500M_Range_else", String.valueOf(mustTakenStudent.getLongitude()));
+                        Log.d("isIn_500M_Range_else222", String.valueOf(mustTakenStudent.getNameStudent()));
                         if (isIn_500M_Range(currentLongitude, currentLatitude, mustTakenStudent.getLongitude(), mustTakenStudent.getLatitude())) {
-//                            Log.d("isIn_500M_Range_else111111111111222222d", String.valueOf(mustTakenStudent.getLongitude()));
+                            Log.d("isIn_500M_Range_else111111111111222222d", String.valueOf(mustTakenStudent.getLongitude()));
                             sendNearByNotification(mustTakenStudent, roundBean.getIdAsString());
                             sendNotificationForNextStudent(mustTakenStudent);
                         }
@@ -695,6 +696,8 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                 hideProcessingDialog();
                 Log.v("startRound ", "" + repons.toString());
                 if (repons.toString().toLowerCase().contains("ok")) {
+                    Log.v("startRound11111 ", "" + repons.toString());
+                    UtilityDriver.setStringShared(UtilityDriver.ROUND_ST, "true");
 
                     start_round_view.setVisibility(View.GONE);
                     end_round_view.setVisibility(View.VISIBLE);
@@ -705,56 +708,108 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                     UtilityDriver.setStringShared(UtilityDriver.START_ROUND_TIME, System.currentTimeMillis() + " ");
                     startTimer();
 //                    yousef ahmad
-                    String url1 = "https://tam.trak-link.net/wialon/ajax.html?svc=token/login&params={\"token\":\"006e88fb7d566f322840883846cf56ca8A422F31FF5C2296B6DEE6240E34FEC26F12BB07\"}";
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                            (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
+                    JSONObject jsonBody = new JSONObject();
+                    try {
+//9531008228
+                        jsonBody.put("veh", "20-19394");
+                        jsonBody.put("ser", "1");
+                        jsonBody.put("sid", "3a5ddbd597f94aaab0742777d774b3c4");
 
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    try {
-                                        String url = "";
-                                        UtilityDriver.setStringShared(UtilityDriver.SID_TRACK_LINK, response.getString("eid"));
-                                        url = "https://tam.trak-link.net/wialon/ajax.html?svc=core/search_items&params={\"spec\":{\"itemsType\":\"avl_unit\",\"propName\":\"sys_name\",\"propValueMask\":\"*" + UtilityDriver.getStringShared(UtilityDriver.SERIAL_ID) + "*\",\"sortType\":\"sys_name\"},\"force\":1,\"flags\":1,\"from\":0,\"to\":0}&sid=" + UtilityDriver.getStringShared(UtilityDriver.SID_TRACK_LINK);
-                                        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest
-                                                (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
 
-                                                    @Override
-                                                    public void onResponse(JSONObject response) {
-                                                        try {
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    final String requestBody = jsonBody.toString();
+                    JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.POST,
+                            " http://tamapps.trak-link.net/checker/Details2", null, new Response.Listener<JSONObject>(){
+                        @Override    public void onResponse(JSONObject response) {
 
-                                                            JSONArray jsonArray = new JSONArray(response.getString("items"));
-                                                            JSONObject object = jsonArray.getJSONObject(0);
-                                                            UtilityDriver.setStringShared(UtilityDriver.TRACKLINK_ID, object.getString("id"));
-                                                            UtilityDriver.setStringShared(UtilityDriver.ROUND_ST, "true");
-                                                        } catch (JSONException e) {
-                                                            Log.d("response1111111", e.getMessage());
-                                                            e.printStackTrace();
-                                                        }
+                            try {
+                                JSONArray jsonArray = new JSONArray(response.getString("Result"));
+                                JSONObject object = jsonArray.getJSONObject(0);
+//                                UtilityDriver.setStringShared(UtilityDriver.TRACKLINK_ID, object.getString("id"));
+                                UtilityDriver.setStringShared(UtilityDriver.ROUND_ST, "true");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
-                                                    }
-                                                }, new Response.ErrorListener() {
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override    public void onErrorResponse(VolleyError error) {
+                            VolleyLog.e("Error: ", error.getMessage());
+//                Log.d("VOLLEY", Objects.requireNonNull(error.getMessage()));
 
-                                                    @Override
-                                                    public void onErrorResponse(VolleyError error) {
-                                                        Log.d("response1111111", error.getMessage());
-                                                    }
-                                                });
-                                        Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, url);
-
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                        Log.d("response1111111", e.getMessage());
-                                    }
-
-                                }
-                            }, new Response.ErrorListener() {
-
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Log.d("response1111111", error.getMessage());
-                                }
-                            });
-                    Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest, url1);
+                        }
+                    }){
+                        @Override    public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Content-Type", "application/json");
+                            return headers;
+                        }
+                        @Override    public byte[] getBody() {
+                            try {
+                                return requestBody == null ? null : requestBody.getBytes("utf-8");
+                            } catch (UnsupportedEncodingException uee) {
+                                VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s",
+                                        requestBody, "utf-8");
+                                return null;
+                            }
+                        }
+                    };
+                    Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, "http://tamapps.trak-link.net/checker/Details2");
+//                    String url1 = "https://tam.trak-link.net/wialon/ajax.html?svc=token/login&params={\"token\":\"006e88fb7d566f322840883846cf56caD8CAA24F9DDD9BF5EAF96B56AAD325102805F610\n" +
+//                            "\n\"}";
+//                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+//                            (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
+//
+//                                @Override
+//                                public void onResponse(JSONObject response) {
+//                                    try {
+//                                        String url = "";
+//                                        UtilityDriver.setStringShared(UtilityDriver.SID_TRACK_LINK, response.getString("eid"));
+//                                        url = "https://tam.trak-link.net/wialon/ajax.html?svc=core/search_items&params={\"spec\":{\"itemsType\":\"avl_unit\",\"propName\":\"sys_name\",\"propValueMask\":\"*" + UtilityDriver.getStringShared(UtilityDriver.SERIAL_ID) + "*\",\"sortType\":\"sys_name\"},\"force\":1,\"flags\":1,\"from\":0,\"to\":0}&sid=" + UtilityDriver.getStringShared(UtilityDriver.SID_TRACK_LINK);
+//                                       Log.v("UtilityDriver.ROUND_ST",url);
+//                                        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest
+//                                                (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+//
+//                                                    @Override
+//                                                    public void onResponse(JSONObject response) {
+//                                                        try {
+//
+//                                                            JSONArray jsonArray = new JSONArray(response.getString("items"));
+//                                                            JSONObject object = jsonArray.getJSONObject(0);
+//                                                            UtilityDriver.setStringShared(UtilityDriver.TRACKLINK_ID, object.getString("id"));
+//                                                            UtilityDriver.setStringShared(UtilityDriver.ROUND_ST, "true");
+//
+//                                                        } catch (JSONException e) {
+//                                                            Log.d("response1111111", e.getMessage());
+//                                                            e.printStackTrace();
+//                                                        }
+//
+//                                                    }
+//                                                }, new Response.ErrorListener() {
+//
+//                                                    @Override
+//                                                    public void onErrorResponse(VolleyError error) {
+//                                                        Log.d("response111111331", error.getMessage());
+//                                                    }
+//                                                });
+//                                        Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, url);
+//
+//                                    } catch (JSONException e) {
+//                                        e.printStackTrace();
+//                                        Log.d("response111111122", e.getMessage());
+//                                    }
+//
+//                                }
+//                            }, new Response.ErrorListener() {
+//
+//                                @Override
+//                                public void onErrorResponse(VolleyError error) {
+//                                    Log.d("response1111111", error.getMessage());
+//                                }
+//                            });
+//                    Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest, url1);
 
                     /**/
                     hideBackButton();

@@ -39,10 +39,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -65,11 +67,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -277,12 +281,12 @@ public class MainActivity extends BaseActivity implements
     public void startTimerPhoenix() {
         //set a new Timer
         timerPhoenix = new Timer();
-
+//        Log.v("ooooooooooooooooooooooooooooooooooooo","ooooooooooooooo");
         //initialize the TimerTask's job
         try {
             timerOpenPhoenix();
         } catch (OutOfMemoryError outOfMemoryError) {
-
+//            Log.v("ooooooooooooooooooooooooooooooooooooo1111", String.valueOf(outOfMemoryError));
         }
 
         if (UtilityDriver.getIntShared(UtilityDriver.CHANEL_REFRESH_RATE) == 0) {
@@ -290,6 +294,8 @@ public class MainActivity extends BaseActivity implements
         }
 
         //schedule the timer, after the first 5000ms the TimerTask will run every 10000ms
+//        timerPhoenix.schedule(timerTaskPhoenix, 5 * 1000, 5 * 1000);
+//        Log.v("yousef ahmad timerPhoenix", String.valueOf(UtilityDriver.getIntShared(UtilityDriver.CHANEL_REFRESH_RATE)));
         timerPhoenix.schedule(timerTaskPhoenix, UtilityDriver.getIntShared(UtilityDriver.CHANEL_REFRESH_RATE) * 1000, UtilityDriver.getIntShared(UtilityDriver.CHANEL_REFRESH_RATE) * 1000); //
     }
 
@@ -357,6 +363,7 @@ public class MainActivity extends BaseActivity implements
 //
 //                                        }
                                         try {
+                                            Log.v("oooooo","ppppp");
                                             offlineModelStatus();
                                         } catch (OutOfMemoryError | NullPointerException outOfMemoryError) {
 
@@ -387,56 +394,58 @@ public class MainActivity extends BaseActivity implements
                                                     RoundInfoFragment.TYPE_CHECK = "in";
 //                                                    UtilityDriver.showMessageDialog(mActivity,"GEOFENCE", RoundInfoFragment.TYPE_CHECK);
                                                     System.err.println(RoundInfoFragment.TYPE_CHECK + "  CHECKCHECK");
-                                                    callRestAPI(PathUrl.MAIN_URL + PathUrl.NOTIFY
-                                                            ,
-                                                            new HashMap<String, String>() {{
-                                                                put("name", "check");
-                                                                put("move", RoundInfoFragment.TYPE_CHECK);
-                                                                put("geo_type", "place");
-                                                                put("geo_id", RoundInfoFragment.roundBean.getId() + "");
-                                                                put("geo_name", RoundInfoFragment.roundBean.getNameRound());
-                                                                put("lat", "" + StaticValue.latitudeMain);
-                                                                put("long", "" + StaticValue.longitudeMain);
-                                                            }}
-                                                            ,
-                                                            EnumMethodApi.POST
-                                                            ,
-                                                            doNothingCallBack
-                                                            ,
-                                                            EnumNameApi.GEOFENCE
-                                                            ,
-                                                            UtilityDriver.typeHeaderMap(EnumTypeHeader.JSON, true)
-                                                            ,
-                                                            EnumTypeHeader.JSON
-                                                    );
+//                                                    yousef
+//                                                    callRestAPI(PathUrl.MAIN_URL + PathUrl.NOTIFY
+//                                                            ,
+//                                                            new HashMap<String, String>() {{
+//                                                                put("name", "check");
+//                                                                put("move", RoundInfoFragment.TYPE_CHECK);
+//                                                                put("geo_type", "place");
+//                                                                put("geo_id", RoundInfoFragment.roundBean.getId() + "");
+//                                                                put("geo_name", RoundInfoFragment.roundBean.getNameRound());
+//                                                                put("lat", "" + StaticValue.latitudeMain);
+//                                                                put("long", "" + StaticValue.longitudeMain);
+//                                                            }}
+//                                                            ,
+//                                                            EnumMethodApi.POST
+//                                                            ,
+//                                                            doNothingCallBack
+//                                                            ,
+//                                                            EnumNameApi.GEOFENCE
+//                                                            ,
+//                                                            UtilityDriver.typeHeaderMap(EnumTypeHeader.JSON, true)
+//                                                            ,
+//                                                            EnumTypeHeader.JSON
+//                                                    );
                                                 }
                                             } else if (RoundInfoFragment.TYPE_CHECK.equals("in")) {
                                                 if (!UtilityDriver.isPointInPolygon(new LatLng(StaticValue.latitudeMain, StaticValue.longitudeMain), RoundInfoFragment.listGeofenceBean)) {
                                                     RoundInfoFragment.TYPE_CHECK = "out";
 //                                                    UtilityDriver.showMessageDialog(mActivity,"GEOFENCE", RoundInfoFragment.TYPE_CHECK);
                                                     System.err.println(RoundInfoFragment.TYPE_CHECK + "  CHECKCHECK");
-                                                    callRestAPI(PathUrl.MAIN_URL + PathUrl.NOTIFY
-                                                            ,
-                                                            new HashMap<String, String>() {{
-                                                                put("name", "check");
-                                                                put("move", RoundInfoFragment.TYPE_CHECK);
-                                                                put("geo_type", "place");
-                                                                put("geo_id", RoundInfoFragment.roundBean.getId() + "");
-                                                                put("geo_name", RoundInfoFragment.roundBean.getNameRound());
-                                                                put("lat", "" + StaticValue.latitudeMain);
-                                                                put("long", "" + StaticValue.longitudeMain);
-                                                            }}
-                                                            ,
-                                                            EnumMethodApi.POST
-                                                            ,
-                                                            doNothingCallBack
-                                                            ,
-                                                            EnumNameApi.GEOFENCE
-                                                            ,
-                                                            UtilityDriver.typeHeaderMap(EnumTypeHeader.JSON, true)
-                                                            ,
-                                                            EnumTypeHeader.JSON
-                                                    );
+//yousef
+//                                                    callRestAPI(PathUrl.MAIN_URL + PathUrl.NOTIFY
+//                                                            ,
+//                                                            new HashMap<String, String>() {{
+//                                                                put("name", "check");
+//                                                                put("move", RoundInfoFragment.TYPE_CHECK);
+//                                                                put("geo_type", "place");
+//                                                                put("geo_id", RoundInfoFragment.roundBean.getId() + "");
+//                                                                put("geo_name", RoundInfoFragment.roundBean.getNameRound());
+//                                                                put("lat", "" + StaticValue.latitudeMain);
+//                                                                put("long", "" + StaticValue.longitudeMain);
+//                                                            }}
+//                                                            ,
+//                                                            EnumMethodApi.POST
+//                                                            ,
+//                                                            doNothingCallBack
+//                                                            ,
+//                                                            EnumNameApi.GEOFENCE
+//                                                            ,
+//                                                            UtilityDriver.typeHeaderMap(EnumTypeHeader.JSON, true)
+//                                                            ,
+//                                                            EnumTypeHeader.JSON
+//                                                    );
                                                     RoundInfoFragment.TYPE_CHECK = "";
                                                 }
                                             }
@@ -466,8 +475,14 @@ public class MainActivity extends BaseActivity implements
 //                                                final boolean finalChangeLocation = changeLocation;
                                             final int store_order = UtilityDriver.getIntShared(UtilityDriver.STORE_ORDER) + 1;
                                             UtilityDriver.setIntShared(UtilityDriver.STORE_ORDER, store_order);
-                                            Application.addLocation(RoundInfoFragment.ROUND_ID_SOCKET + "", StaticValue.longitudeMain, StaticValue.latitudeMain);
+                                            String round_ST = UtilityDriver.getStringShared(UtilityDriver.ROUND_ST);
+                                            Log.v("round_ST___",round_ST);
 
+
+                                            if( round_ST.equals("true")) {
+                                                Log.v("round_ST___1111111111111111111111111111111111111",round_ST);
+                                                Application.addLocation(RoundInfoFragment.ROUND_ID_SOCKET + "", StaticValue.longitudeMain, StaticValue.latitudeMain);
+                                            }
 //                                                HashMap map = new HashMap() {{
 //                                                    put("long", StaticValue.longitudeMain);
 //                                                    put("lat", StaticValue.latitudeMain);
@@ -571,6 +586,7 @@ public class MainActivity extends BaseActivity implements
             final JSONObject jsonObjectEnd = new JSONObject(jsonEnd.equals("") ? "{}" : jsonEnd);
 
             final JSONArray finalJsonAbsent1 = finalJsonAbsent;
+//            Log.v("ddddddddddddddddddddddddd","ttttttttttttttttttttttttttttt");
             callRestAPI(PathUrl.MAIN_URL + PathUrl.OFFLINE_STATUS
                     ,
                     new HashMap() {{
@@ -980,62 +996,115 @@ public class MainActivity extends BaseActivity implements
                     String  tracklink = UtilityDriver.getStringShared(UtilityDriver.ENABLE_TRACK_LINK);
                     String round_ST = UtilityDriver.getStringShared(UtilityDriver.ROUND_ST);
                     Log.v("round_ST", "" + round_ST);
+
                     if (tracklink.equals("true")&& round_ST.equals("true")) {
-                        String TRACKLINK_ID = UtilityDriver.getStringShared(UtilityDriver.TRACKLINK_ID);
+                        JSONObject jsonBody = new JSONObject();
+                        try {
+//9531008228
+                            jsonBody.put("veh", "20-19394");
+                            jsonBody.put("ser", "1");
+                            jsonBody.put("sid", "3a5ddbd597f94aaab0742777d774b3c4");
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        final String requestBody = jsonBody.toString();
+                        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.POST,
+                                " http://tamapps.trak-link.net/checker/Details2", null, new Response.Listener<JSONObject>(){
+                            @Override    public void onResponse(JSONObject response) {
+
+                                try {
+                                    JSONArray jsonArray = new JSONArray(response.getString("Result"));
+                                    JSONObject object = jsonArray.getJSONObject(0);
+                                    StaticValue.latitudeMain = Double.parseDouble(object.getString("y"));
+                                     StaticValue.longitudeMain = Double.parseDouble(object.getString("x"));
+                                     Log.v("Response1111111111111111Details2",object.getString("x"));
+//                                    UtilityDriver.setStringShared(UtilityDriver.ROUND_ST, "true");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override    public void onErrorResponse(VolleyError error) {
+                                VolleyLog.e("Error: ", error.getMessage());
+//                Log.d("VOLLEY", Objects.requireNonNull(error.getMessage()));
+
+                            }
+                        }){
+                            @Override    public Map<String, String> getHeaders() throws AuthFailureError {
+                                HashMap<String, String> headers = new HashMap<String, String>();
+                                headers.put("Content-Type", "application/json");
+                                return headers;
+                            }
+                            @Override    public byte[] getBody() {
+                                try {
+                                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+                                } catch (UnsupportedEncodingException uee) {
+                                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s",
+                                            requestBody, "utf-8");
+                                    return null;
+                                }
+                            }
+                        };
+                        Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, "http://tamapps.trak-link.net/checker/Details2");
+//                        String TRACKLINK_ID = UtilityDriver.getStringShared(UtilityDriver.TRACKLINK_ID);
+////
+//                        String url1 = "https://tam.trak-link.net/wialon/ajax.html?svc=token/login&params={\"token\":\"006e88fb7d566f322840883846cf56caD8CAA24F9DDD9BF5EAF96B56AAD325102805F610\n" +
+//                                "\n\"}";
+//                        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+//                                (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
 //
-                        String url1 = "https://tam.trak-link.net/wialon/ajax.html?svc=token/login&params={\"token\":\"006e88fb7d566f322840883846cf56ca8A422F31FF5C2296B6DEE6240E34FEC26F12BB07\"}";
-                        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                                (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
-
-                                    @Override
-                                    public void onResponse(JSONObject response) {
-                                        try {
-                                            String url = "https://tam.trak-link.net/wialon/ajax.html?svc=core/search_item&params={\"id\":" + TRACKLINK_ID + "," +
-                                                    "\"flags\":1025}&sid="+UtilityDriver.getStringShared(UtilityDriver.SID_TRACK_LINK);
-                                            Log.v("round_ST", "" + url);
+//                                    @Override
+//                                    public void onResponse(JSONObject response) {
+//                                        try {
+//                                            String url = "https://tam.trak-link.net/wialon/ajax.html?svc=core/search_item&params={\"id\":" + TRACKLINK_ID + "," +
+//                                                    "\"flags\":1025}&sid="+UtilityDriver.getStringShared(UtilityDriver.SID_TRACK_LINK);
+//                                            Log.v("round_ST", "" + url);
+////
+//                                            JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest
+//                                                    (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
 //
-                                            JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest
-                                                    (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
-
-                                                        @Override
-                                                        public void onResponse(JSONObject response) {
-                                                            try {
-                                                                Log.v("ssssssssssssss", String.valueOf(response));
-                                                                JSONObject obj = new JSONObject(response.getString("item"));
-                                                                JSONObject object = obj.getJSONObject("pos");
-                                                                StaticValue.latitudeMain = Double.parseDouble(object.getString("y"));
-                                                                StaticValue.longitudeMain = Double.parseDouble(object.getString("x"));
-                                                                Log.v("ssssssssssssss",object.getString("y"));
-                                                            } catch (JSONException e) {
-                                                                e.printStackTrace();
-                                                            }
-                                                        }
-                                                    }, new Response.ErrorListener() {
-
-                                                        @Override
-                                                        public void onErrorResponse(VolleyError error) {
-
-                                                            Log.d("llssslllllldddddddlllllllll", error.getMessage());
-                                                        }
-                                                    });
-
-                                            Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, url);
-
-
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                            Log.d("response1111111", e.getMessage());
-                                        }
-
-                                    }
-                                }, new Response.ErrorListener() {
-
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Log.d("response1111111", error.getMessage());
-                                    }
-                                });
-                        Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest, url1);
+//                                                        @Override
+//                                                        public void onResponse(JSONObject response) {
+//                                                            try {
+//                                                                Log.v("ssssssssssssss", String.valueOf(response));
+//                                                                JSONObject obj = new JSONObject(response.getString("item"));
+//                                                                JSONObject object = obj.getJSONObject("pos");
+//                                                                StaticValue.latitudeMain = Double.parseDouble(object.getString("y"));
+//                                                                StaticValue.longitudeMain = Double.parseDouble(object.getString("x"));
+//                                                                Log.v("ssssssssssssss852",object.getString("y"));
+//                                                            } catch (JSONException e) {
+//                                                                e.printStackTrace();
+//                                                            }
+//                                                        }
+//                                                    }, new Response.ErrorListener() {
+//
+//                                                        @Override
+//                                                        public void onErrorResponse(VolleyError error) {
+//
+//                                                            Log.d("llssslllllldddddddlllllllll", error.getMessage());
+//                                                        }
+//                                                    });
+//
+//                                            Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, url);
+//
+//
+//                                        } catch (Exception e) {
+//                                            e.printStackTrace();
+//                                            Log.d("response1111111", e.getMessage());
+//                                        }
+//
+//                                    }
+//                                }, new Response.ErrorListener() {
+//
+//                                    @Override
+//                                    public void onErrorResponse(VolleyError error) {
+//                                        Log.d("response1111111", error.getMessage());
+//                                    }
+//                                });
+//                        Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest, url1);
 
                     }
                     else

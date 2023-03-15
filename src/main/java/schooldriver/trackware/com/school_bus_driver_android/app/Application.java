@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
@@ -27,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 import database.OpenHelper;
 import schooldriver.trackware.com.school_bus_driver_android.API.ApiRequest;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DateTools;
+import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.PathUrl;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 
@@ -289,14 +291,21 @@ public class Application extends MultiDexApplication {
         String timeStamp = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
 //        String root = "field-service-management-da2ca";
         String school_db = UtilityDriver.getStringShared(UtilityDriver.SCHOOL_DB);
-        String fullRound = school_db+"-round-" + roundId;
+        String fullRound ;
+        if(PathUrl.DEV_PROD.equals("dev")){
+             fullRound = school_db + "-stg-round-" + roundId;
+        }
+        else {
+             fullRound = school_db + "-round-" + roundId;
+        }
         String date = DateTools.Formats.DATEONLY_FORMAT_GMT.format(new Date());
         /**/
         Map location = new HashMap<>();
         location.put("0", lat);
         location.put("1", lng);
         /**/
-        getFirebase().getReferenceFromUrl("https://trackware-auth0.firebaseio.com").child(fullRound).child(date).child(timeStamp).setValue(location);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://trackware-sms-default-rtdb.firebaseio.com/").getReference();
+        databaseReference.child(fullRound).child(date).child(timeStamp).setValue(location);
     }
 
     private static FirebaseDatabase firebaseDatabase;

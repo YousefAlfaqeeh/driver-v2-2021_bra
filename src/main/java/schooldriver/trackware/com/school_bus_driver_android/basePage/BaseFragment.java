@@ -8,6 +8,8 @@ import android.os.Vibrator;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
@@ -97,6 +99,7 @@ public class BaseFragment<T> extends Fragment implements IBaseFragment, DriverCo
                 setOnSendClickListener(new OnActionDoneListener<String>() {
                     @Override
                     public void OnActionDone(String message) {
+                        Log.v("iiiiiiiiiiiiiiiiiiiiiiiiii","ooooooooooooo");
                         new SendNotificationGCM(roundBean.getListStudentBean(), message, roundBean.getId());
                     }
                 });

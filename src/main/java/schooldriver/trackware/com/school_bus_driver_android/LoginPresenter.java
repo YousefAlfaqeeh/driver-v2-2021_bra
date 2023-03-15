@@ -56,6 +56,7 @@ public class LoginPresenter extends BasePresenter implements IRestCallBack {
             enumNameApi = EnumNameApi.LOGIN_DRIVER_REFRESH;
             this.pin = pin;
         }
+        Log.v("PathUrl.MAIN_URL + PathUrl.LOGIN",PathUrl.MAIN_URL + PathUrl.LOGIN);
         callRestAPI(PathUrl.MAIN_URL + PathUrl.LOGIN
                 ,
                 new HashMap<String, String>() {{
@@ -121,6 +122,7 @@ public class LoginPresenter extends BasePresenter implements IRestCallBack {
                     UtilityDriver.setStringShared(UtilityDriver.SCHOOL_ORDER, response.optString("use_round_order"));
                     UtilityDriver.setStringShared(UtilityDriver.ENABLE_TRACK_LINK, response.optString("enable_track_link"));
                     UtilityDriver.setStringShared(UtilityDriver.SERIAL_ID,response.optString("platte_no"));
+                    Log.d("ssssssssssssssss1452",response.optString("platte_no"));
 //                    UtilityDriver.setStringShared(UtilityDriver.SERIAL_ID,"20-19394");
 //                    UtilityDriver.setStringShared(UtilityDriver.SID_TRACK_LINK, "35b801894b909b05a6f520980b2bdf37");
 //                    end

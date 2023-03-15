@@ -169,6 +169,7 @@ public class SendNotificationGCM implements IRestCallBack, Constants {
 //        if (UtilityDriver.isEmptyString(token)) {
 //            return;
 //        }
+
         String title_;
         String action = NOTIFICATION_ACTION_Other;
         if (isDriverMessage) {
@@ -201,12 +202,12 @@ public class SendNotificationGCM implements IRestCallBack, Constants {
             put("round_id", roundID);
 
             put("user_id", userID);
-
+            put("PathUrl.MAIN_URL + PathUrl.PUSH_NOTIFICATION", PathUrl.MAIN_URL + PathUrl.PUSH_NOTIFICATION);
 
 //            put("endpoint_arn", token);
 
         }}) + " \n ");
-//        if (token.equals("arn:aws:sns:eu-central-1:006260994575:endpoint/GCM/schools/60ba363b-9a43-3ede-b499-1ac3f9235d3d")) {
+//    iksR0URIX    if (token.equals("arn:aws:sns:eu-central-1:006260994575:endpoint/GCM/schools/60ba363b-9a43-3ede-b499-1ac3f9235d3d")) {
         callRestAPI(PathUrl.MAIN_URL + PathUrl.PUSH_NOTIFICATION
                 ,
                 new HashMap() {{
@@ -371,6 +372,7 @@ public class SendNotificationGCM implements IRestCallBack, Constants {
 
     @Override
     public void onRestCallBack(VolleyError volleyError, EnumNameApi nameApiEnum, ApiRequest volleyBean) {
+
 //        if (volleyError.getMessage().toString().contains("java.net.UnknownHost")){                 UtilityDriver.showMessageDialog(mActivity, mActivity.getString(R.string.internet_connection), mActivity.getString(R.string.missing_internet_error));             return;         }
         if (nameApiEnum == EnumNameApi.PUSH_NOTIFICATION) {
             callRestAPI(PathUrl.MAIN_URL + PathUrl.PUSH_NOTIFICATION

@@ -92,28 +92,29 @@ public class GeofenceTransitionIntentService extends IntentService implements IR
                 break;
         }
         final String details[] = geofenceBean.getDetais().split(":")[0].split("@@");
-        callRestAPI(PathUrl.MAIN_URL + PathUrl.NOTIFY
-                ,
-                new HashMap<String, String>() {{
-                    put("name", "check");
-                    put("move", typeCheck);
-                    put("geo_type", "place");
-                    put("geo_id", details[0]);
-                    put("geo_name", details[1]);
-                    put("lat", ""+ StaticValue.latitudeMain);
-                    put("long", ""+ StaticValue.longitudeMain);
-                }}
-                ,
-                EnumMethodApi.POST
-                ,
-                GeofenceTransitionIntentService.this
-                ,
-                EnumNameApi.ROUND_LIST
-                ,
-                UtilityDriver.typeHeaderMap(EnumTypeHeader.JSON, true)
-                ,
-                EnumTypeHeader.JSON
-        );
+//        yousef
+//        callRestAPI(PathUrl.MAIN_URL + PathUrl.NOTIFY
+//                ,
+//                new HashMap<String, String>() {{
+//                    put("name", "check");
+//                    put("move", typeCheck);
+//                    put("geo_type", "place");
+//                    put("geo_id", details[0]);
+//                    put("geo_name", details[1]);
+//                    put("lat", ""+ StaticValue.latitudeMain);
+//                    put("long", ""+ StaticValue.longitudeMain);
+//                }}
+//                ,
+//                EnumMethodApi.POST
+//                ,
+//                GeofenceTransitionIntentService.this
+//                ,
+//                EnumNameApi.ROUND_LIST
+//                ,
+//                UtilityDriver.typeHeaderMap(EnumTypeHeader.JSON, true)
+//                ,
+//                EnumTypeHeader.JSON
+//        );
     }
 
     private GeofenceBean getGeofenceDetails(int geofenceTransition, GeofencingEvent geofencingEvent) {

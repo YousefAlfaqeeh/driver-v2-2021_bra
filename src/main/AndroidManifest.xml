@@ -290,6 +290,7 @@
 
         <!--android:screenOrientation="landscape"-->
         <activity
+            android:exported="true"
             android:screenOrientation="unspecified"
             android:configChanges="keyboardHidden|keyboard|navigation|locale|screenSize|orientation"
             android:name=".MainActivity"
@@ -381,7 +382,8 @@
 
 
         <!-- [START firebase_service] -->
-        <service android:name=".gcmNotification.firebace.MyFirebaseMessagingService_new">
+        <service android:name=".gcmNotification.firebace.MyFirebaseMessagingService_new"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

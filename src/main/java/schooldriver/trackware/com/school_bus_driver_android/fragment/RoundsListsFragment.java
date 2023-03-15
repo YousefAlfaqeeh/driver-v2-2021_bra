@@ -546,6 +546,7 @@ public class RoundsListsFragment extends BaseFragment {
             studentBean.setNameStudent(joStudent.optString("name"));
 
             studentBean.setAvatar(joStudent.optString("avatar"));
+            Log.v("sssssssssssssssssssssssssssssssss",joStudent.optString("grade"));
             studentBean.setGrade(joStudent.optString("grade"));
             studentBean.setCheckEnum(CheckEnum.EMPTY);
             try {

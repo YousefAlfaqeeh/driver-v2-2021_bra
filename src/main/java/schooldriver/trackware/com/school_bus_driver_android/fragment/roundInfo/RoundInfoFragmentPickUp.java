@@ -625,6 +625,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                 .setYesButtonClickListener(new OnActionDoneListener<UtilDialogs.MessageYesNoDialog>() {
                     @Override
                     public void OnActionDone(UtilDialogs.MessageYesNoDialog dialog) {
+
                         checkChangeRoot(item);//order
                         doCheckIn_OnList(item, position, true);
                         doCheckIn_OnAPI(item);

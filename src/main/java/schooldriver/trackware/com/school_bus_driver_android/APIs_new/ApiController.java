@@ -357,6 +357,7 @@ public class ApiController {
 //    }
 
     public static void setStudentBusCheck(Context context, final int studentID, final String status, final int roundId, final boolean overwrite, final String reason, String timeUntilCheckIn) {
+
         try {
             final OnApiComplete<Object> onComplete = new OnApiComplete<Object>() {
                 @Override
@@ -388,6 +389,7 @@ public class ApiController {
 
 //            if (!UtilityDriver.isNetworkAvailable(StaticValue.mActivity)) {
             CheckInOut checkInOut = new CheckInOut("", "", jsonObject.toString());
+            Log.v("ssssssssssssssssssssssssssssssssssssssss",jsonObject.toString());
             DAO.addCheck(Application.database, checkInOut);
 //                return false;
 //            }

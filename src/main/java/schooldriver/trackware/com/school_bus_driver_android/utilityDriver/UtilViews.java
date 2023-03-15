@@ -9,6 +9,7 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class UtilViews {
 
 
     public static void shakeViews(View... v) {
+        Log.v("iiiiiiiiiiiishakeViews", String.valueOf(v));
         for (int i = 0; i < v.length; i++) {
             v[i].startAnimation(AnimationUtils.loadAnimation(v[i].getContext(), R.anim.shake_shake));
         }
