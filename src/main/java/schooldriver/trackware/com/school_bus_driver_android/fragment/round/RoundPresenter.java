@@ -35,9 +35,9 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.PathUr
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/22/17.
+ * Created by   3/22/17.
  */
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class RoundPresenter extends BasePresenter implements IRestCallBack {
     TypeRoundEnum typeRoundEnum;
     MainActivity mActivity;

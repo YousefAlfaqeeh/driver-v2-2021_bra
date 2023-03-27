@@ -31,7 +31,6 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilDi
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/22/17.
  */
 
 public class LoginPresenter extends BasePresenter implements IRestCallBack {
@@ -89,7 +88,7 @@ public class LoginPresenter extends BasePresenter implements IRestCallBack {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     @Override
     public void onRestCallBack(JSONObject response, EnumNameApi nameApiEnum, ApiRequest volleyBean) {
 

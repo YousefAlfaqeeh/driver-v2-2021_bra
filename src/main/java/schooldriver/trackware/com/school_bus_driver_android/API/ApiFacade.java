@@ -3,7 +3,6 @@ package schooldriver.trackware.com.school_bus_driver_android.API;
 import schooldriver.trackware.com.school_bus_driver_android.API.enumApi.EnumTypeHeader;
 
 /**
- * Created by muradtrac on 1/5/17.
  */
 
 public class ApiFacade {

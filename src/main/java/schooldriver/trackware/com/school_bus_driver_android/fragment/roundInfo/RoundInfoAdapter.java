@@ -43,13 +43,12 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Static
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by Ibrahem Al-Betar on 2/28/2017.
+
  */
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class RoundInfoAdapter extends RecyclerView.Adapter<RoundInfoHolder> implements IActionDialog {
-
-
     private final RoundBean roundBean;
+    
     public static List<StudentBean> listStudentBean;
     static Activity mActivity;
     RoundInfoPresenter mPresenter;
@@ -227,7 +226,7 @@ public class RoundInfoAdapter extends RecyclerView.Adapter<RoundInfoHolder> impl
 
 
         holder.imgCall.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+              
             @Override
             public void onClick(View v) {
 
@@ -260,7 +259,7 @@ public class RoundInfoAdapter extends RecyclerView.Adapter<RoundInfoHolder> impl
         holder.imgCheck.setOnClickListener(new View.OnClickListener() {
 
 
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+              
             @Override
             public void onClick(View v) {
                 if (StaticValue.progressDialog != null) {
@@ -334,7 +333,7 @@ public class RoundInfoAdapter extends RecyclerView.Adapter<RoundInfoHolder> impl
 
         holder.imgShow.setOnClickListener(new View.OnClickListener() {
 
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+              
             @Override
             public void onClick(View v) {
                 double distance = UtilityDriver.distance(StaticValue.latitudeMain, StaticValue.longitudeMain, studentBean.getLatitude(), studentBean.getLongitude(), "M");

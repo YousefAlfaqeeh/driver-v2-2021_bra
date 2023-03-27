@@ -57,7 +57,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Utilit
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class RoundInfoFragment extends BaseFragment implements IActionDialog, IRestCallBack {
 
 

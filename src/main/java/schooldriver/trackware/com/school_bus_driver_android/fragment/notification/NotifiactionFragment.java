@@ -15,7 +15,7 @@ import schooldriver.trackware.com.school_bus_driver_android.R;
 import schooldriver.trackware.com.school_bus_driver_android.bean.NotificationBean;
 
 /**
- * Created by Ibrahem Al-Betar on 3/2/2017.
+ * Created   on 3/2/2017.
  */
 
 public class NotifiactionFragment extends Fragment {

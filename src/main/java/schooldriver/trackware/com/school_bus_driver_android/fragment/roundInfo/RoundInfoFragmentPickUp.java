@@ -3,17 +3,16 @@ package schooldriver.trackware.com.school_bus_driver_android.fragment.roundInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -29,18 +28,14 @@ import schooldriver.trackware.com.school_bus_driver_android.enums.CheckEnum;
 import schooldriver.trackware.com.school_bus_driver_android.gcmNotification.firebace.MyFirebaseMessagingService_new;
 import schooldriver.trackware.com.school_bus_driver_android.interfaceDriver.OnActionDoneListener;
 import schooldriver.trackware.com.school_bus_driver_android.locationListener.LocationListenerPres;
-import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.PathUrl;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilDialogs;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
     private ItemTouchHelper itemTouchHelper;
-    //    private RoundInfoHolderPickUp progressingHolder;
-    //    private RecyclerViewAdapter<StudentBean, RoundInfoHolderPickUp> pickUpListAdapter;
-//    private String reason = "";
-    private RecyclerViewAdapter.AdapterFilter<StudentBean> filter = new RecyclerViewAdapter.AdapterFilter<StudentBean>() {
+     private RecyclerViewAdapter.AdapterFilter<StudentBean> filter = new RecyclerViewAdapter.AdapterFilter<StudentBean>() {
         @Override
         public boolean filter(StudentBean type) {
             if (studentHaseBeaconsButStillInBus.contains(type.getId()) && roundBean.isRoundEndedForEver() && type.getCheckEnum().equals(CheckEnum.CHECK_IN) && type.isCheckedByBeacon() && !type.isAbsent()) {
@@ -274,7 +269,6 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
     private void setBeaconLisinersAndAddMacs() {
         try {
-            getMainActivity().addNotifiers(roundBean.getListStudentBean());
 
             getMainActivity().onScannerFind_in = new OnActionDoneListener<StudentBean>() {
                 @Override

@@ -3,7 +3,6 @@ package schooldriver.trackware.com.school_bus_driver_android;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.Service;
-import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,7 +31,6 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -44,7 +42,6 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -58,11 +55,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
-import org.altbeacon.beacon.BeaconConsumer;
-import org.altbeacon.beacon.BeaconManager;
-import org.altbeacon.beacon.BeaconParser;
-import org.altbeacon.beacon.MonitorNotifier;
-import org.altbeacon.beacon.Region;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,7 +68,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 import database.CheckInOut;
 import database.DAO;
@@ -111,7 +102,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Utilit
 public class MainActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, /*IRestCallPhoenix,*/
-        OnMapReadyCallback, BeaconConsumer {
+        OnMapReadyCallback {
 
     public String fireBaseToken = "null";
 
@@ -313,7 +304,7 @@ public class MainActivity extends BaseActivity implements
 
                             Thread thread = new Thread(new Runnable() {
 
-                                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
                                 @Override
                                 public void run() {
 //                                if (mActivity == null){
@@ -363,9 +354,10 @@ public class MainActivity extends BaseActivity implements
 //
 //                                        }
                                         try {
-                                            Log.v("oooooo","ppppp");
+                                            Log.v("oooooo", "ppppp");
                                             offlineModelStatus();
-                                        } catch (OutOfMemoryError | NullPointerException outOfMemoryError) {
+                                        } catch (OutOfMemoryError |
+                                                 NullPointerException outOfMemoryError) {
 
                                         }
                                     }
@@ -476,11 +468,11 @@ public class MainActivity extends BaseActivity implements
                                             final int store_order = UtilityDriver.getIntShared(UtilityDriver.STORE_ORDER) + 1;
                                             UtilityDriver.setIntShared(UtilityDriver.STORE_ORDER, store_order);
                                             String round_ST = UtilityDriver.getStringShared(UtilityDriver.ROUND_ST);
-                                            Log.v("round_ST___",round_ST);
+                                            Log.v("round_ST___", round_ST);
 
 
-                                            if( round_ST.equals("true")) {
-                                                Log.v("round_ST___1111111111111111111111111111111111111",round_ST);
+                                            if (round_ST.equals("true")) {
+                                                Log.v("round_ST___1111111111111111111111111111111111111", round_ST);
                                                 Application.addLocation(RoundInfoFragment.ROUND_ID_SOCKET + "", StaticValue.longitudeMain, StaticValue.latitudeMain);
                                             }
 //                                                HashMap map = new HashMap() {{
@@ -732,7 +724,7 @@ public class MainActivity extends BaseActivity implements
                             return;
                         }
                         StaticValue.mActivity.runOnUiThread(new Runnable() {
-                            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
                             public void run() {
                                 if (!UtilityDriver.getBooleanShared(UtilityDriver.LOGIN)) {
                                     return;
@@ -761,48 +753,19 @@ public class MainActivity extends BaseActivity implements
         };
     }
 
-    BroadcastReceiver bluetoothBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-
-            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
-                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,
-                        BluetoothAdapter.ERROR);
-
-                switch (state) {
-                    case BluetoothAdapter.STATE_OFF:
-                        checkBluetoothState();
-                        if (onBlueToothStatusChanged != null)
-                            onBlueToothStatusChanged.OnActionDone(false);
-                        break;
-                    case BluetoothAdapter.STATE_ON:
-                        checkBluetoothState();
-                        if (onBlueToothStatusChanged != null)
-                            onBlueToothStatusChanged.OnActionDone(true);
-                        break;
-                }
-            }
-        }
-    };
 
     @Override
     protected void onResume() {
         super.onResume();
 
 
-        startTimerPhoenix();
-        startTimerLocationListener();
-        StaticValue.OPEN_GPS = false;
         try {
-            IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(bluetoothBroadcastReceiver, filter);
-            /**/
-            if (checkBluetoothState()) {
-                initBeaconScanner();
-            }
+            startTimerPhoenix();
+            startTimerLocationListener();
+            StaticValue.OPEN_GPS = false;
 
         } catch (Exception e) {
+            e.printStackTrace();
 
         }
         /**/
@@ -833,77 +796,11 @@ public class MainActivity extends BaseActivity implements
             StaticValue.OPEN_GPS = true;
             System.err.println(StaticValue.latitudeMain + " " + StaticValue.longitudeMain + "       5555555555");
             super.onPause();
-            unregisterReceiver(bluetoothBroadcastReceiver);
         } catch (Exception e) {
 
         }
-//        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
-//        isReceiverRegistered = false;
-
-
-//        if (RoundInfoFragment.ROUND_ID_SOCKET != 0) {
-//            addNewNotification();
-//        }
-
-//        stopTimerPhoenix();
-//        try {
-//            phoenixPlug.closeConnection();
-////            locationListener.onStop();
-//        } catch (RuntimeException e) {
-//            e.printStackTrace();
-//        }
-//        mActivity = null;
     }
 
-//    PopupWindow popupWindow;
-
-//    private void callPopup() {
-//
-//        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext()
-//                .getSystemService(LAYOUT_INFLATER_SERVICE);
-//
-//        View popupView = layoutInflater.inflate(R.layout.dialog_message, null);
-//
-//        popupWindow = new PopupWindow(popupView,
-//                RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.MATCH_PARENT,
-//                true);
-//
-//        popupWindow.setTouchable(true);
-//        popupWindow.setFocusable(true);
-//
-//        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-////        EditText Name = (EditText) popupView.findViewById(R.id.edtimageName);
-//
-//        ((Button) popupView.findViewById(R.id.btnOk))
-//                .setOnClickListener(new View.OnClickListener() {
-//
-//                    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-//                    public void onClick(View arg0) {
-////                        Toast.makeText(getApplicationContext(),
-////                                Name.getText().toString(),Toast.LENGTH_LONG).show();
-//
-//                        popupWindow.dismiss();
-//
-//                    }
-//
-//                });
-////
-//        ((Button) popupView.findViewById(R.id.btnCancel))
-//                .setOnClickListener(new View.OnClickListener() {
-//
-//                    public void onClick(View arg0) {
-//
-//                        popupWindow.dismiss();
-//                    }
-//                });
-//
-//    }
-
-    /**
-     * Check the device to make sure it has the Google Play Services APK. If
-     * it doesn't, display a dialog that allows users to download the APK from
-     * the Google Play Store or enable it in the device's system settings.
-     */
     private boolean checkPlayServices() {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
@@ -935,17 +832,8 @@ public class MainActivity extends BaseActivity implements
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-//        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ){
-
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         if (requestCode == REQ_PERMISSION) {
@@ -962,18 +850,11 @@ public class MainActivity extends BaseActivity implements
         mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
-                    StaticValue.locationFromMap = location;
-                    StaticValue.latitudeMain = location.getLatitude();
-                    StaticValue.longitudeMain = location.getLongitude();
-//                UtilityDriver.showMessage(StaticValue.mActivity,StaticValue.latitudeMain + " " + StaticValue.longitudeMain + "       22222222222");
-//                    Toast.makeText(getApplicationContext(),latitude+"  "+longitude,Toast.LENGTH_LONG).show();
+                StaticValue.locationFromMap = location;
+                StaticValue.latitudeMain = location.getLatitude();
+                StaticValue.longitudeMain = location.getLongitude();
             }
         });
-
-//        } else {
-//            //Show snackbar
-//        }
-
     }
 
     @Override
@@ -993,11 +874,11 @@ public class MainActivity extends BaseActivity implements
                     StaticValue.locationFromMap = location;
                     Log.v("speed__", "" + location.getSpeed() * 3.6);
 //                    yousef
-                    String  tracklink = UtilityDriver.getStringShared(UtilityDriver.ENABLE_TRACK_LINK);
+                    String tracklink = UtilityDriver.getStringShared(UtilityDriver.ENABLE_TRACK_LINK);
                     String round_ST = UtilityDriver.getStringShared(UtilityDriver.ROUND_ST);
                     Log.v("round_ST", "" + round_ST);
 
-                    if (tracklink.equals("true")&& round_ST.equals("true")) {
+                    if (tracklink.equals("true") && round_ST.equals("true")) {
                         JSONObject jsonBody = new JSONObject();
                         try {
 //9531008228
@@ -1011,15 +892,16 @@ public class MainActivity extends BaseActivity implements
                         }
                         final String requestBody = jsonBody.toString();
                         JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.POST,
-                                " http://tamapps.trak-link.net/checker/Details2", null, new Response.Listener<JSONObject>(){
-                            @Override    public void onResponse(JSONObject response) {
+                                " http://tamapps.trak-link.net/checker/Details2", null, new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
 
                                 try {
                                     JSONArray jsonArray = new JSONArray(response.getString("Result"));
                                     JSONObject object = jsonArray.getJSONObject(0);
                                     StaticValue.latitudeMain = Double.parseDouble(object.getString("y"));
-                                     StaticValue.longitudeMain = Double.parseDouble(object.getString("x"));
-                                     Log.v("Response1111111111111111Details2",object.getString("x"));
+                                    StaticValue.longitudeMain = Double.parseDouble(object.getString("x"));
+                                    Log.v("Response1111111111111111Details2", object.getString("x"));
 //                                    UtilityDriver.setStringShared(UtilityDriver.ROUND_ST, "true");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -1027,176 +909,53 @@ public class MainActivity extends BaseActivity implements
 
                             }
                         }, new Response.ErrorListener() {
-                            @Override    public void onErrorResponse(VolleyError error) {
-                                VolleyLog.e("Error: ", error.getMessage());
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("Error: ", error.getMessage());
 //                Log.d("VOLLEY", Objects.requireNonNull(error.getMessage()));
 
                             }
-                        }){
-                            @Override    public Map<String, String> getHeaders() throws AuthFailureError {
+                        }) {
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
                                 HashMap<String, String> headers = new HashMap<String, String>();
                                 headers.put("Content-Type", "application/json");
                                 return headers;
                             }
-                            @Override    public byte[] getBody() {
+
+                            @Override
+                            public byte[] getBody() {
                                 try {
                                     return requestBody == null ? null : requestBody.getBytes("utf-8");
                                 } catch (UnsupportedEncodingException uee) {
-                                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s",
-                                            requestBody, "utf-8");
+                                    Log.e("Unsupported Encoding while trying to get the bytes of %s using %s",
+                                            requestBody.toString());
                                     return null;
                                 }
                             }
                         };
                         Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, "http://tamapps.trak-link.net/checker/Details2");
-//                        String TRACKLINK_ID = UtilityDriver.getStringShared(UtilityDriver.TRACKLINK_ID);
-////
-//                        String url1 = "https://tam.trak-link.net/wialon/ajax.html?svc=token/login&params={\"token\":\"006e88fb7d566f322840883846cf56caD8CAA24F9DDD9BF5EAF96B56AAD325102805F610\n" +
-//                                "\n\"}";
-//                        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-//                                (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
 //
-//                                    @Override
-//                                    public void onResponse(JSONObject response) {
-//                                        try {
-//                                            String url = "https://tam.trak-link.net/wialon/ajax.html?svc=core/search_item&params={\"id\":" + TRACKLINK_ID + "," +
-//                                                    "\"flags\":1025}&sid="+UtilityDriver.getStringShared(UtilityDriver.SID_TRACK_LINK);
-//                                            Log.v("round_ST", "" + url);
-////
-//                                            JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest
-//                                                    (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
-//
-//                                                        @Override
-//                                                        public void onResponse(JSONObject response) {
-//                                                            try {
-//                                                                Log.v("ssssssssssssss", String.valueOf(response));
-//                                                                JSONObject obj = new JSONObject(response.getString("item"));
-//                                                                JSONObject object = obj.getJSONObject("pos");
-//                                                                StaticValue.latitudeMain = Double.parseDouble(object.getString("y"));
-//                                                                StaticValue.longitudeMain = Double.parseDouble(object.getString("x"));
-//                                                                Log.v("ssssssssssssss852",object.getString("y"));
-//                                                            } catch (JSONException e) {
-//                                                                e.printStackTrace();
-//                                                            }
-//                                                        }
-//                                                    }, new Response.ErrorListener() {
-//
-//                                                        @Override
-//                                                        public void onErrorResponse(VolleyError error) {
-//
-//                                                            Log.d("llssslllllldddddddlllllllll", error.getMessage());
-//                                                        }
-//                                                    });
-//
-//                                            Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, url);
-//
-//
-//                                        } catch (Exception e) {
-//                                            e.printStackTrace();
-//                                            Log.d("response1111111", e.getMessage());
-//                                        }
-//
-//                                    }
-//                                }, new Response.ErrorListener() {
-//
-//                                    @Override
-//                                    public void onErrorResponse(VolleyError error) {
-//                                        Log.d("response1111111", error.getMessage());
-//                                    }
-//                                });
-//                        Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest, url1);
-
-                    }
-                    else
-                    {
+                    } else {
                         StaticValue.latitudeMain = location.getLatitude();
                         StaticValue.longitudeMain = location.getLongitude();
                     }
-
-//                    UtilityDriver.showMessage(mActivity,MainActivity.latitudeMain + " " + MainActivity.longitudeMain + "       22222222222 "+location.getProvider());
-//                    Toast.makeText(getApplicationContext(),latitude+"  "+longitude,Toast.LENGTH_LONG).show();
                 }
             });
-        } else {
-//            ActivityCompat.requestPermissions(this, new String[]{
-//                            android.Manifest.permission.ACCESS_FINE_LOCATION,
-//                            android.Manifest.permission.ACCESS_COARSE_LOCATION},
-//                    MY_LOCATION_REQUEST_CODE);
         }
-//            mMap.setMyLocationEnabled(true);
-
-
     }
 
     public static Driver driver;
 
 
-    //    private BubblesManager bubblesManager;
-//    private void initializeBubbleManager() {
-//        bubblesManager = new BubblesManager.Builder(this)
-//                .setTrashLayout(R.layout.notification_trash_layout)
-//                .build();
-//        bubblesManager.initialize();
-//    }
-//    private void addNewNotification() {
-//        BubbleLayout bubbleView = (BubbleLayout) LayoutInflater.from(MainActivity.this)
-//                .inflate(R.layout.notification_layout, null);
-////        MapView mMapView = (MapView) bubbleView.findViewById(R.id.mapView);
-////        ((MapFragment) getFragmentManager().findFragmentById(R.id.mapView)).getView().getMapAsync;
-//
-//        MapView mMapView = (MapView) bubbleView.findViewById(R.id.mapView);
-//
-//        mMapView.onCreate(savedInstanceState);
-//        mMapView.onResume(); // needed to get the map to display immediately
-//        try {
-//            MapsInitializer.initialize(mActivity);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        mMapView.getMapAsync(this);
-//
-//        bubbleView.setOnBubbleRemoveListener(new BubbleLayout.OnBubbleRemoveListener() {
-//            @Override
-//            public void onBubbleRemoved(BubbleLayout bubble) {
-//                Toast.makeText(getApplicationContext(), "Bubble removed !",
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        // this methoid call when cuser click on the notification layout( bubble layout)
-//        bubbleView.setOnBubbleClickListener(new BubbleLayout.OnBubbleClickListener() {
-//
-//            @Override
-//            public void onBubbleClick(BubbleLayout bubble) {
-//                Toast.makeText(getApplicationContext(), "Clicked !",
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        // add bubble view into bubble manager
-////        bubblesManager.addBubble(bubbleView, 60, 20);
-//    }
-
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFireBase();
         try {
-
-//            checkLocationPermission(true);
-
-//            initFileLogger();
-
-//            log("test");
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                registerReceiver(new NetworkChangeReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                registerReceiver(new NetworkChangeReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-            }
-
+            registerReceiver(new NetworkChangeReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         } catch (Exception e) {
+            e.printStackTrace();
 
         }
         /**/
@@ -1210,34 +969,12 @@ public class MainActivity extends BaseActivity implements
 
         setContentView(R.layout.activity_main);
         StaticValue.mActivity = this;
-//        new SpeedDialog(StaticValue.mActivity, UtilityDriver.getIntShared(UtilityDriver.SPEED), 10);
-
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-//        DisplayMetrics metrics = new DisplayMetrics();
-//        StaticValue.mActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-//        float yInches = metrics.heightPixels / metrics.ydpi;
-//        float xInches = metrics.widthPixels / metrics.xdpi;
-//        StaticValue.diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
-//        if (StaticValue.diagonalInches >= 6.5) {
-//            // 6.5inch device or bigger
-//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        } else {
-//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        }
-
-
-//        this.savedInstanceState = savedInstanceState;
-//        valueSend = true;
-//        DAO.deleteAll(Application.database, DAO.LonLat_TBL);
-//        DAO.deleteAll(Application.database, DAO.CheckInOut_TBL);
         StaticValue.listNearby = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= 23) {
             if (!Settings.canDrawOverlays(this)) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                         Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, 1234);
+                MainActivity.this.startActivityForResult(intent, 1234);
             }
         } else {
             Intent intent = new Intent(this, Service.class);
@@ -1270,9 +1007,7 @@ public class MainActivity extends BaseActivity implements
         } else {
             MainActivity.showFragmentLogin();
         }
-//        mNavigationView.setNavigationItemSelectedListener(this);
-//        mNavigationView.setItemIconTintList(null);
-//        StaticValue.mainActivity = MainActivity.this;
+
 
         if (driver == null) {
             driver = new Driver();
@@ -1310,7 +1045,7 @@ public class MainActivity extends BaseActivity implements
 
     public static void TIMER_START() {
         StaticValue.runnable = new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
             @Override
             public void run() {
                 StaticValue.handler.postDelayed(this, 1000);
@@ -1330,31 +1065,6 @@ public class MainActivity extends BaseActivity implements
         };
         StaticValue.handler.postDelayed(StaticValue.runnable, 0);
     }
-
-
-//        StaticValue.runnable = new Runnable() {
-//            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-//            @Override
-//            public void run() {
-//                StaticValue.handler.postDelayed(this, 1000);
-//
-//                StaticValue.milliSeconds = StaticValue.milliSeconds + 1000;
-//
-//                int hours = (int) ((StaticValue.milliSeconds / (1000 * 60 * 60)) % 24);
-//                int minutes = (int) ((StaticValue.milliSeconds / (1000 * 60)) % 60);
-//                int seconds = (int) (StaticValue.milliSeconds / 1000) % 60;
-//                StaticValue.TIMER_TEXT = String.format("%02d", hours)
-//                        + ":" + String.format("%02d", minutes)
-//                        + ":" + String.format("%02d", seconds);
-//                if (RoundInfoFragment.labTimer != null) {
-//                    RoundInfoFragment.labTimer.setText(StaticValue.TIMER_TEXT);
-//                }
-//            }
-//        };
-//        StaticValue.handler.postDelayed(StaticValue.runnable, 0);
-
-
-//}
 
 
     @Override
@@ -1409,56 +1119,6 @@ public class MainActivity extends BaseActivity implements
     }
 
 
-//    public boolean checkGPSAndNetWorkLocation(boolean withClose) {
-//        if (isLocationServiceEnabled()) {
-//            noLocationMessage(withClose);
-//            return false;
-//        }else {
-//            return true;
-//        }
-//    }
-
-    public boolean isLocationServiceEnabled() {
-//        LocationManager manager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-
-//        if (!checkLocationPermission(false)){
-//            return false;
-//        }
-
-//        try {
-//            assert manager != null;
-//            if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-//                return true;
-//        } catch (Exception e) {
-//        }
-//
-//
-//        try {
-//            if (!UtilityDriver.isEmptyString(Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED)))
-//                return true;
-//        } catch (Exception e) {
-//        }
-
-//        try {
-//            String locationProviders = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-//            if (locationProviders.contains(LocationManager.GPS_PROVIDER) && locationProviders.contains(LocationManager.NETWORK_PROVIDER)) {
-//                return true;
-//            }
-//        } catch (Exception e) {
-//        }
-
-
-//        try {
-//            if (UtilityDriver.isEmptyString(manager.getBestProvider(new Criteria(), true)) && !LocationManager.PASSIVE_PROVIDER.equals(manager.getBestProvider(new Criteria(), true)))
-//                return true;
-//        } catch (Exception e) {
-//        }
-
-
-        return false;
-    }
-
     AlertDialog no_location_message = null;
 
     public void noLocationMessage(boolean withClose) {
@@ -1502,7 +1162,7 @@ public class MainActivity extends BaseActivity implements
 
 //    private ArrayList<NotificationBean> notificationBeanList = new ArrayList<>();
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
     public static void setListAdapter(ArrayList<NotificationBean> notificationBeanList) {
 //        notificationBeanList.clear();
 //        notificationBeanList.addAll(notificationBeanList);
@@ -1668,7 +1328,7 @@ public class MainActivity extends BaseActivity implements
 //        }
 //    }
 //
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+//      
 //    @Override
 //    public void openConnect(String response) {
 ////        if (phoenixPlug == null) {
@@ -1904,99 +1564,9 @@ public class MainActivity extends BaseActivity implements
     }
 
 
-//    public void startAndSendDataToService(Object data) {
-//        try {
-////            if (PathUrl.BEACON_Enabled) {
-//                Intent intent = new Intent(this, BeaconService.class);
-//                if (data instanceof String) {
-//                    intent.putExtra((String) data, (String) data);
-//                } else {
-//                    intent.putExtra(BeaconService.ADD_THIS_ROUNDE, (Parcelable) data);
-//                }
-////                stopService(intent);
-//                startService(intent);
-////            }
-//        } catch (Exception e) {
-//
-//        }
-//
-//
-//    }
-
-//    @Override
-//    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-//    }
-
-
-    private BeaconManager mBeaconManager;
     public static int beaconTicker = 0;
-    public static int scanEverySec = 30;
     ArrayList<StudentBean> mustScanStudents = new ArrayList<>(); // all
     HashSet<StudentBean> foundedStudents = new HashSet<>();
-//    HashSet<String> notFoundedBeacons = new HashSet<>();
-
-    public void initBeaconScanner() throws Exception {
-        try {
-            /**/
-//        clearBeaconScanner();
-            /**/
-//        if (mBeaconManager == null) {
-            mBeaconManager = BeaconManager.getInstanceForApplication(this.getApplicationContext());
-//        }
-            /**/
-            mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout("m:0-1=5900,i:2-2,i:3-4,p:5-5"));
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(BeaconParser.ALTBEACON_LAYOUT));
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT));
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT));
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(BeaconParser.EDDYSTONE_URL_LAYOUT));
-//        mBeaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(BeaconParser.URI_BEACON_LAYOUT));
-            long exitTimeOut = TimeUnit.SECONDS.toMillis(45);
-//        int maxScanTime = Math.round(TimeUnit.SECONDS.toMillis(45));
-            ;
-            mBeaconManager.setBackgroundBetweenScanPeriod(TimeUnit.SECONDS.toMillis(5));
-            mBeaconManager.setBackgroundMode(true);
-//        mBeaconManager.setMaxTrackingAge(maxScanTime);
-            mBeaconManager.setScannerInSameProcess(false);
-            mBeaconManager.setRegionExitPeriod(exitTimeOut);
-            mBeaconManager.applySettings();
-            mBeaconManager.bind(MainActivity.this);
-
-//        public static final long DEFAULT_FOREGROUND_SCAN_PERIOD = 1100L;
-//        public static final long DEFAULT_FOREGROUND_BETWEEN_SCAN_PERIOD = 0L;
-//        public static final long DEFAULT_BACKGROUND_SCAN_PERIOD = 10000L;
-//        public static final long DEFAULT_BACKGROUND_BETWEEN_SCAN_PERIOD = 300000L;
-//        public static final long DEFAULT_EXIT_PERIOD = 10000L;
-
-//        mBeaconManager.setBackgroundScanPeriod(300000L);// 30 secs
-//        mBeaconManager.setBackgroundBetweenScanPeriod(300000L);
-//        mBeaconManager.setForegroundScanPeriod(300000L);
-//        mBeaconManager.setForegroundBetweenScanPeriod(300000L);
-//        mBeaconManager.updateScanPeriods();
-
-
-        } catch (Exception e) {
-
-        }
-
-    }
-
-
-    public void addMacAddressToScanner() {
-        try {
-//            clearBeaconScanner();
-//            initBeaconScanner();
-//            mustScanStudents.addAll(findThis);
-        } catch (Exception e) {
-
-        }
-
-
-//        String macb1 = "AC:23:3F:24:92:C0";
-//        String macb2 = "AC:23:3F:24:92:C6";
-//        String macb3 = "AC:11:3F:24:92:C6";
-    }
 
 
     public void clearScannerLisiners() {
@@ -2012,27 +1582,6 @@ public class MainActivity extends BaseActivity implements
             mustScanStudents.clear();
             beaconTicker = 0;
 
-            if (mBeaconManager != null) {
-//                mBeaconManager.getBeaconParsers().clear();
-                for (Region region : mBeaconManager.getMonitoredRegions()) {
-                    mBeaconManager.stopRangingBeaconsInRegion(region);
-                }
-
-                try {
-                    mBeaconManager.getMonitoredRegions().clear();
-                    mBeaconManager.getMonitoringNotifiers().clear();
-                } catch (Exception e) {
-
-                }
-
-                mBeaconManager.removeAllRangeNotifiers();
-                mBeaconManager.removeAllMonitorNotifiers();
-                mBeaconManager.updateScanPeriods();
-                mBeaconManager.applySettings();
-//                mBeaconManager.unbind(MainActivity.this);
-//                mBeaconManager = null;
-
-            }
         } catch (Exception e) {
 
         }
@@ -2040,145 +1589,6 @@ public class MainActivity extends BaseActivity implements
 
     }
 
-    @Override
-    public void onBeaconServiceConnect() {
-        try {
-            initStudentListToNotifier();
-//            mBeaconManager.removeAllRangeNotifiers();
-//            mBeaconManager.removeAllMonitorNotifiers();
-//            Region region = new Region("allbeacons", null, null, null);
-//            Region region1 = new Region(macb1, macb1);
-//            Region region2 = new Region(macb2, macb2);
-//            Region region3 = new Region(macb3, macb3);
-
-
-//            mBeaconManager.addRangeNotifier(new RangeNotifier() {
-//                @Override
-//                public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
-//                    beaconTicker++;
-//                    Log.i("didRangeBeaconsInRegion", " region.getBluetoothAddress() " + region.getBluetoothAddress());
-//                    Log.i("didRangeBeaconsInRegion", " beacons.size() " + beacons.size());
-//                    for (Beacon b : beacons) {
-//                        StudentBean foundedS = findStudentByMac(b.getBluetoothAddress());
-//                        if (foundedS != null)
-//                            foundedStudents.add(foundedS);
-//                    }
-//                /**/
-//                    if (beaconTicker > scanEverySec) {
-//                        beaconTicker = 0;
-//                        onScannerDone(foundedStudents);
-//                    }
-//                }
-//            });
-//
-//
-//            for (int i = 0; i < mustScanStudents.size(); i++) {
-//                if (mustScanStudents.get(i).getMacAdress() != null)
-//                    mBeaconManager.startRangingBeaconsInRegion(new Region(mustScanStudents.get(i).getMacAdress(), mustScanStudents.get(i).getMacAdress()));
-//            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-
-    private void initStudentListToNotifier() {
-        try {
-            if (mustScanStudents == null || mustScanStudents.size() < 0)
-                return;
-
-            mBeaconManager.addMonitorNotifier(new MonitorNotifier() {
-                @Override
-                public void didEnterRegion(final Region region) {
-                    try {
-                        new Handler(getMainLooper()).postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (onScannerFind_in != null)
-                                    onScannerFind_in.OnActionDone(findStudentByMac(region.getBluetoothAddress()));
-                                Log.v("BeaconBeacon Enter", region.getBluetoothAddress());
-                            }
-                        }, 500);
-
-
-                    } catch (Exception e) {
-
-                    }
-                }
-
-                @Override
-                public void didExitRegion(final Region region) {
-                    try {
-                        new Handler(getMainLooper()).postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (onScannerFind_out != null)
-                                    onScannerFind_out.OnActionDone(findStudentByMac(region.getBluetoothAddress()));
-                                Log.v("BeaconBeacon Exit", region.getBluetoothAddress());
-                            }
-
-                        }, 500);
-
-
-                    } catch (Exception e) {
-
-                    }
-                }
-
-                @Override
-                public void didDetermineStateForRegion(int in_out, Region region) {
-                    try {
-                        switch (in_out) {
-                            case MonitorNotifier.OUTSIDE:
-//                                Beacon OUTSIDE
-//                                Log.v("BeaconBeacon  OUTSIDE", region.getBluetoothAddress());
-                                break;
-                            case MonitorNotifier.INSIDE:
-//                                Beacon OUTSIDE INSIDE
-//                                Log.v("BeaconBeacon  INSIDE", region.getBluetoothAddress());
-                                break;
-                        }
-
-
-                    } catch (Exception e) {
-
-                    }
-
-                }
-            });
-            for (int i = 0; i < mustScanStudents.size(); i++) {
-                if (mustScanStudents.get(i).getMacAdress() != null)
-                    mBeaconManager.startMonitoringBeaconsInRegion(new Region(mustScanStudents.get(i).getMacAdress(), mustScanStudents.get(i).getMacAdress()));
-            }
-        } catch (Exception e) {
-
-        }
-
-    }
-
-    public void addNotifiers(List<StudentBean> mustScanStudents) {
-        try {
-
-
-            clearBeaconScanner();
-
-            if (mBeaconManager.isBound(this)) {
-                this.mustScanStudents.addAll(mustScanStudents);
-                initStudentListToNotifier();
-            } else {
-                initBeaconScanner();
-            }
-
-
-        } catch (Exception e) {
-
-        }
-
-    }
 
     public OnActionDoneListener<StudentBean> onScannerFind_out;
     public OnActionDoneListener<StudentBean> onScannerFind_in;
@@ -2218,119 +1628,19 @@ public class MainActivity extends BaseActivity implements
 
 
     public static boolean isBluetoothOn = false;
-    private OnActionDoneListener<Boolean> onBlueToothStatusChanged = null;
     UtilDialogs.MessageYesNoDialog messageDialog;
 
-    public boolean checkBluetoothState() {
-        try {
-            if (!UtilityDriver.getBooleanShared(UtilityDriver.ALLOW_DRIVER_TO_USE_BEACON))
-                return false;
-
-            BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-            if (mBluetoothAdapter.isEnabled()) {
-                initBeaconScanner();
-                isBluetoothOn = true;
-            } else {
-                isBluetoothOn = false;
-            }
-            /**/
-
-        } catch (Exception e) {
-            isBluetoothOn = false;
-        }
-        /**/
-        if (isBluetoothOn) {
-            if (messageDialog != null && messageDialog.isShowing()) {
-                if (messageDialog != null)
-                    messageDialog.dismiss();
-                messageDialog = null;
-            }
-
-        } else {
-            if (messageDialog == null && !isBluetoothDialogClosedBefore) {
-                messageDialog = new UtilDialogs.MessageYesNoDialog().show(this)
-                        .setDialogeTitle(R.string.you_should_turn_on_the_bluetooth)
-                        .setImageWithColor(R.drawable.ic_bluetooth_disabled_black_48dp, 0)
-                        .setYesButtonText(R.string.you_should_turn_on_the_bluetooth_button)
-                        .setYesButtonClickListener(new OnActionDoneListener() {
-                            @Override
-                            public void OnActionDone(Object Action) {
-
-                                enableBlueTooth();
-                                if (messageDialog != null)
-                                    messageDialog.dismiss();
-//                                ComponentName cn = new ComponentName("com.android.settings",
-//                                        "com.android.settings.bluetooth.BluetoothSettings");
-//                                final Intent intent = new Intent(Intent.ACTION_MAIN, null);
-//                                intent.addCategory(Intent.CATEGORY_LAUNCHER);
-//                                intent.setComponent(cn);
-//                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                startActivity(intent);
-
-                            }
-                        }).setCloseButtonClickListener(new OnActionDoneListener<UtilDialogs.MessageYesNoDialog>() {
-                            @Override
-                            public void OnActionDone(UtilDialogs.MessageYesNoDialog action) {
-                                if (messageDialog != null)
-                                    messageDialog.dismiss();
-                                messageDialog = null;
-                            }
-                        });
-
-                isBluetoothDialogClosedBefore = true;
-            }
-
-        }
 
 
-        return isBluetoothOn;
-    }
-
-    public void setOnBlueToothStatusChanged(OnActionDoneListener<Boolean> onBlueToothStatusChanged) {
-        this.onBlueToothStatusChanged = onBlueToothStatusChanged;
-    }
-
-    public void enableBlueTooth() {
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (!mBluetoothAdapter.isEnabled()) {
-            mBluetoothAdapter.enable();
-        }
-    }
 
 
     private static final int REQ_PERMISSION = 1233;
-
-//    private void initFileLogger() {
-//
-////        FL.init(new FLConfig.Builder(this)
-//////                .minLevel(FLConst.Level.D)
-////                .logToFile(true)
-////                .defaultTag("CONNECTION_FILE_LOGGER")   // customise default tag
-////                .dir(new File(Environment.getExternalStorageDirectory(), "connection_file_logger"))
-////                .retentionPolicy(FLConst.RetentionPolicy.FILE_COUNT)
-////                .build());
-//
-//        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_PERMISSION);
-//            return;
-//        }
-//
-//
-//    }
 
 
     public class NetworkChangeReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(final Context context, final Intent intent) {
-
-//            if (checkInternet(context)) {
-//                log("Network Available");
-//                //Network Available Do operations
-//            } else {
-//                log("No Network Available");
-//
-//            }
 
         }
 

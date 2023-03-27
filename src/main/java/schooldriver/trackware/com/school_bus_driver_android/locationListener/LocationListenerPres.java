@@ -31,7 +31,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Utilit
 
 
 /**
- * Created by muradtrac on 11/7/17.
+ * Created by   11/7/17.
  */
 
 public class LocationListenerPres extends BasePresenter implements IRestCallBack{
@@ -63,7 +63,7 @@ public class LocationListenerPres extends BasePresenter implements IRestCallBack
 //        );
 //    }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     @Override
     public void onRestCallBack(String response, EnumNameApi nameApiEnum, ApiRequest volleyBean) {
 //        String time = "";
@@ -115,7 +115,7 @@ public class LocationListenerPres extends BasePresenter implements IRestCallBack
         DAO.addCheck(Application.database, checkInOut);
 
         }
-//        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+//          
 //    public void sendNearMessage(StudentBean studentBeanGroup, String time) {
 //
 //
@@ -181,7 +181,7 @@ public class LocationListenerPres extends BasePresenter implements IRestCallBack
 //        }
 //    }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     @Override
     public void onRestCallBack(JSONObject response, EnumNameApi nameApiEnum, ApiRequest volleyBean) {
 //        String time = "";
@@ -207,7 +207,7 @@ public class LocationListenerPres extends BasePresenter implements IRestCallBack
 //        }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     @Override
     public void onRestCallBack(VolleyError volleyError, EnumNameApi nameApiEnum, ApiRequest volleyBean) {
 //        if (nameApiEnum == EnumNameApi.LOCATION_TIME) {

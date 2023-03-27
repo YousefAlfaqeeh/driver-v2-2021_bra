@@ -32,7 +32,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.PathUr
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/26/17.
+ * Created by   3/26/17.
  */
 
 public class SendNotificationGCM implements IRestCallBack, Constants {
@@ -76,7 +76,7 @@ public class SendNotificationGCM implements IRestCallBack, Constants {
         return androidBodyMessage;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     public SendNotificationGCM(List<StudentBean> listStudentBean, String msg, int id) {
         List<Integer> listInteger = new ArrayList<>();
         for (StudentBean studentBean : listStudentBean) {

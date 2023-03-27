@@ -17,7 +17,7 @@ import schooldriver.trackware.com.school_bus_driver_android.R;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DriverConstants;
 
 /**
- * Created by muradtrac on 3/8/17.
+ * Created by   3/8/17.
  */
 
 public class BaseDialog extends Dialog implements DriverConstants{

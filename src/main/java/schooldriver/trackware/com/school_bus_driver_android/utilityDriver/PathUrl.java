@@ -1,7 +1,7 @@
 package schooldriver.trackware.com.school_bus_driver_android.utilityDriver;
 
 /**
- * Created by muradtrac on 3/20/17.
+ * Created by   3/20/17.
  */
 
 public class PathUrl {

@@ -1,7 +1,7 @@
 package schooldriver.trackware.com.school_bus_driver_android.locationListener;
 
 /**
- * Created by muradtrac on 3/29/17.
+ * Created by   3/29/17.
  */
 
 
@@ -37,7 +37,7 @@ public class LocationHelper {
      Activity mActivity;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     public boolean getLocation(Activity mActivity, LocationResult result) {
  
         this.mActivity = mActivity;

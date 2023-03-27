@@ -15,7 +15,7 @@ import schooldriver.trackware.com.school_bus_driver_android.API.interfaceApi.IRe
 import schooldriver.trackware.com.school_bus_driver_android.AppUpdateCheckerActivity;
 
 /**
- * Created by muradtrac on 3/6/17.
+ * Created by   3/6/17.
  */
 
 public class BaseActivity extends AppUpdateCheckerActivity {

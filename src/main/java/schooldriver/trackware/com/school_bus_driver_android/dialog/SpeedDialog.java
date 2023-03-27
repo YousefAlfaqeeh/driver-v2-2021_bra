@@ -15,7 +15,7 @@ import schooldriver.trackware.com.school_bus_driver_android.R;
 import schooldriver.trackware.com.school_bus_driver_android.basePage.BaseDialog;
 
 /**
- * Created by muradtrac on 3/8/17.
+ * Created by   3/8/17.
  */
 
 public class SpeedDialog extends BaseDialog {

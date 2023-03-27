@@ -1,16 +1,15 @@
 package schooldriver.trackware.com.school_bus_driver_android.fragment.roundInfo;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -31,7 +30,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilVi
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
     private ArrayList<PindingStudentHolder> pinding_NoShow_Requists = new ArrayList<>();
@@ -94,17 +93,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
         labNameRound.setText(roundBean.getNameRound());
         /**/
         roundAdapter.addAll(roundBean.getListStudentBean());
-//        roundAdapter.sort(new Comparator<StudentBean>() {
-//            @Override
-//            public int compare(StudentBean t1, StudentBean t2) {
-//                return t1.compareTo(t1);
-//            }
-//        });
-        /**/
-//        getMainActivity().clearBeaconScanner();
-//        getMainActivity().addMacAddressToScanner(roundBean.getListStudentBean());
-        getMainActivity().addNotifiers(roundBean.getListStudentBean());
-        getMainActivity().onScannerFind_in = new OnActionDoneListener<StudentBean>() {
+         getMainActivity().onScannerFind_in = new OnActionDoneListener<StudentBean>() {
             @Override
             public void OnActionDone(StudentBean studentFromBeacon) {
                 try {

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by muradtrac on 4/3/17.
+ * Created by   4/3/17.
  */
 
 public class GeofenceBean implements Parcelable {

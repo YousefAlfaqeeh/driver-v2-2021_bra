@@ -1,7 +1,6 @@
 package schooldriver.trackware.com.school_bus_driver_android.locationListener;
 
 /**
- * Created by muradtrac on 3/29/17.
  */
 
 import android.app.Activity;
@@ -11,10 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.os.BatteryManager;
-import android.os.Build;
 import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.Date;
 import java.util.Locale;
@@ -27,15 +23,10 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.PathUr
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.StaticValue;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class LocationListener {
-
-
-    //    private static Activity mActivity;
-    //    LocationHelper.LocationResult locationResult;
-//    LocationHelper locationHelper;
     final String TAG = "MainActivity.java";
     private static Activity mActivity;
+
     ConfigNotify configNotify;
     public static int noSpeed, noBattery;
     public static Date dateStandstill;

@@ -11,7 +11,6 @@ import schooldriver.trackware.com.school_bus_driver_android.API.enumApi.EnumName
 import schooldriver.trackware.com.school_bus_driver_android.API.interfaceApi.IRestCallBack;
 
 /**
- * Created by muradtrac on 1/7/17.
  */
 
 public class ApiRequest {

@@ -13,7 +13,7 @@ import schooldriver.trackware.com.school_bus_driver_android.app.Application;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/26/17.
+ * Created by   3/26/17.
  */
 
 public class ParentStudentBean implements Serializable, Parcelable {

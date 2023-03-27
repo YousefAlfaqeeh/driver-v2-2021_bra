@@ -12,7 +12,7 @@ import android.telephony.TelephonyManager;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 6/21/17.
+ * Created by   6/21/17.
  */
 
 public class NetworkUtil {

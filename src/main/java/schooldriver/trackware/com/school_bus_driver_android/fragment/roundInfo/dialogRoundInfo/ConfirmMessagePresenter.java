@@ -34,7 +34,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Static
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/27/17.
+ * Created by   3/27/17.
  */
 
 public class ConfirmMessagePresenter extends BasePresenter implements IRestCallBack {
@@ -51,7 +51,7 @@ public class ConfirmMessagePresenter extends BasePresenter implements IRestCallB
     public ConfirmMessagePresenter(Activity mActivity) {
         this.mActivity = mActivity;
     }
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     public void callApiStatusRound(final StatusRoundEnum statusRoundEnum, final int roundID) {
         final int distance = (int) UtilityDriver.distance(StaticValue.latitudeMain,StaticValue.longitudeMain,StaticValue.latitudeStartRound,StaticValue.longitudeStartRound,"M");
 

@@ -21,7 +21,7 @@ import schooldriver.trackware.com.school_bus_driver_android.locationListener.Con
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.StaticValue;
 
 /**
- * Created by muradtrac on 3/8/17.
+ * Created by   3/8/17.
  */
 
 public class RoundInfoPresenter extends BasePresenter {
@@ -203,7 +203,7 @@ public class RoundInfoPresenter extends BasePresenter {
         return studentBean;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     public void checkChangeRoute(int roundId) {
         new ConfigNotify(
                 StaticValue.latitudeMain + "",

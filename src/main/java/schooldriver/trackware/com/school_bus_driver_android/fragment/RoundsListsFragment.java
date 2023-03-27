@@ -47,9 +47,9 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilVi
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by Ibrahem Al-Betar on 2/28/2017.
+ * Created   on 2/28/2017.
  */
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class RoundsListsFragment extends BaseFragment {
 
     private RecyclerViewAdapter<RoundBean, RoundHolderNew> rListAdapter;

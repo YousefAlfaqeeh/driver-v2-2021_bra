@@ -1,7 +1,7 @@
 package schooldriver.trackware.com.school_bus_driver_android.geofence.mock;
 
 /**
- * Created by Ibrahem Al-Betar on 12/5/2016.
+ * Created   on 12/5/2016.
  */
 
 import android.content.Context;

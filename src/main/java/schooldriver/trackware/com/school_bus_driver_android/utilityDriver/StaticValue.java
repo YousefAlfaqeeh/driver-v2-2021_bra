@@ -18,7 +18,7 @@ import schooldriver.trackware.com.school_bus_driver_android.dbDriver.DBHandler;
 import schooldriver.trackware.com.school_bus_driver_android.enums.TypeRoundEnum;
 
 /**
- * Created by muradtrac on 9/19/17.
+ * Created by   9/19/17.
  */
 
 public class StaticValue {

@@ -52,7 +52,7 @@ public class MyFirebaseMessagingService_new extends FirebaseMessagingService {
     public static String SCHOOL_MESSAGE = "SCHOOL_MESSAGE";
 
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 

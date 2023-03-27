@@ -1,7 +1,6 @@
 package schooldriver.trackware.com.school_bus_driver_android.API.enumApi;
 
 /**
- * Created by muradtrac on 1/14/17.
  */
 
 public enum EnumNameApi {

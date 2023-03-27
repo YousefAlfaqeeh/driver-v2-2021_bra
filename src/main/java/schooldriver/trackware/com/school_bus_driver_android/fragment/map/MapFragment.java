@@ -47,10 +47,10 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Static
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by Ibrahem Al-Betar on 3/2/2017.
+ * Created   on 3/2/2017.
  */
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class MapFragment extends BaseFragment implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks

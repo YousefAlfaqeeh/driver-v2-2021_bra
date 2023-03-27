@@ -5,7 +5,7 @@ import android.location.Location;
 import android.location.LocationManager;
 
 /**
- * Created by muradtrac on 5/30/17.
+ * Created by   5/30/17.
  */
 
 public class MockLocationProvider {

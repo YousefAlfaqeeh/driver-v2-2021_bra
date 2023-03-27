@@ -14,7 +14,7 @@ import schooldriver.trackware.com.school_bus_driver_android.bean.StudentBean;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.StaticValue;
 
 /**
- * Created by muradtrac on 3/7/17.
+ * Created by   3/7/17.
  */
 
 public class MapPresenter {

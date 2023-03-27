@@ -9,7 +9,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import schooldriver.trackware.com.school_bus_driver_android.R;
 
 /**
- * Created by Ibrahem Al-Betar on 2/28/2017.
+ * Created   on 2/28/2017.
  */
 
 public class RoundInfoHolder extends RecyclerView.ViewHolder {

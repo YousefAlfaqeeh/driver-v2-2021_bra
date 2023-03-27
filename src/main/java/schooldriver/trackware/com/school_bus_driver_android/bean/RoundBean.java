@@ -13,7 +13,7 @@ import schooldriver.trackware.com.school_bus_driver_android.enums.StatusRoundEnu
 import schooldriver.trackware.com.school_bus_driver_android.enums.TypeRoundEnum;
 
 /**
- * Created by Ibrahem Al-Betar on 3/1/2017.
+ * Created   on 3/1/2017.
  */
 
 public class RoundBean /* extends  BaseBean<Integer> */ implements Parcelable, Serializable {

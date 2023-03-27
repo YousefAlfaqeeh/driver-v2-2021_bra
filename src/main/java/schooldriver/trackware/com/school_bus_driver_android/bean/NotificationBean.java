@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Ibrahem Al-Betar on 3/2/2017.
+ * Created   on 3/2/2017.
  */
 
 public class NotificationBean implements Parcelable {

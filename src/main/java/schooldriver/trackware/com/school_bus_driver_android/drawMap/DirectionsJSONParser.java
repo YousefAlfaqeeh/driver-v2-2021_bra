@@ -1,7 +1,7 @@
 package schooldriver.trackware.com.school_bus_driver_android.drawMap;
 
 /**
- * Created by muradtrac on 3/7/17.
+ * Created by   3/7/17.
  */
 
 import com.google.android.gms.maps.model.LatLng;

@@ -29,9 +29,9 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Static
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/29/17.
+ * Created by   3/29/17.
  */
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  
 public class ConfigNotify implements IRestCallBack {
 
     public EnumConfigNotify enumConfigNotify;

@@ -17,7 +17,7 @@ import schooldriver.trackware.com.school_bus_driver_android.gcmNotification.send
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/28/17.
+ * Created by   3/28/17.
  */
 
 public class SendNotificationDialog extends BaseDialog {
@@ -36,7 +36,7 @@ public class SendNotificationDialog extends BaseDialog {
         });
 
         btnOk.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+              
             @Override
             public void onClick(View v) {
 

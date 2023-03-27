@@ -6,26 +6,22 @@ import android.location.Location;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -65,9 +61,8 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilDi
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilTools;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilViews;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
-import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.VolleySingleton;
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
 public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
     protected RecyclerView rsStudent;
@@ -324,7 +319,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                         for (int i = 0; i <= mustListTakenStudent.size(); i++) {
 //                            Log.d("mustListTakenStudent.size()1111ss", String.valueOf(mustListTakenStudent.get(i).getLongitude()));
                             if (isIn_500M_Range(currentLongitude, currentLatitude, mustListTakenStudent.get(i).getLongitude(), mustListTakenStudent.get(i).getLatitude())) {
-                            Log.d("isIn_500M_Range1111ss", String.valueOf(isIn_500M_Range(currentLongitude, currentLatitude, mustListTakenStudent.get(i).getLongitude(), mustListTakenStudent.get(i).getLatitude())));
+                                Log.d("isIn_500M_Range1111ss", String.valueOf(isIn_500M_Range(currentLongitude, currentLatitude, mustListTakenStudent.get(i).getLongitude(), mustListTakenStudent.get(i).getLatitude())));
                                 sendNearByNotification(mustListTakenStudent.get(i), roundBean.getIdAsString());
                                 sendNotificationForNextStudent(mustListTakenStudent.get(i));
                                 for (int j = 0; j <= mustListTakenStudent.size(); j++) {
@@ -538,68 +533,9 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-//        getMainActivity().checkLocationPermission(true);
-        getMainActivity().checkBluetoothState();
-        getMainActivity().setOnBlueToothStatusChanged(new OnActionDoneListener<Boolean>() {
-            @Override
-            public void OnActionDone(Boolean blueToothOn) {
-                try {
-                    if (roundBean != null)
-//                    getMainActivity().clearBeaconScanner();
-//                    getMainActivity().initBeaconScanner();
-                        if (blueToothOn) {
-                            getMainActivity().initBeaconScanner();
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    getMainActivity().addNotifiers(roundBean.getListStudentBean());
-                                }
-                            }, 1000);
-
-
-                        }
-
-//                getMainActivity().addMacAddressToScanner(roundBean.getListStudentBean());
-                } catch (Exception e) {
-
-                }
-            }
-        });
-
         if (roundBean != null)
             MainActivity.CURRENT_SELECTED_ROUND = roundBean;
-//        getMainActivity().startAndSendDataToService("onResume");
     }
-
-
-//    protected void saveStudentListForStartedRound(List<StudentBean> started_round_students) {
-//        DAO.deleteAllStartedRoundStudents(Application.database);
-//        DAO.addStartedRoundStudents(Application.database, started_round_students);
-//    }
-
-//    protected ArrayList<StudentBean> sortStudentUsingSaved(List<StudentBean> started_round_students) {
-//        ArrayList<StudentBean> afterSort = new ArrayList<>();
-//        ArrayList<Integer> startedRoundStudents = DAO.getStartedRoundStudents(Application.database);
-//
-//        for (int i = 0; i < startedRoundStudents.size(); i++) {
-//            StudentBean studentById = findStudentById(started_round_students, startedRoundStudents.get(i));
-//            if (studentById!=null)
-//            afterSort.add(studentById);
-//        }
-//
-//        return afterSort;
-//    }
-
-
-//    private StudentBean findStudentById(List<StudentBean> studentsList, Integer id) {
-//        for (int i = 0; i < studentsList.size(); i++) {
-//            if (id == studentsList.get(i).getId()) {
-//                return studentsList.get(i);
-//            }
-//        }
-//        return null;
-//    }
-
 
     protected void hideBackButton() {
         linBack.setVisibility(View.INVISIBLE);
@@ -721,8 +657,9 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                     }
                     final String requestBody = jsonBody.toString();
                     JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.POST,
-                            " http://tamapps.trak-link.net/checker/Details2", null, new Response.Listener<JSONObject>(){
-                        @Override    public void onResponse(JSONObject response) {
+                            " http://tamapps.trak-link.net/checker/Details2", null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
 
                             try {
                                 JSONArray jsonArray = new JSONArray(response.getString("Result"));
@@ -735,23 +672,27 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
                         }
                     }, new Response.ErrorListener() {
-                        @Override    public void onErrorResponse(VolleyError error) {
-                            VolleyLog.e("Error: ", error.getMessage());
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Error: ", error.getMessage());
 //                Log.d("VOLLEY", Objects.requireNonNull(error.getMessage()));
 
                         }
-                    }){
-                        @Override    public Map<String, String> getHeaders() throws AuthFailureError {
+                    }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
                             HashMap<String, String> headers = new HashMap<String, String>();
                             headers.put("Content-Type", "application/json");
                             return headers;
                         }
-                        @Override    public byte[] getBody() {
+
+                        @Override
+                        public byte[] getBody() {
                             try {
                                 return requestBody == null ? null : requestBody.getBytes("utf-8");
                             } catch (UnsupportedEncodingException uee) {
-                                VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s",
-                                        requestBody, "utf-8");
+                                Log.e("Unsupported Encoding while trying to get the bytes of %s using %s",
+                                        requestBody.toString());
                                 return null;
                             }
                         }
@@ -1136,7 +1077,6 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
     public void onDestroy() {
         RoundInfoFragment.roundBeanCheck = null;
         RoundInfoFragment.roundBean = null;
-        getMainActivity().setOnBlueToothStatusChanged(null);
         super.onDestroy();
 //        Application.shouldRefresh = true;
 

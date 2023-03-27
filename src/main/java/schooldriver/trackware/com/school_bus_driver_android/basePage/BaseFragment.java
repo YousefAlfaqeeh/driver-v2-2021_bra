@@ -5,16 +5,15 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import database.DAO;
@@ -26,24 +25,19 @@ import schooldriver.trackware.com.school_bus_driver_android.API.enumApi.EnumMeth
 import schooldriver.trackware.com.school_bus_driver_android.API.enumApi.EnumNameApi;
 import schooldriver.trackware.com.school_bus_driver_android.API.enumApi.EnumTypeHeader;
 import schooldriver.trackware.com.school_bus_driver_android.API.interfaceApi.IRestCallBack;
-import schooldriver.trackware.com.school_bus_driver_android.APIs_new.ApiController;
 import schooldriver.trackware.com.school_bus_driver_android.MainActivity;
 import schooldriver.trackware.com.school_bus_driver_android.R;
 import schooldriver.trackware.com.school_bus_driver_android.bean.RoundBean;
-import schooldriver.trackware.com.school_bus_driver_android.bean.StudentBean;
-import schooldriver.trackware.com.school_bus_driver_android.enums.TypeRoundEnum;
 import schooldriver.trackware.com.school_bus_driver_android.fragment.NotificationsListsFragment;
 import schooldriver.trackware.com.school_bus_driver_android.gcmNotification.NotificationObj;
 import schooldriver.trackware.com.school_bus_driver_android.gcmNotification.senderNotification.SendNotificationGCM;
-import schooldriver.trackware.com.school_bus_driver_android.geofence.mock.Constants;
-import schooldriver.trackware.com.school_bus_driver_android.interfaceDriver.IBaseFragment;
 import schooldriver.trackware.com.school_bus_driver_android.interfaceDriver.OnActionDoneListener;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DriverConstants;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilDialogs;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-public class BaseFragment<T> extends Fragment implements IBaseFragment, DriverConstants {
+  
+public class BaseFragment<T> extends Fragment implements  DriverConstants {
 
 
     private UtilDialogs.ProcessingDialog processDialog;
@@ -55,21 +49,10 @@ public class BaseFragment<T> extends Fragment implements IBaseFragment, DriverCo
         mActivity = getMainActivity();
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
-//        if (UtilityDriver.getBooleanShared("isDev")) {
-//            PathUrl.MAIN_URL = PathUrl.DIV_URL;
-//        } else {
-//            PathUrl.MAIN_URL = PathUrl.PROD_URL;
-//        }
-
-
     }
 
 
-    @Override
-    public void setListAdapter(List listBean) {
-
-    }
+  
 
     protected void callRestAPI(
             String PATH_URL,
@@ -161,44 +144,6 @@ public class BaseFragment<T> extends Fragment implements IBaseFragment, DriverCo
     }
 
 
-//    public void sendNotificationsForMotherAndFather(StudentBean student, RoundBean roundBean, String statusValue /*checkType*/, TypeRoundEnum roundType) {
-//        /**/
-//        if (UtilityDriver.isEmptyString(statusValue)) {
-//            return;
-//        }
-//        /**/
-//
-//        /**/
-//        if (student.getMobileStudentBean().isCheckInMother()) {
-//            String motherMessage = UtilityDriver.getMessageNotification(statusValue, roundType, student.getMobileStudentBean().getMotherLocal());
-//            motherMessage = motherMessage.replaceAll(STUDENT_NAME_API_FORMAT, student.getFirstNameStudent());
-//            motherMessage = motherMessage.replaceAll(ROUND_NAME_API_FORMAT, roundBean.getNameRound());
-//            motherMessage = motherMessage.replaceAll(BUS_NUMBER_API_FORMAT, UtilityDriver.getStringShared(UtilityDriver.BUS_NUMBER));
-//
-//            Map<String, String> mothermapBodyMessage = new HashMap<>();
-//            mothermapBodyMessage.put("message", motherMessage);
-//            mothermapBodyMessage.put("avatar", student.getAvatar());
-//            mothermapBodyMessage.put("title", SendNotificationGCM.createNotificationTitle(student.getMobileStudentBean().getMotherLocal()));
-//            mothermapBodyMessage.put("action", Constants.NOTIFICATION_ACTION_Other);
-//            ApiController.sendGCMForMother(getActivity(), student, roundBean.getId(), mothermapBodyMessage, motherMessage, Constants.NOTIFICATION_ACTION_Other, student.getMobileStudentBean().getMotherId());
-//        }
-//        if (student.getMobileStudentBean().isCheckInFather()) {
-//            String fatherMessage = UtilityDriver.getMessageNotification(statusValue, roundType, student.getMobileStudentBean().getFatherLocal());
-//            fatherMessage = fatherMessage.replaceAll(STUDENT_NAME_API_FORMAT, student.getFirstNameStudent());
-//            fatherMessage = fatherMessage.replaceAll(ROUND_NAME_API_FORMAT, roundBean.getNameRound());
-//            fatherMessage = fatherMessage.replaceAll(BUS_NUMBER_API_FORMAT, UtilityDriver.getStringShared(UtilityDriver.BUS_NUMBER));
-////        sendMessage = sendMessage.replaceAll("@", "");
-//
-//            Map<String, String> fathermapBodyMessage = new HashMap<>();
-//            fathermapBodyMessage.put("message", fatherMessage);
-//            fathermapBodyMessage.put("avatar", student.getAvatar());
-//            fathermapBodyMessage.put("title", SendNotificationGCM.createNotificationTitle(student.getMobileStudentBean().getFatherLocal()));
-//            fathermapBodyMessage.put("action", Constants.NOTIFICATION_ACTION_Other);
-//
-//            ApiController.sendGCMForFather(getActivity(), student, roundBean.getId(), fathermapBodyMessage, fatherMessage, Constants.NOTIFICATION_ACTION_Other, student.getMobileStudentBean().getFatherId());
-//        }
-//    }
-
     protected void showAPIErrorDialog(String errorMessage) {
         new UtilDialogs.MessageYesNoDialog().show(getActivity())
                 .setDialogeTitle(R.string.error)
@@ -215,13 +160,6 @@ public class BaseFragment<T> extends Fragment implements IBaseFragment, DriverCo
         super.onResume();
         checkMessagesFromNotification();
 //        getMainActivity().setOnBackButtonPressed(null);
-    }
-
-
-    protected void vibrate() {
-        Vibrator v = (Vibrator) getMainActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        // Vibrate for 500 milliseconds
-        v.vibrate(500);
     }
 
     @Override

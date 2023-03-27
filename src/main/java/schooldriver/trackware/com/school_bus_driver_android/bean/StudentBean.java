@@ -7,7 +7,7 @@ import schooldriver.trackware.com.school_bus_driver_android.enums.CheckEnum;
 import schooldriver.trackware.com.school_bus_driver_android.enums.TypeRoundEnum;
 
 /**
- * Created by Ibrahem Al-Betar on 2/28/2017.
+ * Created   on 2/28/2017.
  */
 
 public class StudentBean implements Parcelable, Comparable<StudentBean> /*extends BaseBean<Integer>*/ {

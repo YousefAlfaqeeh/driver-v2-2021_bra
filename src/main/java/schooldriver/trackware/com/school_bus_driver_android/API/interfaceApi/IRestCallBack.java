@@ -10,7 +10,6 @@ import schooldriver.trackware.com.school_bus_driver_android.API.enumApi.EnumName
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DriverConstants;
 
 /**
- * Created by muradtrac on 1/8/17.
  */
 
 public interface IRestCallBack extends DriverConstants {

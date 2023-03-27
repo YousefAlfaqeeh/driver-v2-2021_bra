@@ -36,7 +36,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Static
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by muradtrac on 3/11/17.
+ * Created by   3/11/17.
  */
 
 public class ConfirmMessageDialog extends BaseDialog {
@@ -342,7 +342,7 @@ public class ConfirmMessageDialog extends BaseDialog {
 
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+                  
                 @Override
                 public void onClick(View v) {
 

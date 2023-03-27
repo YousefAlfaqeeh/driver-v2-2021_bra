@@ -19,7 +19,7 @@ import schooldriver.trackware.com.school_bus_driver_android.enums.TypeRoundEnum;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
- * Created by Ibrahem Al-Betar on 3/1/2017.
+ * Created   on 3/1/2017.
  */
 
 public class RoundAdapter extends RecyclerView.Adapter<RoundHolder> {
@@ -38,7 +38,7 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundHolder> {
         return new RoundHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+      
     @Override
     public void onBindViewHolder(RoundHolder holder, int position) {
 

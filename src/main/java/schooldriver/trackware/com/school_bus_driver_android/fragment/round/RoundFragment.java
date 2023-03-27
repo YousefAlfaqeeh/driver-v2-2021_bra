@@ -1,22 +1,21 @@
 package schooldriver.trackware.com.school_bus_driver_android.fragment.round;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.RequiresApi;
-import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,9 +48,6 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Static
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilDialogs;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
-/**
- * Created by Ibrahem Al-Betar on 2/28/2017.
- */
 
 public class RoundFragment extends BaseFragment implements GPSCallback {
 
@@ -69,7 +65,7 @@ public class RoundFragment extends BaseFragment implements GPSCallback {
     public RoundBean mustEndedRoundm = null;
 
     /**/
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -213,7 +209,7 @@ public class RoundFragment extends BaseFragment implements GPSCallback {
             dropFragment.doRefresh();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
     public void initPager() {
         /**/
         viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
@@ -285,12 +281,6 @@ public class RoundFragment extends BaseFragment implements GPSCallback {
         });
     }
 
-    @Override
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public void setListAdapter(List listBean) {
-
-    }
-
 
     @Override
     public void onGPSUpdate(Location location) {
@@ -299,37 +289,32 @@ public class RoundFragment extends BaseFragment implements GPSCallback {
     }
 
 
-
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void onResume() {
         super.onResume();
 
-        Log.v("shouldRefresh", ""+ Application.shouldRefresh);
+        Log.v("shouldRefresh", "" + Application.shouldRefresh);
 //        if (Application.shouldRefresh) {
-            try {
-                mPresenter = new RoundPresenter(mActivity, this);
-                initNotificationList();
+        try {
+            mPresenter = new RoundPresenter(mActivity, this);
+            initNotificationList();
 
-                linNotification.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        StaticValue.SUM_NOTIFICATION = 0;
-                        setFragment(NotificationsListsFragment.newInstance(), null, false);
+            linNotification.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    StaticValue.SUM_NOTIFICATION = 0;
+                    setFragment(NotificationsListsFragment.newInstance(), null, false);
 
-                    }
-                });
-                //        getMainActivity().clearBeaconScanner();
-//        getMainActivity().startAndSendDataToService(BeaconService.CLEAR_LIST);
-                refreshReciver();
-                getMainActivity().checkBluetoothState();
+                }
+            });
+
+            refreshReciver();
 
 //        viewPagerAdapter.notifyDataSetChanged();
-            } catch (Exception e) {
+        } catch (Exception e) {
 
-            }
-            Application.shouldRefresh = false;
+        }
+        Application.shouldRefresh = false;
 //        }
 
 
