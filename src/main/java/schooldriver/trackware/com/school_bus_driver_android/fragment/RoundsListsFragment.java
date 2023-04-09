@@ -597,7 +597,7 @@ public class RoundsListsFragment extends BaseFragment {
                         JSONObject joMobileStudent = jaMobileStudent.getJSONObject(f).getJSONObject("mother");
                         if (joMobileStudent.has("number")) {
                             mobileStudentBean.setMotherNumber(joMobileStudent.optString("number"));
-                            mobileStudentBean.setMotherToken(joMobileStudent.optString("mobile_token"));
+                            mobileStudentBean.setMotherToken(joMobileStudent.optString("firebas"));
                             mobileStudentBean.setMotherId(joMobileStudent.optInt("id", -1));
                             if (joMobileStudent.has("platform"))
                                 mobileStudentBean.setMotherPlatform(joMobileStudent.optString("platform"));

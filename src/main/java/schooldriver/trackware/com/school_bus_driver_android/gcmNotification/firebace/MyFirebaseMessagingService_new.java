@@ -52,28 +52,31 @@ public class MyFirebaseMessagingService_new extends FirebaseMessagingService {
     public static String SCHOOL_MESSAGE = "SCHOOL_MESSAGE";
 
 
-      
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
 
-        String message = null;
-        final Map<String, String> mapArray = remoteMessage.getData();
-        for (Map.Entry<String, String> entry : mapArray.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            System.err.println(key + "   " + value);
-            message = value;
+//        String message = null;
+//        final Map<String, String> mapArray = remoteMessage.getData();
+//        for (Map.Entry<String, String> entry : mapArray.entrySet()) {
+//            String key = entry.getKey();
+//            String value = entry.getValue();
+//            System.err.println(key + "   " + value);
+//            message = value;
 
+//        }
+        String message = "";
+        try {
+            message = remoteMessage.getData().get("json_data");
+        } catch (Exception e) {
+            message = "";
         }
-
-
         if (message == null) {
             return;
         }
 
 
-        if (message.contains("\"status\":\"absent\"")) {
+        if (message.contains("absent")) {
             try {
                 new UtilityDriver().logProject("onMessageReceived", "14.RECEIVED NOTI ::: " + message);
                 // TODO: 4/20/17  Test

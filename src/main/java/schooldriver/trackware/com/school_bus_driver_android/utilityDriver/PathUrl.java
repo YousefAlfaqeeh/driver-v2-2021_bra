@@ -1,8 +1,5 @@
 package schooldriver.trackware.com.school_bus_driver_android.utilityDriver;
 
-/**
- * Created by   3/20/17.
- */
 
 public class PathUrl {
 
@@ -15,8 +12,8 @@ public class PathUrl {
 //    public static String DEV_PROD = "prod";
     public static   String DEV_PROD = "dev";
 //    public static String URL = "https://boknyyx648.execute-api.eu-central-1.amazonaws.com/" + DEV_PROD;
-//    public static String URL = "http://apipy-stg.trackware.com/" ;//ddddddddddddddddddddddddd
-    public static String URL = "http://192.168.1.150:8000/" ;
+    public static String URL = "http://apipy-stg.trackware.com/" ;//ddddddddddddddddddddddddd
+//    public static String URL = "http://192.168.1.150:8000/" ;
 //    public static String URL = "http://192.168.1.19:8888"; // local url
     public static String MAIN_URL = URL;
 //    public static String XDEBUG_SESSION_START = "?XDEBUG_SESSION_START=SCHOOL_API";

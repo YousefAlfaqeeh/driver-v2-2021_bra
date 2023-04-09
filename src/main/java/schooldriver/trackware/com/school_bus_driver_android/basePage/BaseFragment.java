@@ -210,8 +210,9 @@ public class BaseFragment<T> extends Fragment implements  DriverConstants {
                         @Override
                         public void OnActionDone(UtilDialogs.MessageYesNoDialog Action) {
                             boolean deleteed = DAO.ImportantNotificationTable.delete(OpenHelper.getDatabase(getMainActivity()), notificationObj.getId());
-                            if (messageYesNoDialog != null)
-                            messageYesNoDialog.dismiss();
+                            if (messageYesNoDialog != null){
+                                messageYesNoDialog.dismiss();
+                            }
                             messageYesNoDialog = null;
                             checkMessagesFromNotification();
                         }

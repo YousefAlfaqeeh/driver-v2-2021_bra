@@ -60,29 +60,7 @@
     <!-- [END gcm_permission] -->
 
 
-    <!-- <compatible-screens> -->
 
-
-    <!-- <screen -->
-    <!-- android:screenDensity="xhdpi" -->
-    <!-- android:screenSize="large" /> -->
-    <!-- <screen -->
-    <!-- android:screenDensity="xxhdpi" -->
-    <!-- android:screenSize="large" /> -->
-    <!-- <screen -->
-    <!-- android:screenDensity="xxxhdpi" -->
-    <!-- android:screenSize="large" /> -->
-
-
-    <!-- <screen -->
-    <!-- android:screenDensity="xhdpi" -->
-    <!-- android:screenSize="xlarge" /> -->
-    <!-- <screen -->
-    <!-- android:screenDensity="xxhdpi" -->
-    <!-- android:screenSize="xlarge" /> -->
-    <!-- <screen -->
-    <!-- android:screenDensity="xxxhdpi" -->
-    <!-- android:screenSize="xlarge" /> -->
     <uses-feature
         android:name="android.hardware.telephony.cdma"
         android:required="false" />
@@ -251,27 +229,11 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <!-- </compatible-screens> -->
-
-
-    <!-- <supports-screens -->
-    <!-- android:anyDensity="true" -->
-    <!-- android:largeScreens="true" -->
-    <!-- android:normalScreens="false" -->
-    <!-- android:requiresSmallestWidthDp="600" -->
-    <!-- android:resizeable="true" -->
-    <!-- android:smallScreens="false" -->
-    <!-- android:xlargeScreens="true" /> -->
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
-    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
-    <meta-data
+     <meta-data
         android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version" />
 
-    <!--<android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
-    <!--<android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
-<!--    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />-->
+
     <application
         android:name=".app.Application"
         android:allowBackup="false"
@@ -303,80 +265,23 @@
             </intent-filter>
         </activity>
 
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
-        <!--<meta-data-->
-        <!--android:name="com.google.android.geo.API_KEY"-->
-        <!--android:value="@string/google_maps_key" />-->
-        <!--<meta-data-->
-        <!--android:name="com.getsentry.raven.android.DSN"-->
-        <!--android:value="https://4a5c513c9c754ab9921732a5087b7663:3bc05e02b9464a0e8a3f3e6bf35fe5e4@sentry.io/174447" />-->
 
         <activity
             android:name=".MapsActivity"
 
             android:label="@string/title_activity_maps" />
 
-        <!-- &lt;!&ndash; [START gcm_receiver] &ndash;&gt; -->
-        <!-- <receiver -->
-        <!-- android:name="com.google.android.gms.gcm.GcmReceiver" -->
-        <!-- android:exported="true" -->
-        <!-- android:permission="com.google.android.c2dm.permission.SEND"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
-        <!-- <category android:name="gcm.play.android.samples.com.gcmquickstart" /> -->
-        <!-- </intent-filter> -->
-        <!-- </receiver> -->
-        <!-- &lt;!&ndash; [END gcm_receiver] &ndash;&gt; -->
-
-
-        <!-- &lt;!&ndash; [START gcm_listener] &ndash;&gt; -->
-        <!-- <service -->
-        <!-- android:name=".gcmNotification.MyGcmListenerService" -->
-        <!-- android:exported="false"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
-        <!-- </intent-filter> -->
-        <!-- </service> -->
-        <!-- &lt;!&ndash; [END gcm_listener] &ndash;&gt; -->
-        <!-- &lt;!&ndash; [START instanceId_listener] &ndash;&gt; -->
-        <!-- <service -->
-        <!-- android:name=".gcmNotification.MyInstanceIDListenerService" -->
-        <!-- android:exported="false"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.google.android.gms.iid.InstanceID" /> -->
-        <!-- </intent-filter> -->
-        <!-- </service> -->
-        <!-- &lt;!&ndash; [END instanceId_listener] &ndash;&gt; -->
-        <!-- <service -->
-        <!-- android:name=".gcmNotification.RegistrationIntentService" -->
-        <!-- android:exported="false"></service> -->
-
-
-        <!-- [START fcm_default_icon] -->
-        <!--
-             Set custom default icon. This is used when no icon is set for incoming notification messages.
-             See README(https://goo.gl/l4GJaQ) for more.
-        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@mipmap/ic_launcher" />
-        <!--
-             Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more.
-        -->
+            android:resource="@drawable/change_home" />
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent" />
+            android:resource="@color/colorPrimary" />
         <!-- [END fcm_default_icon] -->
 
 
@@ -387,44 +292,18 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <!-- [END firebase_service] -->
-        <!-- [START firebase_iid_service] -->
-<!--        <service android:name=".gcmNotification.firebace.MyFirebaseInstanceIDService">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
-        <!-- [END firebase_iid_service] -->
 
-        <!--<service-->
-            <!--android:name="beacon.BeaconService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false" />-->
 
         <service
             android:name=".geofence.GeofenceTransitionIntentService"
             android:exported="false" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->
+
 
 
         <meta-data android:name="google_analytics_adid_collection_enabled"
             android:value="false" />
 
-        <!--<service-->
-            <!--android:name="org.altbeacon.beacon.service.BeaconService"-->
-            <!--android:enabled="true"-->
-            <!--android:isolatedProcess="false"-->
-            <!--android:label="beacon" />-->
-        <!--<service-->
-            <!--android:name="org.altbeacon.beacon.BeaconIntentProcessor"-->
-            <!--android:enabled="true" />-->
+
 
 
     </application>
