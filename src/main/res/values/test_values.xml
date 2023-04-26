@@ -5,7 +5,6 @@
     <string name="pin_"></string>
 
 
-
-    <integer name="prod_dev_button_VISIBLE">8</integer>    <!--not visible-->
+    <!--not visible-->
 
 </resources>

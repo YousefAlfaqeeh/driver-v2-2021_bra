@@ -1,80 +1,53 @@
 <resources  xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation" >
-    <!--fonts-->
-    <!--<string name="font" translatable="false">fonts/jf_flat_regular.ttf</string>-->
-    <!--<string name="font_medium" translatable="false">fonts/jf_flat_regular.ttf</string>-->
-    <!--<string name="font_light" translatable="false">fonts/jf_flat_regular.ttf</string>-->
-    <!--<string name="font_bold" translatable="false">fonts/jf_flat_regular.ttf</string>-->
-    <!--font-->
+
     <string name="app_name">Trackware - School Transport Driver</string>
     <string name="loading">Loading ... </string>
     <string name="action_settings">Settings</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_maps">Map</string>
     <string name="start">Start</string>
     <string name="end">End</string>
     <string name="no_show">No show</string>
-    <string name="show_round">Show\nRound</string>
     <string name="ended_round">Ended\nRound</string>
     <string name="resume_round">Resume</string>
     <string name="absence">Absent</string>
-    <string name="absence_by_parent">Absent By Parent</string>
     <string name="done">Done</string>
     <string name="check_in_done">Check In Done</string>
-    <string name="check_out_done">Check In Done</string>
     <string name="check_out_all">Check_out all</string>
     <string name="pick">Pick-up</string>
     <string name="drop">Drop-off</string>
     <string name="drop_off_done">Drop-off Done</string>
-    <string name="confirmation_message">Confirmation Message</string>
     <string name="you_sure">Are you sure you want to</string>
-    <string name="date_after_date">The from date after to date</string>
     <string name="failed">Failed</string>
-    <string name="enter_from_date">Please enter from date</string>
-    <string name="enter_to_date">Please enter to date</string>
     <string name="login">Login</string>
     <string name="bus_pin">Pin code</string>
-    <string name="pin">PIN</string>
     <string name="end_round">End Round</string>
     <string name="start_round">Start Round</string>
-    <string name="from">From</string>
     <string name="do_you_log_out">Do you want to log out ?</string>
     <string name="notification">Notifications</string>
-    <string name="to">To</string>
-    <string name="forget_password">Forget Password</string>
-    <string name="ar">عربي</string>
-    <string name="en">English</string>
     <string name="en_ar">عربي</string>
     <string name="logout">Logout</string>
     <string name="check_in">Check in</string>
     <string name="check_out">Check out</string>
-    <string name="map">Map</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
     <string name="send">Send</string>
     <string name="call_father">Father</string>
     <string name="call_mother">Mother</string>
-    <string name="please_end_check">Please end check</string>
-    <string name="please_enter_form">Please enter form date</string>
     <string name="retry">Retry</string>
     <string name="waiting">Waiting</string>
     <string name="please_enter_driver_code">Please enter driver code</string>
     <string name="please_fill_all_required_fields">Please fill the required field</string>
-    <string name="please_enter_pin">Please enter pin</string>
     <string name="error_api">Connection Error</string>
     <string name="error">Error</string>
     <string name="send_notification">Send Emergency Message</string>
     <string name="please_enter_message">Please enter message</string>
-    <string name="send_message">Send message</string>
     <string name="success">Success</string>
     <string name="please_charger">PLease charge</string>
-    <string name="message">Message</string>
 
     <string name="geofence_transition_entered">Entered</string>
     <string name="geofence_transition_exited">Exited</string>
     <string name="unknown_geofence_transition">Unknown Transition</string>
-    <string name="nearby_distance">The Bus is Near You</string>
     <string name="speed_limit">You have exceeded the speed limit </string>
     <string name="you_exceeded">You exceeded the</string>
     <string name="please_finish_round">You cannot exit the round while it is running until \n you check in or check out all students</string>
@@ -82,11 +55,8 @@
     <string name="alarm">Alarm</string>
     <string name="are_you_sure">Are you sure ?</string>
     <string name="internet_connection">No internet connection!</string>
-    <string name="satellite">Satellite</string>
     <string name="normal">Normal</string>
     <string name="cancel_round">Are you sure you will cancel the round?</string>
-    <string name="gps_network_not_enabled">gps network not enabled</string>
-    <string name="open_location_settings">OPen location</string>
     <string name="missing_internet_error">Please make sure you are connected to the internet</string>
     <string name="pelase_check_in_student">Please check in students</string>
     <string name="change_location">Change Home Location</string>
@@ -104,11 +74,9 @@
     <!--<string name="current_location">To change your current location, please hold the pin and drag it to the new desired location \n this location for:</string>-->
     <string name="the_map_shows_your_location">The map shows your location now, to change the location please hold the pin on the map and drag it to the new desired location then drop it</string>
     <string name="this_location_is_for">This location is for :</string>
-    <string name="other">Other</string>
     <string name="error_cancel">The tour is open and you are not entered to exit</string>
     <string name="no_value">No</string>
     <string name="yes_value">Yes</string>
-    <string name="changed_location_successfully">Location has been changed successfully for</string>
     <string name="changed_location_failed">Location has not been changed !</string>
 
     <string name="start_the_round">Do you want to start the round ?</string>
@@ -126,7 +94,6 @@
 
 
     <string name="pick_up_round_end_round_students_not_check_in">There are students still no actions have been taken toward them either check-in or absent. Please correct their situation before ending the round.</string>
-    <string name="pick_up_round_end_round_students_not_check_out">There are students still in the bus. Please make sure that all students are checked out the bus before ending the round.</string>
 
 
     <string name="drop_off_round_start_round_students_not_check_in"> There are students still no actions have been taken toward them either check-in or no show. Please correct their situation before starting the round.</string>
@@ -138,19 +105,15 @@
     <string name="conf_student_absent">Student absent reason</string>
     <string name="conf_student_no_show">Student no-show reason</string>
 
-    <string name="sure_absent">Are you sure that @@@@@@ is absent for today?</string>
-    <string name="sure_no_show">Are you sure that @@@@@@ is No show for today?</string>
     <string name="cancel_the_round">Round Cancellation Reason</string>
     <string name="change_location_message">Are you sure you want change of drop-off/pick-up location of @@@@@@ ?</string>
     <string name="alarm_send">This message will be sent for all parents of the students that still exist at this round</string>
     <string name="wrie_message">Write the message here ...</string>
     <string name="rounds">Rounds</string>
-    <string name="name_rounds">Rounds Name</string>
     <string name="students">Students</string>
     <string name="call">Call</string>
     <string name="change_locations">Change Home Location</string>
     <string name="change_language">Change language to:  </string>
-    <string name="ar_en">عربي</string>
     <string name="there_is_still_a_student_on_the_bus">This student still in the bus</string>
     <string name="pin_code_error">Pin Code Error !</string>
 
@@ -164,8 +127,7 @@
     <string name="completely_stop_round">Permanently</string>
     <string name="temporary_stop_round">Temporarily</string>
 
-    <!--<string name="completely_stop_round">Completely stop this round</string>-->
-    <!--<string name="temporary_stop_round">Temporary stop this round</string>-->
+
 
 
     <string name="there_is_must_ended_round">You Must "finish" or "complete" the previous round (@@@@) before starting a new round, choose the reason for ending the round if you want to completely finish it</string>
@@ -174,18 +136,12 @@
     <string name="resume_round_confirmation_yes">Resume this round</string>
     <string name="resume_round_confirmation_no">End this round completely</string>
 
-    <!--<string name="resume_round_confirmation_yes_">Resume</string>-->
-    <!--<string name="resume_round_confirmation_no_">End Completely</string>-->
+
 
     <string name="do_you_want_to_contact_with">Do you want to contact with</string>
 
     <string name="end_the_round_additional">End the round :</string>
 
-
-    <string name="driver_msg_en_b">student</string>
-
-    <!--<string name="driver_msg_en">Message From Bus</string>-->
-    <!--<string name="driver_msg_ar">رسالة من الحافلة</string>-->
 
     <string name="driver_msg_en">Message from bus no. </string>
     <string name="driver_msg_ar">رسالة من الحافلة رقم </string>
@@ -194,19 +150,12 @@
     <string name="driver_notification_en">Bus Notification</string>
     <string name="driver_notification_ar">اشعار من الحافلة</string>
 
-    <string name="bus_number_en">Bus number: </string>
-    <string name="student_name_en">Student name: </string>
-    <string name="bus_number_ar">رقم الحافلة: </string>
-    <string name="student_name_ar">اسم الطالب: </string>
-
-    <string name="you_should_turn_on_the_bluetooth">You should turn on the Bluetooth service in order to read the bus cards</string>
-    <string name="you_should_turn_on_the_bluetooth_button">Turn on the Bluetooth</string>
-
     <string name="update_available">You must update this application</string>
     <string name="update_now">Update now</string>
-    <string name="maybe_later">Later</string>
 
-    <string name="is_absent_today">Is absent today</string>
+
+    <string name="is_absent_today">Your child %1$s has not checked into the bus and is absent today</string>
+
 
     <string name="today">Today</string>
     <string name="at_time"> at </string>
@@ -216,7 +165,6 @@
 
 
     <string name="location_manager">To be able to continue use, you must turn on the GPS feature</string>
-    <string name="would_you_like_to_enable_gps">Would you like to enable GPS?</string>
     <string name="turn_on_gps">Turn On GPS</string>
 
 

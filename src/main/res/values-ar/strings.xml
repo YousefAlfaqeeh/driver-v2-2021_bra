@@ -1,19 +1,11 @@
 <resources>
-    <!--font-->
-    <!--<string name="font" translatable="false">fonts/ge_ss_two_arabic_medium.otf</string>-->
-    <!--<string name="font_medium" translatable="false">fonts/ge_ss_two_arabic_medium.otf</string>-->
-    <!--<string name="font_light" translatable="false">fonts/ge_ss_two_arabic_light.otf</string>-->
-    <!--<string name="font_bold" translatable="false">fonts/ge_ss_two_arabic_bold.otf</string>-->
-    <!--font-->
+
     <string name="app_name">Trackware - School Transport Driver</string>
     <string name="action_settings">الضبط</string>
     <string name="loading">الرجاء الانتظار ...</string>
-    <string name="navigation_drawer_open">فتح القائمة</string>
-    <string name="navigation_drawer_close">إغلاق القائمة</string>
     <string name="title_activity_maps">خريطة</string>
     <string name="start">إبدأ</string>
     <string name="no_show">لم اشاهده</string>
-    <string name="show_round">عرض\nالجولة</string>
     <string name="ended_round">جولة\nمنتهية</string>
     <string name="resume_round">إستكمال</string>
     <string name="absence">غائب</string>
@@ -21,29 +13,18 @@
     <string name="check_out_all">تحقق من جميع</string>
     <string name="pick">صباحية</string>
     <string name="drop">مسائية</string>
-    <string name="confirmation_message">رسالة تأكيد</string>
     <string name="check_in_done">تم الدخول</string>
-    <string name="check_out_done">تم الخروج</string>
     <string name="drop_off_done">تم الإنزال</string>
     <string name="drop_off_">إنزال</string>
     <string name="undo_absent">ليس غائباً</string>
 
     <string name="do_you_log_out">هل تريد تسجيل الخروج ؟</string>
     <string name="you_sure">هل أنت متأكد أنك تريد</string>
-    <string name="date_after_date">ومن تاريخ بعد حتى الآن</string>
     <string name="failed">فشل</string>
-    <string name="enter_from_date">يرجى الدخول من تاريخ</string>
-    <string name="enter_to_date">يرجى الدخول الى تاريخ</string>
     <string name="login">دخول</string>
     <string name="bus_pin">رمز الدخول</string>
-    <string name="pin">رمز</string>
     <string name="end_round">إنهاء الجولة</string>
-    <string name="from">من</string>
     <string name="notification">الإشعارات</string>
-    <string name="to">إلى</string>
-    <string name="forget_password">هل نسيت كلمة المرور</string>
-    <string name="ar">عربي</string>
-    <string name="en">English</string>
     <string name="en_ar">English</string>
 
     <string name="grade">الشعبة</string>
@@ -52,20 +33,14 @@
     <string name="logout">خروج</string>
     <string name="check_in">تحميل</string>
     <string name="check_out">إنزال</string>
-    <string name="map">خرائط</string>
     <string name="start_round">بداية الرحلة</string>
     <string name="call_father">  اﻷب</string>
     <string name="call_mother">  اﻷم</string>
-    <string name="please_end_check">يرجى إنهاء الاختيار</string>
-    <string name="please_enter_form">الرجاء إدخال تاريخ البداية</string>
     <string name="please_enter_driver_code">الرجاء إدخال رمز السائق</string>
-    <string name="please_enter_pin">الرجاء إدخال الرقم السري</string>
     <string name="error_api">خطأ في الاتصال</string>
     <string name="error">خطأ</string>
     <string name="please_enter_message">الرجاء إدخال المسج</string>
-    <string name="send_message">إرسال رسالة</string>
     <string name="please_charger">الرجاء شحن هاتفك</string>
-    <string name="nearby_distance">الباص قريب منك</string>
     <string name="please_finish_round">لايمكنك إنهاء الجولة حتى تقوم بانزال أو تحميل جميع الطلاب</string>
     <string name="cancel">الغاء</string>
     <string name="ok">تم</string>
@@ -74,7 +49,6 @@
     <string name="waiting">انتظر</string>
     <string name="send_notification">إرسال رسالة طارئة</string>
     <string name="success">نجح</string>
-    <string name="message">أُكتب الرسالة</string>
     <string name="geofence_transition_entered">دخول</string>
     <string name="geofence_transition_exited">خروج</string>
     <string name="unknown_geofence_transition">Unknown Transition</string>
@@ -85,11 +59,8 @@
     <string name="alarm">تنبيه</string>
     <string name="are_you_sure">هل أنت متأكد ؟</string>
     <string name="internet_connection">الرجاء التأكد من الإتصال بالإنترنت</string>
-    <string name="satellite">أقمار صناعية</string>
     <string name="normal">عادي</string>
     <string name="cancel_round">هل أنت متأكد من إلغاء الجولة ؟</string>
-    <string name="gps_network_not_enabled">gps network not enabled</string>
-    <string name="open_location_settings">OPen location</string>
 
     <string name="missing_internet_error">يرجى التأكد من اتصالك بالإنترنت</string>
     <string name="pelase_check_in_student">Please check in students</string>
@@ -97,7 +68,6 @@
     <!--<string name="current_location">بواسطة عملية السحب و الإسقاط قم بتحريك إشارة الموقع على الخرطة لتحديد مكان الصعود و النزول لأولادك \nهذا الموقع ل:</string>-->
     <string name="the_map_shows_your_location">الخريطة تظهر موقعك الاّن، لتغيير الموقع قم بالضغط على اشارة الموقع ومن ثم سحبها واسقاطها في الموقع المراد على الخريطة لتحديد مكان الصعود والنزول</string>
     <string name="this_location_is_for">هذا الموقع ل :</string>
-    <string name="other">أخرى</string>
     <string name="error_cancel">الجولة مفتوحة لا يحق لك الخروج</string>
 
     <string name="change_location">تغيير موقع المنزل</string>
@@ -107,7 +77,6 @@
     <string name="no_value">لا</string>
     <string name="yes_value">نعم</string>
 
-    <string name="changed_location_successfully"> تم تغير الموقع بنجاح ل</string>
     <string name="changed_location_failed">لم يتم تغيير الموقع   </string>
 
 
@@ -129,8 +98,6 @@
     <string name="conf_student_absent">سبب غياب الطالب</string>
     <string name="conf_student_no_show">سبب عدم ظهور الطالب</string>
 
-    <string name="sure_absent">هل أنت متأكد أن @@@@@@ غائب اليوم؟</string>
-    <string name="sure_no_show">هل أنت متأكد أن @@@@@@ لم يركب الحافلة؟</string>
     <string name="cancel_the_round">سبب إلغاء الجولة</string>
 
 
@@ -138,17 +105,14 @@
     <string name="alarm_send">سيتم إرسال هذه الرسالة إلى جميع أولياء أمور الطلبة الموجودين حاليا في هذه الجولة</string>
     <string name="wrie_message">كتابة الرسالة هنا ...</string>
     <string name="rounds">الجولات</string>
-    <string name="name_rounds">أسماء الجولات</string>
     <string name="students">طلاب</string>
     <string name="call">إتصل</string>
     <string name="change_locations">تغيير الموقع</string>
     <string name="change_language">تغيير اللغة إلى:  </string>
-    <string name="ar_en">English</string>
     <string name="please_fill_all_required_fields">رجاءً قم بتعبئة الحقول المطلوبة</string>
 
 
     <string name="pick_up_round_end_round_students_not_check_in">بعض الطلاب لم يتم تحديد وضعهم إما الصعود للحافلة أو الغياب. الرجاء تصحيح أوضاعهم قبل إنهاء الجولة</string>
-    <string name="pick_up_round_end_round_students_not_check_out">بعض الطلاب ما زالوا في الحافلة. الرجاء التأكد من أن جميع الطلاب قد غادروا الحافلة قبل إنهاء الجولة</string>
 
     <string name="drop_off_round_start_round_students_not_check_in">بعض الطلاب لم يتم تحديد وضعهم إما الصعود للحافلة أو الغياب. الرجاء تصحيح أوضاعهم قبل بدء الجولة</string>
     <string name="drop_off_round_end_round_students_not_check_out">بعض الطلاب ما زالوا في الحافلة. الرجاء التأكد من أن جميع الطلاب قد غادروا الحافلة قبل إنهاء الجولة</string>
@@ -170,26 +134,18 @@
     <string name="resume_round_confirmation">هل تريد:</string>
 
     <string name="resume_round_confirmation_yes">إستكمال الجولة</string>
-    <!--<string name="resume_round_confirmation_yes_">إستكمال</string>-->
 
     <string name="resume_round_confirmation_no">إيقاف بشكل نهائي</string>
-    <!--<string name="resume_round_confirmation_no_">إيقاف نهائي</string>-->
 
     <string name="do_you_want_to_contact_with">هل تريد الاتصال ب</string>
 
     <string name="end_the_round_additional">إنهاء الجولة:</string>
 
 
-
-
-    <string name="you_should_turn_on_the_bluetooth">يجب تشغيل خدمة البلوتوث من أجل قراءة بطاقات الحافلة</string>
-    <string name="you_should_turn_on_the_bluetooth_button">تشغيل البلوتوث</string>
-
     <string name="update_available">يتوجب عليك القيام بتحديث هذا التطبيق</string>
     <string name="update_now">تحديث الان</string>
-    <string name="maybe_later">لاحقاً</string>
 
-    <string name="is_absent_today">غائب اليوم</string>
+
     <string name="today">اليوم</string>
     <string name="at_time"> الساعة </string>
 
@@ -197,8 +153,7 @@
 
 
     <string name="location_manager">لتتمكن من متابعة الاستخدام يجب عليك تشغيل خاصية GPS </string>
-    <string name="would_you_like_to_enable_gps">هل تريد تشغيل خدمة ال GPS ؟</string>
     <string name="turn_on_gps">تشغيل خدمة ال GPS</string>
-
+    <string name="is_absent_today">%1$s غائب اليوم</string>
 
 </resources>

@@ -2,6 +2,7 @@ package schooldriver.trackware.com.school_bus_driver_android.fragment.roundInfo;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.icu.text.FormattedValue;
 import android.location.Location;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -1379,10 +1380,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
         try {
             for (int i = 0; i < roundBean.getListStudentBean().size(); i++) {
                 if (roundBean.getListStudentBean().get(i).isAbsent()) {
-                    StringBuilder title = new StringBuilder();
-                    title.append(roundBean.getListStudentBean().get(i).getNameStudent());
-                    title.append(" ");
-                    title.append(getString(R.string.is_absent_today));
+                   String title = String.format(getString(R.string.is_absent_today), roundBean.getListStudentBean().get(i).getNameStudent());
                     if (getMainActivity() != null) {
                         new UtilDialogs.MessageYesNoDialog().show(getMainActivity())
                                 .setYesButtonText(R.string.ok)

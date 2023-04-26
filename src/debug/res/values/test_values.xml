@@ -6,6 +6,6 @@
     <string name="pin_"></string>
 
     <!--<string name="pin_">NTR199</string>-->
- <integer name="prod_dev_button_VISIBLE">1</integer>    <!--0 is visible-->
+    <!--0 is visible-->
 
 </resources>

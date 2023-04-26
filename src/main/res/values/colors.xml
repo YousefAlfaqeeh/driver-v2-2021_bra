@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#fbb613</color>
-    <color name="colorPrimary_trans">#40fbb613</color>
 
-    <color name="colorPrimary_80">#80fbb613</color>
-    <color name="colorPrimary_70">#70fbb613</color>
-    <color name="colorPrimary_50">#50fbb613</color>
-    <color name="colorPrimary_30">#30fbb613</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">@color/color_blue_light</color>
     <color name="color_student_name">#303030</color>
@@ -27,8 +22,6 @@
     <color name="studentslist.normal_bg">#FFFFFF</color>
 
 
-    <color name="color_nav">#efeae1</color>
-    <color name="color_enable">#cac2b3</color>
     <color name="color_black">#000000</color>
     <color name="color_black_50">#50000000</color>
     <color name="color_black_80">#80000000</color>
@@ -36,30 +29,16 @@
     <color name="color_blue_light">#51d8b8</color>
     <color name="color_silver">#d4c9b2</color>
     <color name="color_red">#cf3438</color>
-    <color name="color_red_trans">#30cf3438</color>
     <color name="color_edit_text">#de9612</color>
     <color name="color_line_forget_password">#948e90</color>
-    <color name="color_notification_header">#51d7d8</color>
     <color name="color_img_logout">#d5c8b4</color>
     <color name="color_green">#1bb15a</color>
-    <color name="color_green_trans">#301bb15a</color>
-    <color name="color_green_light">#50d9b7</color>
     <color name="color_blue">#4885ef</color>
-    <color name="color_blue_trans">#304885ef</color>
     <color name="color_edit_text_new">#f2f2f2</color>
     <color name="color_edit_text_new_dark">#D4D4D4</color>
     <color name="color_header">#253a4b</color>
 
-    <color name="color_green_dark">#265c3c</color>
-    <color name="color_red_dark">#601e1f</color>
-    <color name="color_blue_dark">#1f3e73</color>
-
-    <color name="tabs_footer">#AA000000</color>
-
-    <color name="edittext_color">#000000</color>
-    <color name="edittext_hint_color">#C1C3C9</color>
     <color name="transparent">#00000000</color>
     <color name="toolbar_bg_color">#253A4B</color>
 
-    <color name="tool_tip_bg">#E1E1E1</color>
 </resources>
