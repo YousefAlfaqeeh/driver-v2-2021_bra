@@ -53,7 +53,6 @@ public class RoundFragment extends BaseFragment implements GPSCallback {
 
 
     private static TextView labNotification;
-    private RecyclerView rsRounds;
     MainActivity mActivity;
     private View imgLogout, linNotification, loading_view;
     private RoundPresenter mPresenter;
@@ -88,7 +87,6 @@ public class RoundFragment extends BaseFragment implements GPSCallback {
         imgLogout = view.findViewById(R.id.imgLogout);
 
 
-        rsRounds = (RecyclerView) view.findViewById(R.id.rsRound);
         actionListenerPage();
         if (StaticValue.typeRoundEnum == null)
             StaticValue.typeRoundEnum = TypeRoundEnum.PICK_ROUND;

@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: "org.jetbrains.kotlin.android.extensions"
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.firebase-crash'
 
@@ -25,9 +23,9 @@ android.applicationVariants.all { variant ->
         version_name = "dev"
     }
 
-    variant.outputs.all { //parent3_dev_0.0.1
-        outputFileName = "driver3_${version_name}_0.0.X.apk"
-    }
+//    variant.outputs.all { //parent3_dev_0.0.1
+//        outputFileName = "driver3_${version_name}_0.0.X.apk"
+//    }
 }
 
 android {
@@ -152,10 +150,10 @@ dependencies {
     /////////////////
     //glide
     ////////////////
-    implementation "androidx.activity:activity:1.6.1"
-    implementation 'androidx.fragment:fragment:1.5.5'
-    implementation "androidx.activity:activity-ktx:1.6.1"
-    implementation "androidx.fragment:fragment-ktx:1.5.5"
+    implementation "androidx.activity:activity:1.7.1"
+    implementation 'androidx.fragment:fragment:1.5.7'
+    implementation "androidx.activity:activity-ktx:1.7.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.7"
     ////////////
     def glide_v = '4.11.0'
     implementation "com.github.bumptech.glide:glide:$glide_v"
@@ -189,7 +187,7 @@ dependencies {
     implementation "androidx.annotation:annotation:1.6.0"
     implementation "androidx.preference:preference-ktx:1.2.0"
     /////////////
-    def lifecycle_v = "2.6.0"
+    def lifecycle_v = "2.6.1"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_v"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_v"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_v"
@@ -204,9 +202,10 @@ dependencies {
             resources {
                 excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/license.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt', 'META-INF/ASL2.0', 'META-INF/*.kotlin_module', 'META-INF/*', 'META-INF/proguard/androidx-annotations.pro', 'META-INF/rxjava.properties']
             }
-        }//    buildFeatures {
-//        viewBinding true
-//    }
+        }//
+         buildFeatures {
+        viewBinding true
+    }
         dataBinding {
             enabled = true
         }
