@@ -2,6 +2,7 @@ package schooldriver.trackware.com.school_bus_driver_android.fragment.roundInfo;
 
 import androidx.core.content.ContextCompat;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -23,6 +24,7 @@ public class RoundInfoHolderDropOff extends DraggableHolder {
     public View drop_off_view;
     public View check_in_view;
     public View no_show_view;
+    public ProgressBar undo_progressBar;
     public View call_and_changelocation_view_container;
     /**/
 //    public View imgCall;

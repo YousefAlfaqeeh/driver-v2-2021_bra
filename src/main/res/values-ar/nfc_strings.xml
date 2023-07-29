@@ -1,0 +1,18 @@
+<resources>
+<!--    <string name="opcao_ler">قراءة علامة NFC</string>-->
+<!--    <string name="opcao_escrever">الكتابة إلى علامة NFC</string>-->
+<!--    <string name="opcao_limpar">مسح علامة NFC</string>-->
+<!--    <string name="titulo_ler">للقراءة ، اجعل الجهاز قريبًا من علامة NFC</string>-->
+<!--    <string name="titulo_escrever">للكتابة ، أدخل المحتوى في الحقل أدناه واجعل الجهاز قريبًا من علامة NFC</string>-->
+<!--    <string name="titulo_limpar">للمسح ، قرب الجهاز من علامة NFC</string>-->
+<!--    <string name="titulo_resultado">النتيجة: </ string>-->
+<!--    <string name="texto_conteudo">وسم المحتوى </ string>-->
+<!--    <string name="sem_conteudo">لم يتم العثور على محتوى في علامة NFC!</string>-->
+<!--    <string name="erro_ler">خطأ في قراءة علامة NFC!</string>-->
+<!--    <string name="sucesso_escrever">تمت كتابة المحتوى بنجاح إلى علامة NFC!</string>-->
+<!--    <string name="erro_escrever">خطأ في كتابة المحتوى إلى علامة NFC!</string>-->
+<!--    <string name="erro_digitar">يجب إدخال المحتوى! </ string>-->
+<!--    <string name="sucesso_limpar">تم مسح محتوى علامة NFC بنجاح! </ string>-->
+<!--    <string name="erro_limpar">خطأ في مسح محتوى علامة NFC!</string>-->
+<!--    <string name="sem_suporte">الجهاز لا يدعم تقنية NFC!</string>-->
+</resources>

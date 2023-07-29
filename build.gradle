@@ -32,7 +32,7 @@ android {
     compileSdkVersion 33
     defaultConfig {
         applicationId "trackware.schoolbustracker.driver"
-        minSdkVersion 24
+        minSdkVersion 25
         versionCode 143
         versionName "143"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -90,6 +90,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    def core_version = "1.10.1"
+    // Java language implementation
+    implementation "androidx.core:core:$core_version"
+    // Kotlin
+    implementation "androidx.core:core-ktx:$core_version"
 
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -248,7 +253,8 @@ dependencies {
     }
 //
     apply plugin: 'com.google.gms.google-services'
-    repositories {
+apply plugin: 'org.jetbrains.kotlin.android'
+repositories {
         mavenCentral()
     }
 

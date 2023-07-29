@@ -1,0 +1,332 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "trackware.schoolbustracker.driver",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-x86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-xhdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-xhdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-xhdpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-xhdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-hdpiArmeabi-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-hdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-hdpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-mdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-hdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-mdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-mdpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-mdpiArmeabi-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-mdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-arm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-armeabi-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-xhdpiArmeabi-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-hdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-armeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 143,
+      "versionName": "143",
+      "outputFile": "app-x86-debug.apk"
+    }
+  ],
+  "elementType": "File"
+}

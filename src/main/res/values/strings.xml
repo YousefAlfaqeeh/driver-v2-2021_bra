@@ -65,7 +65,7 @@
     <string name="drop_off">Drop off</string>
     <string name="drop_off_">Check-out</string>
     <string name="undo_absent">Not Absent</string>
-
+    <string name="undo_check_in">Not Check In</string>
     <string name="grade">Grade</string>
 
 

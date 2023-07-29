@@ -470,7 +470,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                     @Override
                     public void onClick(View v) {
 
-                        showConfirmCheckInDialog(item, position);
+                        showConfirmCheckInDialog(item, position,viewHolder);
                     }
                 });
                 viewHolder.undo_absent.setOnClickListener(new View.OnClickListener() {
@@ -480,13 +480,18 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 //                            viewHolder.cancelAbsentProgress();
 //                            viewHolder.initNoChange();
 //                        } else {
-                        showConfirmCheckInDialog(item, position);
+                        showConfirmCheckInDialog(item, position,viewHolder);
 //                        }
 
 
                     }
                 });
-
+                viewHolder.undo_check_in.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        viewHolder.cancelTimer();
+                    }
+                });
 
                 viewHolder.absent_view.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -609,7 +614,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
     UtilDialogs.MessageYesNoDialog confirmCheckInDialog;
 
-    private UtilDialogs.MessageYesNoDialog showConfirmCheckInDialog(final StudentBean item, final int position) {
+    private UtilDialogs.MessageYesNoDialog showConfirmCheckInDialog(final StudentBean item, final int position,RoundInfoHolderPickUp roundInfoHolderPickUp) {
         if (confirmCheckInDialog != null)
             confirmCheckInDialog.dismiss();
         confirmCheckInDialog = new UtilDialogs.MessageYesNoDialog().show(getActivity()).
@@ -619,13 +624,23 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                 .setYesButtonClickListener(new OnActionDoneListener<UtilDialogs.MessageYesNoDialog>() {
                     @Override
                     public void OnActionDone(UtilDialogs.MessageYesNoDialog dialog) {
-
-                        checkChangeRoot(item);//order
-                        doCheckIn_OnList(item, position, true);
-                        doCheckIn_OnAPI(item);
-                        refreshList();
-                        if (dialog != null)
+                        ///////////////
+                        if (dialog != null){
                             dialog.dismiss();
+                        }
+
+                        roundInfoHolderPickUp.addTimer(new OnActionDoneListener<StudentBean>() {
+                            @Override
+                            public void OnActionDone(StudentBean Action) {
+                                checkChangeRoot(item);//order
+                                doCheckIn_OnList(item, position, true);
+                                doCheckIn_OnAPI(item);
+                                refreshList();
+
+                            }
+                        }, item);
+
+
                     }
                 }).setImageWithColor(R.drawable.img_check_in, R.color.color_green);
         return confirmCheckInDialog;

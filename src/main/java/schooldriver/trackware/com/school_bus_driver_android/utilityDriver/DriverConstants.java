@@ -17,4 +17,7 @@ public interface DriverConstants {
     String ABSENT_ALLDAY = "absent-all";     // by parent // new
     String EMERGENCY = "emergency";
 
+
+     int check_undo_timer = 10;
+
 }

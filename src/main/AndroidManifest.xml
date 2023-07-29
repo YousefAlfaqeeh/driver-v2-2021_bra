@@ -29,6 +29,9 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc" />
+
 <!--\    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />-->
 
 
@@ -149,9 +152,7 @@
     <uses-feature
         android:name="android.hardware.consumerir"
         android:required="false" />
-    <uses-feature
-        android:name="android.hardware.nfc"
-        android:required="false" />
+
     <uses-feature
         android:name="android.hardware.opengles.aep"
         android:required="false" />

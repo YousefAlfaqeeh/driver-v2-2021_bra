@@ -2,13 +2,20 @@ package schooldriver.trackware.com.school_bus_driver_android.fragment.roundInfo;
 
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.widget.AppCompatImageView;
+
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import schooldriver.trackware.com.school_bus_driver_android.R;
 import schooldriver.trackware.com.school_bus_driver_android.adapters.DraggableHolder;
+import schooldriver.trackware.com.school_bus_driver_android.bean.StudentBean;
+import schooldriver.trackware.com.school_bus_driver_android.interfaceDriver.OnActionDoneListener;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DrawableToolsV2;
+import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DriverConstants;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilViews;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
@@ -18,10 +25,11 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Utilit
 
 public class RoundInfoHolderPickUp extends DraggableHolder {
 
-
+    public CountDownTimer countDownTimer;
     public CircleImageView imgStudent;
     public TextView labStudentName, labGrade;
-    public View student_error_img, check_in_view, absent_view, check_in_done_view, absence_done_view, checkin_image, checkin_text, absent_image, still_in_bus_view, acbsent_text, drop_off_view, drop_off_done_view, call_and_changelocation_view_container, undo_absent, absence_by_parent_done_view;
+    public ProgressBar undo_progressBar;
+    public View student_error_img, check_in_view, absent_view, check_in_done_view, absence_done_view, checkin_image, checkin_text, absent_image, still_in_bus_view, acbsent_text, drop_off_view, drop_off_done_view, call_and_changelocation_view_container, undo_check_in, undo_absent, absence_by_parent_done_view;
     //    public SwipeRevealLayout swipeRevealLayout;
     public AppCompatImageView swap_image_view;
 //    SwipeLayout swipeLayout;
@@ -34,6 +42,13 @@ public class RoundInfoHolderPickUp extends DraggableHolder {
         imgStudent = (CircleImageView) itemView.findViewById(R.id.imgStudent);
         /**/
         labStudentName = (TextView) itemView.findViewById(R.id.labStudentName);
+        undo_progressBar = itemView.findViewById(R.id.undo_progressBar);
+//        //test
+//        undo_progressBar.setVisibility(View.VISIBLE);
+//
+//
+//
+//        /////  //test done
         labGrade = (TextView) itemView.findViewById(R.id.labGrade);
         /**/
         call_and_changelocation_view_container = itemView.findViewById(R.id.call_and_changelocation_view_container);
@@ -57,6 +72,7 @@ public class RoundInfoHolderPickUp extends DraggableHolder {
         student_error_img = itemView.findViewById(R.id.student_error_img);
 //        send_arrive_alarm = itemView.findViewById(R.id.send_arrive_alarm);
         undo_absent = itemView.findViewById(R.id.undo_absent);
+        undo_check_in = itemView.findViewById(R.id.undo_check_in);
         absence_by_parent_done_view = itemView.findViewById(R.id.absence_by_parent_done_view);
         checkin_and_absent_includeview = itemView.findViewById(R.id.checkin_and_absent_includeview);
         /**/
@@ -196,6 +212,57 @@ public class RoundInfoHolderPickUp extends DraggableHolder {
         return this;
     }
 
+    public RoundInfoHolderPickUp cancelTimer() {
+        return addTimer(null, null);
+    }
+
+    public RoundInfoHolderPickUp addTimer(OnActionDoneListener<StudentBean> onActionDoneListener, final StudentBean studentBean) {
+
+        if (onActionDoneListener == null || studentBean == null) {
+            if (countDownTimer != null) {
+                countDownTimer.cancel();
+                countDownTimer = null;
+
+                undo_progressBar.setVisibility(View.INVISIBLE);
+                undo_check_in.setVisibility(View.GONE);
+                check_in_done_view.setVisibility(View.GONE);
+
+                absence_done_view.setVisibility(View.GONE);
+                check_in_view.setVisibility(View.VISIBLE);
+                absent_view.setVisibility(View.VISIBLE);
+                undo_absent.setVisibility(View.GONE);
+            }
+        }
+
+        else if (countDownTimer == null) {
+            undo_progressBar.setVisibility(View.VISIBLE);
+            undo_check_in.setVisibility(View.VISIBLE);
+            check_in_done_view.setVisibility(View.VISIBLE);
+
+            absence_done_view.setVisibility(View.GONE);
+            check_in_view.setVisibility(View.GONE);
+            absent_view.setVisibility(View.GONE);
+            undo_absent.setVisibility(View.GONE);
+            countDownTimer = new CountDownTimer(DriverConstants.check_undo_timer * 1000, 1000) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    undo_progressBar.setProgress((int) millisUntilFinished / 100);
+
+                }
+
+                @Override
+                public void onFinish() {
+                    undo_progressBar.setVisibility(View.INVISIBLE);
+                    onActionDoneListener.OnActionDone(studentBean);
+                    countDownTimer = null;
+                }
+            };
+            countDownTimer.start();
+        }
+        return this;
+    }
+
     public RoundInfoHolderPickUp studentStillInBus() {
         studentErrorBackground();
         studentError();
@@ -212,6 +279,7 @@ public class RoundInfoHolderPickUp extends DraggableHolder {
         check_in_done_view.setEnabled(enabled);
         absence_done_view.setEnabled(enabled);
         undo_absent.setEnabled(enabled);
+        undo_check_in.setEnabled(enabled);
         absence_by_parent_done_view.setEnabled(enabled);
         /**/
         checkin_image.setEnabled(enabled);
@@ -227,9 +295,10 @@ public class RoundInfoHolderPickUp extends DraggableHolder {
 
     public RoundInfoHolderPickUp setRoundEnded(boolean roundEnded) {
         hideAllActions();
-        if (roundEnded)
+        if (roundEnded) {
             undo_absent.setVisibility(View.GONE);
-
+            undo_check_in.setVisibility(View.GONE);
+        }
         call_and_changelocation_view_container.setVisibility(roundEnded ? View.GONE : View.VISIBLE);
         if (!roundEnded) {
             initNoChange();
@@ -258,7 +327,7 @@ public class RoundInfoHolderPickUp extends DraggableHolder {
 
 
     private RoundInfoHolderPickUp hideAllActions() {
-        UtilityDriver.goneAllViews(check_in_view, absent_view, check_in_done_view, absence_done_view, undo_absent);
+        UtilityDriver.goneAllViews(check_in_view, absent_view, check_in_done_view, absence_done_view, undo_absent, undo_check_in);
 //        absent_MaterialProgressBar.setVisibility(View.INVISIBLE);
         return this;
     }

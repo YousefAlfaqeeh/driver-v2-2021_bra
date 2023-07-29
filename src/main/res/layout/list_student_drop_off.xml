@@ -3,231 +3,169 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRevealLayout"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="140dp">
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
 
 
-<!--    <FrameLayout-->
-<!--        android:id="@+id/bottom_wrapper"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent">-->
 
-<!--        <include-->
-<!--            layout="@layout/drop_off_swip_layout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="140dp" />-->
-<!--    </FrameLayout>-->
+    <RelativeLayout
+        android:id="@+id/real_item_view"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@color/studentslist.normal_bg">
 
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/real_item_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@color/studentslist.normal_bg"-->
-<!--        android:clickable="true"-->
-<!--        android:focusableInTouchMode="true">-->
-
-
-        <RelativeLayout
-            android:background="@color/studentslist.normal_bg"
-            android:id="@+id/real_item_view"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:padding="0dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgStudent"
+                    android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:orientation="horizontal"
-                    android:padding="0dp">
+                    android:padding="0dp"
+                    android:scaleX="@integer/scale_x"
+                    android:src="@drawable/img_user"
+                    app:civ_border_width="1dp" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/imgStudent"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:padding="0dp"
-                        android:scaleX="@integer/scale_x"
-                        android:src="@drawable/img_user"
-                        app:civ_border_width="1dp" />
+                <View
+                    android:layout_width="16dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp" />
 
-                    <View
-                        android:layout_width="16dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="0dp"
-                        android:layout_marginTop="0dp" />
-
-                    <!--<LinearLayout-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:orientation="vertical"-->
-                    <!--android:weightSum="5">-->
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:orientation="vertical"
-                        android:weightSum="2">
-
-                        <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="0dp"-->
-                        <!--android:layout_gravity="start|center_vertical"-->
-                        <!--android:layout_weight="2"-->
-                        <!--android:gravity="start|center_vertical"-->
-                        <!--android:orientation="horizontal">-->
-
-
-                        <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_gravity="start|center_vertical"-->
-                        <!--android:layout_weight="3"-->
-                        <!--android:gravity="start|center_vertical"-->
-                        <!--android:orientation="vertical"-->
-                        <!--android:weightSum="2">-->
-
-
-                        <TextView
-                            android:id="@+id/labStudentName"
-                            style="@style/BoldTextView"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_gravity="start|center_vertical"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:gravity="start|center_vertical"
-                            android:paddingLeft="0dp"
-                            android:paddingRight="0dp"
-                            android:scaleX="@integer/scale_x"
-                            android:singleLine="true"
-                            android:text="Student Name"
-                            android:textColor="#24394A"
-                            android:textSize="16dp" />
-
-                        <TextView
-                            android:id="@+id/labGrade"
-                            style="@style/LightTextView"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_gravity="start|center_vertical"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:gravity="start|center_vertical"
-                            android:paddingLeft="0dp"
-                            android:paddingRight="0dp"
-                            android:scaleX="@integer/scale_x"
-                            android:singleLine="true"
-                            android:text="@string/grade"
-                            android:textColor="#999999"
-                            android:textSize="14dp"
-                            tools:ignore="MissingPrefix" />
-
-
-                        <!--</LinearLayout>-->
-
-
-                        <!--</LinearLayout>-->
-
-
-                    </LinearLayout>
-
-                    <!--<include-->
-                    <!--android:id="@+id/call_and_changelocation_view_container"-->
-                    <!--layout="@layout/call_and_changelocation_view"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="2" />-->
-
-
-                    <!--<TextView-->
-                    <!--android:id="@+id/call_and_changelocation_view_container"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="⇇"-->
-                    <!--android:textColor="@color/color_black"-->
-                    <!--android:textSize="30dp"-->
-                    <!--android:textStyle="bold" />-->
-
-
-                    <!--</LinearLayout>-->
-
-
-                    <!--</LinearLayout>-->
-
-
-                </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical"
+                    android:weightSum="2">
 
-                    >
 
-                    <View
-                        android:layout_width="76dp"
-                        android:layout_height="50dp"
-                        android:padding="0dp" />
 
-                    <include
-                        android:id="@+id/actions_view_container"
-                        layout="@layout/check_in_and_drop_off_and_no_show_view"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="0dp"
+                    <TextView
+                        android:id="@+id/labStudentName"
+                        style="@style/BoldTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginTop="0dp" />
+                        android:ellipsize="end"
+                        android:gravity="start|center_vertical"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:scaleX="@integer/scale_x"
+                        android:singleLine="true"
+                        android:text="Student Name"
+                        android:textColor="#24394A"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/labGrade"
+                        style="@style/LightTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="start|center_vertical"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:scaleX="@integer/scale_x"
+                        android:singleLine="true"
+                        android:text="@string/grade"
+                        android:textColor="#999999"
+                        android:textSize="14dp"
+                        tools:ignore="MissingPrefix" />
+
+
+
+
                 </LinearLayout>
+
+
+
 
             </LinearLayout>
 
-            <!--<include-->
-            <!--layout="@layout/horizontal_progress_bar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="18dp"-->
-            <!--android:layout_alignParentBottom="true" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="76dp"
+                    android:layout_height="50dp"
+                    android:padding="0dp" />
+
+                <include
+                    android:id="@+id/actions_view_container"
+                    layout="@layout/check_in_and_drop_off_and_no_show_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/swap_image_view"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/swap_image"
-                app:tint="@color/red_tabs" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/call_and_changelocation_view_container"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:background="@drawable/trans_to_dark_selector_circle"
-                android:focusableInTouchMode="true"
-                android:gravity="center"
-                android:padding="5dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/drag_drop_icon"
-                app:tint="@color/md_grey_700" />
 
-        </RelativeLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/swap_image_view"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/swap_image"
+            app:tint="@color/red_tabs" />
 
-<!--    </FrameLayout>-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/call_and_changelocation_view_container"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:background="@drawable/trans_to_dark_selector_circle"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/drag_drop_icon"
+            app:tint="@color/md_grey_700" />
 
-    <!--</com.chauthai.swipereveallayout.SwipeRevealLayout>-->
+    </RelativeLayout>
+
+
+    <ProgressBar
+        android:id="@+id/undo_progressBar"
+        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding"
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:max="100"
+        android:progress="0"
+        tools:progress="40"
+        android:progressBackgroundTint="@color/color_line_forget_password"
+        android:progressTint="@color/red_tabs"
+        android:visibility="invisible"
+        tools:visibility="visible" />
 </LinearLayout>
