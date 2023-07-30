@@ -598,7 +598,12 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
     protected void showConfirmEndRoundDialog() {
         if (confirmEndRoundDialog != null)
             confirmEndRoundDialog.dismiss();
-        confirmEndRoundDialog = new UtilDialogs.MessageYesNoDialog().show(getActivity())
+        confirmEndRoundDialog = new UtilDialogs.MessageYesNoDialog().show(getActivity()).addTimer(new OnActionDoneListener<RoundBean>() {
+                    @Override
+                    public void OnActionDone(RoundBean actionRoundBean) {
+                        confirmEndRoundDialog.dialoge_button_yes.performClick();
+                    }
+                }, roundBean)
 //                setDialogeTitle(R.string.end_round).setDialogeTitleTextColor(R.color.red_tabs)
                 .setDialogeMessage(getString(R.string.end_the_round))
                 .setYesButtonClickListener(new OnActionDoneListener<UtilDialogs.MessageYesNoDialog>() {
@@ -1380,7 +1385,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
         try {
             for (int i = 0; i < roundBean.getListStudentBean().size(); i++) {
                 if (roundBean.getListStudentBean().get(i).isAbsent()) {
-                   String title = String.format(getString(R.string.is_absent_today), roundBean.getListStudentBean().get(i).getNameStudent());
+                    String title = String.format(getString(R.string.is_absent_today), roundBean.getListStudentBean().get(i).getNameStudent());
                     if (getMainActivity() != null) {
                         new UtilDialogs.MessageYesNoDialog().show(getMainActivity())
                                 .setYesButtonText(R.string.ok)

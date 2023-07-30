@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Vibrator;
@@ -22,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -34,7 +36,9 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import schooldriver.trackware.com.school_bus_driver_android.MainActivity;
 import schooldriver.trackware.com.school_bus_driver_android.R;
+import schooldriver.trackware.com.school_bus_driver_android.bean.RoundBean;
 import schooldriver.trackware.com.school_bus_driver_android.bean.StudentBean;
+import schooldriver.trackware.com.school_bus_driver_android.fragment.roundInfo.RoundInfoHolderPickUp;
 import schooldriver.trackware.com.school_bus_driver_android.interfaceDriver.OnActionDoneListener;
 
 public final class UtilDialogs implements DriverConstants {
@@ -209,6 +213,8 @@ public final class UtilDialogs implements DriverConstants {
         public AppCompatImageView dialoge_image;
         public Activity context;
         public View dialoge_image_close;
+        public ProgressBar undo_progressBar;
+        public CountDownTimer countDownTimer;
 
         public MessageYesNoDialog show(Activity context) {
             if (context == null)
@@ -223,7 +229,7 @@ public final class UtilDialogs implements DriverConstants {
                     messageYesNoDialog.dismiss();
                     messageYesNoDialog = null;
                 }
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
 
@@ -237,9 +243,10 @@ public final class UtilDialogs implements DriverConstants {
             dialoge_button_yes = messageYesNoDialog.getView().findViewById(R.id.dialoge_button_yes);
             dialoge_button_outher = messageYesNoDialog.getView().findViewById(R.id.dialoge_button_outher);
             dialoge_image_close = messageYesNoDialog.getView().findViewById(R.id.dialoge_image_close);
-            dialoge_message = (TextView) messageYesNoDialog.getView().findViewById(R.id.dialoge_message);
-            dialoge_title = (TextView) messageYesNoDialog.getView().findViewById(R.id.dialoge_title);
-            dialoge_image = (AppCompatImageView) messageYesNoDialog.getView().findViewById(R.id.dialoge_image);
+            dialoge_message =  messageYesNoDialog.getView().findViewById(R.id.dialoge_message);
+            dialoge_title =  messageYesNoDialog.getView().findViewById(R.id.dialoge_title);
+            dialoge_image =  messageYesNoDialog.getView().findViewById(R.id.dialoge_image);
+            undo_progressBar =  messageYesNoDialog.getView().findViewById(R.id.undo_progressBar);
             /**/
             View.OnClickListener clickListenerDismiss = new View.OnClickListener() {
                 @Override
@@ -265,6 +272,42 @@ public final class UtilDialogs implements DriverConstants {
             }
 
 
+            return this;
+        }
+
+        public MessageYesNoDialog cancelTimer() {
+            return addTimer(null, null);
+        }
+
+        public MessageYesNoDialog addTimer(OnActionDoneListener<RoundBean> onActionDoneListener, final RoundBean roundBean) {
+
+            if (onActionDoneListener == null || roundBean == null) {
+                if (countDownTimer != null) {
+                    countDownTimer.cancel();
+                    countDownTimer = null;
+
+                    undo_progressBar.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            else if (countDownTimer == null) {
+                undo_progressBar.setVisibility(View.VISIBLE);
+                countDownTimer = new CountDownTimer(DriverConstants.check_undo_timer * 1000, 1000) {
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        undo_progressBar.setProgress((int) millisUntilFinished / 100);
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        onActionDoneListener.OnActionDone(roundBean);
+                        countDownTimer = null;
+                    }
+                };
+                countDownTimer.start();
+            }
             return this;
         }
 
@@ -409,11 +452,12 @@ public final class UtilDialogs implements DriverConstants {
 
         public void dismiss() {
             try {
+                cancelTimer();
                 if (messageYesNoDialog != null && messageYesNoDialog.isShowing()) {
                     messageYesNoDialog.dismiss();
                     messageYesNoDialog = null;
                 }
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
 

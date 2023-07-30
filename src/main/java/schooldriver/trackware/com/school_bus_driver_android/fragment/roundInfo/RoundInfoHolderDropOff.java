@@ -1,6 +1,8 @@
 package schooldriver.trackware.com.school_bus_driver_android.fragment.roundInfo;
 
 import androidx.core.content.ContextCompat;
+
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -8,7 +10,10 @@ import android.widget.TextView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import schooldriver.trackware.com.school_bus_driver_android.R;
 import schooldriver.trackware.com.school_bus_driver_android.adapters.DraggableHolder;
+import schooldriver.trackware.com.school_bus_driver_android.bean.StudentBean;
+import schooldriver.trackware.com.school_bus_driver_android.interfaceDriver.OnActionDoneListener;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DrawableToolsV2;
+import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.DriverConstants;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 /**
@@ -17,7 +22,7 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Utilit
 
 public class RoundInfoHolderDropOff extends DraggableHolder {
 
-
+    public CountDownTimer countDownTimer;
     public TextView check_in_done_view;
     public TextView drop_off_done_view;
     public TextView no_show_done_view;
@@ -30,7 +35,7 @@ public class RoundInfoHolderDropOff extends DraggableHolder {
 //    public View imgCall;
 //    public View imgChangeLocation;
 //    public View send_arrive_alarm;
-    public View undo_no_show;
+    public View undo_no_show,undo_check_in;
     /**/
     public TextView labStudentName;
     public TextView labGrade;
@@ -62,6 +67,7 @@ public class RoundInfoHolderDropOff extends DraggableHolder {
 //        send_arrive_alarm = itemView.findViewById(R.id.send_arrive_alarm);
         swap_image_view = itemView.findViewById(R.id.swap_image_view);
         undo_no_show = itemView.findViewById(R.id.undo_no_show);
+        undo_check_in = itemView.findViewById(R.id.undo_check_in);
         actions_view_container = itemView.findViewById(R.id.actions_view_container);
         /**/
 
@@ -133,6 +139,59 @@ public class RoundInfoHolderDropOff extends DraggableHolder {
 //        });
     }
 
+
+//    public RoundInfoHolderDropOff cancelTimer() {
+//        return addTimer(null, null);
+//    }
+//
+//    public RoundInfoHolderDropOff addTimer(OnActionDoneListener<StudentBean> onActionDoneListener, final StudentBean studentBean) {
+//
+//        if (onActionDoneListener == null || studentBean == null) {
+//            if (countDownTimer != null) {
+//                countDownTimer.cancel();
+//                countDownTimer = null;
+//
+//                undo_progressBar.setVisibility(View.INVISIBLE);
+//                undo_check_in.setVisibility(View.GONE);
+//                check_in_done_view.setVisibility(View.GONE);
+//
+//                no_show_done_view.setVisibility(View.GONE);
+//                check_in_view.setVisibility(View.VISIBLE);
+//                no_show_view.setVisibility(View.VISIBLE);
+//                undo_no_show.setVisibility(View.GONE);
+//            }
+//        }
+//
+//        else if (countDownTimer == null) {
+//            undo_progressBar.setVisibility(View.VISIBLE);
+//            undo_check_in.setVisibility(View.VISIBLE);
+//            check_in_done_view.setVisibility(View.VISIBLE);
+//
+//            no_show_done_view.setVisibility(View.GONE);
+//            check_in_view.setVisibility(View.GONE);
+//            no_show_view.setVisibility(View.GONE);
+//            undo_no_show.setVisibility(View.GONE);
+//            countDownTimer = new CountDownTimer(DriverConstants.check_undo_timer * 1000, 1000) {
+//
+//                @Override
+//                public void onTick(long millisUntilFinished) {
+//                    undo_progressBar.setProgress((int) millisUntilFinished / 100);
+//
+//                }
+//
+//                @Override
+//                public void onFinish() {
+//                    undo_progressBar.setVisibility(View.INVISIBLE);
+//                    onActionDoneListener.OnActionDone(studentBean);
+//                    countDownTimer = null;
+//                }
+//            };
+//            countDownTimer.start();
+//        }
+//        return this;
+//    }
+
+
     public RoundInfoHolderDropOff setRoundEnded(boolean roundEnded) {
         hideAllActions();
         call_and_changelocation_view_container.setVisibility(roundEnded ? View.GONE : View.VISIBLE);
@@ -153,7 +212,7 @@ public class RoundInfoHolderDropOff extends DraggableHolder {
 
     protected RoundInfoHolderDropOff checkInDone() {
         hideAllActions();
-        UtilityDriver.showAllViews(check_in_done_view);
+        UtilityDriver.showAllViews(check_in_done_view,undo_check_in);
         absentDropOffBackground();
         return this;
 
@@ -161,17 +220,20 @@ public class RoundInfoHolderDropOff extends DraggableHolder {
 
     protected RoundInfoHolderDropOff noShowDone() {
         hideAllActions();
-//        UtilityDriver.goneAllViews(drop_off_view, check_in_done_view, drop_off_done_view,  drop_off_view, check_in_view, no_show_view,undo_no_show);
-
-//        no_show_done_view.setVisibility(View.VISIBLE);
-//        undo_no_show.setVisibility(View.VISIBLE);
-
         UtilityDriver.showAllViews(no_show_done_view, undo_no_show);
         absentDropOffBackground();
         return this;
 
     }
 
+    protected RoundInfoHolderDropOff checkinDone() {
+        hideAllActions();
+//        UtilityDriver.goneAllViews(check_in_view);
+        UtilityDriver.showAllViews(check_in_done_view,undo_check_in);
+        absentDropOffBackground();
+        return this;
+
+    }
 
     protected RoundInfoHolderDropOff showDropOffButton() {
         hideAllActions();
@@ -222,7 +284,7 @@ public class RoundInfoHolderDropOff extends DraggableHolder {
 //    }
 
     private RoundInfoHolderDropOff hideAllActions() {
-        UtilityDriver.goneAllViews(drop_off_view, drop_off_done_view, check_in_view, check_in_done_view, no_show_done_view, no_show_view, undo_no_show);
+        UtilityDriver.goneAllViews(drop_off_view, drop_off_done_view, check_in_view, check_in_done_view, no_show_done_view, no_show_view, undo_no_show,undo_check_in);
 //        absent_MaterialProgressBar.setVisibility(View.INVISIBLE);
         return this;
     }

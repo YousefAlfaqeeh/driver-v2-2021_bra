@@ -30,7 +30,6 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilVi
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
 
-  
 public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
     private ArrayList<PindingStudentHolder> pinding_NoShow_Requists = new ArrayList<>();
@@ -93,7 +92,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
         labNameRound.setText(roundBean.getNameRound());
         /**/
         roundAdapter.addAll(roundBean.getListStudentBean());
-         getMainActivity().onScannerFind_in = new OnActionDoneListener<StudentBean>() {
+        getMainActivity().onScannerFind_in = new OnActionDoneListener<StudentBean>() {
             @Override
             public void OnActionDone(StudentBean studentFromBeacon) {
                 try {
@@ -259,7 +258,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
 
     @Override
-    protected void sendNearByNotification(StudentBean studentBean,String roundID) {
+    protected void sendNearByNotification(StudentBean studentBean, String roundID) {
         try {
             if (sentNearby.contains(studentBean.getId()))
                 return;
@@ -395,7 +394,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
                 viewHolder.check_in_view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showConfirmCheckInDialog(item, position);
+                        showConfirmCheckInDialog(item, position,viewHolder);
                     }
                 });
                 viewHolder.no_show_view.setOnClickListener(new View.OnClickListener() {
@@ -410,17 +409,17 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
                     public void onClick(View v) {
                         removeItemFromPindingRequists(item.getId());
                         item.setIsNoShow(false);
-//                        viewHolder.initNoChange();
                         roundAdapter.notifyDataSetChanged();
+                    }
+                });
 
 
-//                        if (viewHolder.isNoShowProgressWorking()) {
-//                            viewHolder.cancelNoShowProgress();
-//                            viewHolder.initNoChange();
-//                        } else {
-//                            showConfirmCheckInDialog(item, position);
-//                        }
-
+                viewHolder.undo_check_in.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        removeItemFromPindingRequists(item.getId());
+                        item.setCheckEnum(CheckEnum.EMPTY);
+                        roundAdapter.notifyDataSetChanged();
 
                     }
                 });
@@ -528,6 +527,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
                     }
                 });
+
 //                viewHolder.send_arrive_alarm.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {
@@ -665,7 +665,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
     private UtilDialogs.MessageYesNoDialog confirmCheckInDialog;
 
-    private void showConfirmCheckInDialog(final StudentBean item, final int position) {
+    private void showConfirmCheckInDialog(final StudentBean item, final int position,RoundInfoHolderDropOff roundInfoHolderDropOff) {
         if (confirmCheckInDialog != null)
             confirmCheckInDialog.dismiss();
         confirmCheckInDialog = new UtilDialogs.MessageYesNoDialog().show(getActivity()).
@@ -679,9 +679,12 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
                         doCheckIn_OnList(item, position, false);
                         pinding_Pickup_Requists.add(new PindingStudentHolder().setStudentBean(item));
-//                        doCheckIn_OnAPI(item);
-                        if (dialog != null)
+                        roundInfoHolderDropOff.checkinDone();
+                        //                        doCheckIn_OnAPI(item);
+                        if (dialog != null){
                             dialog.dismiss();
+                        }
+                        refreshList();
                         /**/
                     }
                 }).setImageWithColor(R.drawable.img_check_in, R.color.color_green);
@@ -732,9 +735,16 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
                         /**/
                         checkChangeRoot(item);//order
                         doCheckOut(item, position);
-                        if (dialog != null)
+                        if (dialog != null) {
                             dialog.dismiss();
+                        }
                         /**/
+
+
+                        /// new timer
+                        if (checkBeforeEndRound()) {
+                            showConfirmEndRoundDialog();
+                        }
 
                     }
                 }).setImageWithColor(R.drawable.img_check_in, R.color.color_green);

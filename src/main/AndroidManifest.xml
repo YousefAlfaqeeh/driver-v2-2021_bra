@@ -246,6 +246,7 @@
         android:taskAffinity=""
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme">
         <!--android:hardwareAccelerated="false"-->
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
@@ -273,7 +274,6 @@
 
         <activity
             android:name=".MapsActivity"
-
             android:label="@string/title_activity_maps" />
 
         <meta-data
