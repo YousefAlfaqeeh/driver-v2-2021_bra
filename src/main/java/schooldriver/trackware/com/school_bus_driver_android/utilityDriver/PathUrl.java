@@ -12,7 +12,13 @@ public class PathUrl {
 //    public static String DEV_PROD = "prod";
     public static   String DEV_PROD = "dev";
 //    public static String URL = "https://boknyyx648.execute-api.eu-central-1.amazonaws.com/" + DEV_PROD;
+
+
     public static String URL = "http://apipy-stg.trackware.com/" ;//ddddddddddddddddddddddddd
+//    public static String URL = "http://apipy.trackware.com/" ;//ddddddddddddddddddddddddd
+
+    
+
 //    public static String URL = "http://192.168.1.150:8000/" ;
 //    public static String URL = "http://192.168.1.19:8888"; // local url
     public static String MAIN_URL = URL;

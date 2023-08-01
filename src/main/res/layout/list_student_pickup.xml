@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRevealLayout"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="140dp"
     tools:ignore="MissingPrefix"
     android:orientation="vertical">
 
@@ -15,6 +15,20 @@
         android:layout_height="140dp"
         android:background="@color/studentslist.normal_bg">
 
+        <ProgressBar
+            android:id="@+id/undo_progressBar"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:max="100"
+            android:progress="0"
+            android:progressBackgroundTint="@color/transparent"
+            android:progressTint="@color/undo_progress_bar_color"
+            android:visibility="invisible"
+            tools:progress="40"
+            tools:visibility="visible" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -165,18 +179,5 @@
     </RelativeLayout>
 
 
-    <ProgressBar
-        android:id="@+id/undo_progressBar"
-        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding"
-        android:layout_width="match_parent"
-        android:layout_height="7dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:max="100"
-        android:progress="0"
-        tools:progress="40"
-        android:progressBackgroundTint="@color/color_line_forget_password"
-        android:progressTint="@color/red_tabs"
-        android:visibility="invisible"
-        tools:visibility="visible" />
+
 </LinearLayout>

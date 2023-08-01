@@ -18,7 +18,7 @@
     <string name="drop_off_">إنزال</string>
     <string name="undo_absent">ليس غائباً</string>
 <!--    <string name="undo_check_out">لم يتم الانزال</string>-->
-    <string name="undo_check_in">لم يتم الدخول</string>
+    <string name="undo_check_in">تراجع</string>
 
     <string name="do_you_log_out">هل تريد تسجيل الخروج ؟</string>
     <string name="you_sure">هل أنت متأكد أنك تريد</string>

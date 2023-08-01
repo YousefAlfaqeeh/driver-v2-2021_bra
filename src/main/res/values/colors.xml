@@ -39,6 +39,8 @@
     <color name="color_header">#253a4b</color>
 
     <color name="transparent">#00000000</color>
+    <color name="undo_progress_bar_color">#81CE3337</color>
     <color name="toolbar_bg_color">#253A4B</color>
+    <color name="toolbar_bg_color_b">#32000000</color>
 
 </resources>

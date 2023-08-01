@@ -83,7 +83,7 @@
             android:id="@+id/undo_progressBar"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:max="100"
