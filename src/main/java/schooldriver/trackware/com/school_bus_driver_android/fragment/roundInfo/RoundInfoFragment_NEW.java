@@ -89,7 +89,8 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
     private View edit_mode_img, edit_mode_view, save_edit_mode, cancel_edit_mode, start_end_round_button_view;
     private OnActionDoneListener<Boolean> onEditModeChangedListener = null;
     /**/
-
+    protected double school_latitude = -0.1;
+    protected double school_longitude = -0.1;
 
     protected void findViews(View view) {
         labTimer = view.findViewById(R.id.labTimer);
@@ -116,6 +117,15 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 //                SendNotificationGCM.WITH_AMAZON = isChecked;
 //            }
 //        });
+
+        try {
+            school_latitude = Double.parseDouble(UtilityDriver.getStringShared(UtilityDriver.SCHOOL_LATITUDE));
+            school_longitude = Double.parseDouble(UtilityDriver.getStringShared(UtilityDriver.SCHOOL_LONGITUDE));
+        } catch (Exception ignore) {
+            school_latitude = -0.1;
+            school_longitude = -0.1;
+        }
+
     }
 
 
@@ -343,6 +353,11 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                             sendNotificationForNextStudent(mustTakenStudent);
                         }
                     }
+
+                    // check if in school range
+                    if (isIn_100M_Range(currentLongitude, currentLatitude, school_longitude, school_longitude)) {
+                        whenSchoolInRange();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
 
@@ -353,7 +368,10 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
         };
     }
 
+   protected void whenSchoolInRange(){
 
+
+    }
     private void initGeofence() {
         String response = roundBean.getGeofence();
         RoundInfoFragment.listGeofenceBean = new ArrayList<>();
@@ -1177,7 +1195,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
     protected int getPositionOfThisStudentInAdapter_NFC(String nfc_id) {
         for (int i = 0; i < roundAdapter.getValues().size(); i++) {
-            if (roundAdapter.getValues().get(i).getNfc_id() .equals(nfc_id)) {
+            if (roundAdapter.getValues().get(i).getNfc_id().equals(nfc_id)) {
                 return i;
             }
         }

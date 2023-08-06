@@ -230,7 +230,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                 try {
                     showCheckToast(nfc_student.getAvatar(), nfc_student.getNameStudent(), getString(R.string.nfc_check_in));
 
-                }catch (Exception ignore){
+                } catch (Exception ignore) {
 
                 }
 
@@ -239,8 +239,6 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                 doCheckIn_OnList(nfc_student, sPosition, true);
                 doCheckIn_OnAPI(nfc_student);
                 refreshList();
-
-
 
 
             } catch (Exception e) {
@@ -307,6 +305,16 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
         return view;
     }
 
+    @Override
+    protected void whenSchoolInRange() {
+        try {
+            if (canEndRound() && end_round_view.getVisibility() == View.VISIBLE && end_round_view.isEnabled()) {
+                end_round_view.performClick();
+            }
+        } catch (Exception ignore) {
+        }
+
+    }
 
     private void setBeaconLisinersAndAddMacs() {
         try {

@@ -1702,15 +1702,15 @@ public class MainActivity extends BaseActivity implements
 //
 //    }
 
-    public StudentBean findStudentByMac(String mac) {
-        for (int i = 0; i < mustScanStudents.size(); i++) {
-            if (mustScanStudents.get(i).getMacAdress() != null && mustScanStudents.get(i).getMacAdress().equals(mac)) {
-                return mustScanStudents.get(i);
-            }
-
-        }
-        return null;
-    }
+//    public StudentBean findStudentByMac(String mac) {
+//        for (int i = 0; i < mustScanStudents.size(); i++) {
+//            if (mustScanStudents.get(i).getMacAdress() != null && mustScanStudents.get(i).getMacAdress().equals(mac)) {
+//                return mustScanStudents.get(i);
+//            }
+//
+//        }
+//        return null;
+//    }
 
 
     public static boolean isBluetoothOn = false;
