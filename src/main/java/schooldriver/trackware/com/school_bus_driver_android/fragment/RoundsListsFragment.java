@@ -544,7 +544,7 @@ public class RoundsListsFragment extends BaseFragment {
             JSONObject joStudent = jaStudents.optJSONObject(j);
             studentBean.setId(joStudent.optInt("id"));
             studentBean.setNameStudent(joStudent.optString("name"));
-
+            studentBean.setNfc_id(joStudent.optString("nfc_id"));
             studentBean.setAvatar(joStudent.optString("avatar"));
             Log.v("sssssssssssssssssssssssssssssssss",joStudent.optString("grade"));
             studentBean.setGrade(joStudent.optString("grade"));

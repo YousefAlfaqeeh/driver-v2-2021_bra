@@ -24,6 +24,7 @@ public class StudentBean implements Parcelable, Comparable<StudentBean> /*extend
     private double latitude;
     private double longitude;
     private int id;
+    private String nfc_id;
     private int group;
     private String macAdress = "";
     private boolean checkedByBeacon = false;
@@ -77,6 +78,18 @@ public class StudentBean implements Parcelable, Comparable<StudentBean> /*extend
             return getNameStudent();
         }
 
+    }
+
+    public String getNfc_id() {
+        if (nfc_id == null)
+            return "";
+        else
+            return nfc_id;
+    }
+
+    public StudentBean setNfc_id(String nfc_id) {
+        this.nfc_id = nfc_id;
+        return this;
     }
 
     public void setNameStudent(String nameStudent) {
@@ -193,6 +206,7 @@ public class StudentBean implements Parcelable, Comparable<StudentBean> /*extend
         dest.writeDouble(this.latitude);
         dest.writeDouble(this.longitude);
         dest.writeInt(this.id);
+        dest.writeString(this.nfc_id);
         dest.writeInt(this.group);
         dest.writeString(this.macAdress);
         dest.writeByte(this.checkedByBeacon ? (byte) 1 : (byte) 0);
@@ -213,6 +227,7 @@ public class StudentBean implements Parcelable, Comparable<StudentBean> /*extend
         this.latitude = in.readDouble();
         this.longitude = in.readDouble();
         this.id = in.readInt();
+        this.nfc_id = in.readString();
         this.group = in.readInt();
         this.macAdress = in.readString();
         this.checkedByBeacon = in.readByte() != 0;

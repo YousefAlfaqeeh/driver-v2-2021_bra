@@ -31,11 +31,11 @@ import schooldriver.trackware.com.school_bus_driver_android.locationListener.Loc
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilDialogs;
 import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.UtilityDriver;
 
-  
+
 public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
     private ItemTouchHelper itemTouchHelper;
-     private RecyclerViewAdapter.AdapterFilter<StudentBean> filter = new RecyclerViewAdapter.AdapterFilter<StudentBean>() {
+    private RecyclerViewAdapter.AdapterFilter<StudentBean> filter = new RecyclerViewAdapter.AdapterFilter<StudentBean>() {
         @Override
         public boolean filter(StudentBean type) {
             if (studentHaseBeaconsButStillInBus.contains(type.getId()) && roundBean.isRoundEndedForEver() && type.getCheckEnum().equals(CheckEnum.CHECK_IN) && type.isCheckedByBeacon() && !type.isAbsent()) {
@@ -51,7 +51,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
 
     @Override
-    protected void sendNearByNotification(StudentBean studentBean,String roundID) {
+    protected void sendNearByNotification(StudentBean studentBean, String roundID) {
         try {
             if (sentNearby.contains(studentBean.getId()))
                 return;
@@ -206,6 +206,47 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
 //    getMainActivity().
 
+
+        getMainActivity().setOnNFCActionDone(nfc_data -> {
+            try {
+                /**/
+                if (!roundBean.isRoundStartedNow()) {
+                    return;
+                }
+                /**/
+                final int sPosition = getPositionOfThisStudentInAdapter_NFC(nfc_data);
+                if (sPosition == -1) {
+                    return;
+                }
+                /**/
+                StudentBean nfc_student = roundAdapter.getValues().get(sPosition);
+                if (nfc_student.isAbsent() || nfc_student.isNoShow()) {
+                    return;
+                }
+                if (nfc_student.getCheckEnum() == CheckEnum.CHECK_IN) {
+                    return;
+                }
+
+                try {
+                    showCheckToast(nfc_student.getAvatar(), nfc_student.getNameStudent(), getString(R.string.nfc_check_in));
+
+                }catch (Exception ignore){
+
+                }
+
+
+                checkChangeRoot(nfc_student);//order
+                doCheckIn_OnList(nfc_student, sPosition, true);
+                doCheckIn_OnAPI(nfc_student);
+                refreshList();
+
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
         getMainActivity().registerAbsentReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -470,7 +511,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                     @Override
                     public void onClick(View v) {
 
-                        showConfirmCheckInDialog(item, position,viewHolder);
+                        showConfirmCheckInDialog(item, position, viewHolder);
                     }
                 });
                 viewHolder.undo_absent.setOnClickListener(new View.OnClickListener() {
@@ -480,7 +521,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 //                            viewHolder.cancelAbsentProgress();
 //                            viewHolder.initNoChange();
 //                        } else {
-                        showConfirmCheckInDialog(item, position,viewHolder);
+                        showConfirmCheckInDialog(item, position, viewHolder);
 //                        }
 
 
@@ -614,7 +655,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
     UtilDialogs.MessageYesNoDialog confirmCheckInDialog;
 
-    private UtilDialogs.MessageYesNoDialog showConfirmCheckInDialog(final StudentBean item, final int position,RoundInfoHolderPickUp roundInfoHolderPickUp) {
+    private UtilDialogs.MessageYesNoDialog showConfirmCheckInDialog(final StudentBean item, final int position, RoundInfoHolderPickUp roundInfoHolderPickUp) {
         if (confirmCheckInDialog != null)
             confirmCheckInDialog.dismiss();
         confirmCheckInDialog = new UtilDialogs.MessageYesNoDialog().show(getActivity()).
@@ -625,7 +666,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                     @Override
                     public void OnActionDone(UtilDialogs.MessageYesNoDialog dialog) {
                         ///////////////
-                        if (dialog != null){
+                        if (dialog != null) {
                             dialog.dismiss();
                         }
 

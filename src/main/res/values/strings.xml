@@ -28,6 +28,7 @@
     <string name="en_ar">عربي</string>
     <string name="logout">Logout</string>
     <string name="check_in">Check in</string>
+    <string name="nfc_check_in">NFC - Check in</string>
     <string name="check_out">Check out</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
@@ -165,6 +166,7 @@
 
     <string name="location_manager">To be able to continue use, you must turn on the GPS feature</string>
     <string name="turn_on_gps">Turn On GPS</string>
+    <string name="result">"الطالب : "</string>
 
 
 </resources>

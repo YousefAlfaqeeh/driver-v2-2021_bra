@@ -16,6 +16,11 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
+import android.nfc.tech.Ndef;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +33,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -61,6 +67,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -102,9 +109,16 @@ import schooldriver.trackware.com.school_bus_driver_android.utilityDriver.Utilit
 public class MainActivity extends BaseActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, /*IRestCallPhoenix,*/
-        OnMapReadyCallback {
+        OnMapReadyCallback, NfcAdapter.ReaderCallback {
 
     public String fireBaseToken = "null";
+    private NfcAdapter nfcAdapter;
+    private OnActionDoneListener<String> onNFCActionDone = null;
+
+    public MainActivity setOnNFCActionDone(OnActionDoneListener<String> onNFCActionDone) {
+        this.onNFCActionDone = onNFCActionDone;
+        return this;
+    }
 
     public void hideSoftKeyboard() {
         try {
@@ -118,6 +132,76 @@ public class MainActivity extends BaseActivity implements
         }
 
 
+    }
+
+
+    @Override
+    public void onTagDiscovered(Tag tag) {
+        try {
+
+
+            if (onNFCActionDone == null)
+                return;
+
+            Ndef ndef = Ndef.get(tag);
+            NdefMessage ndefMessage = ndef.getCachedNdefMessage();
+            runOnUiThread(() -> {
+                try {
+                    if (ndefMessage != null && ndefMessage.getRecords().length > 0) {
+                        byte[] payload = ndefMessage.getRecords()[0].getPayload();
+                        final String conteudoTag = new String(payload);
+                        if (onNFCActionDone == null)
+                            return;
+
+
+                        if (conteudoTag.length() != 0) {
+                                onNFCActionDone.OnActionDone(conteudoTag);
+//                            Toast.makeText(this, conteudoTag, Toast.LENGTH_SHORT)
+//                                    .show();
+                        } else {
+//                            Toast.makeText(this, getString(R.string.sem_conteudo), Toast.LENGTH_SHORT)
+//                                    .show();
+                        }
+                    } else {
+//                        Toast.makeText(this, getString(R.string.erro_ler), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception ignore) {
+                }
+            });
+        } catch (Exception ignore) {
+        }
+    }
+
+
+    public void habilitarModoLeitor() {
+        try {
+
+
+            int flags = NfcAdapter.FLAG_READER_NFC_A | NfcAdapter.FLAG_READER_NFC_B;
+            Bundle extras = new Bundle();
+            nfcAdapter.enableReaderMode(this, this, flags, extras);
+        } catch (Exception ignore) {
+        }
+    }
+
+    public void desabilitarModoLeitor() {
+        try {
+
+
+            nfcAdapter.disableReaderMode(this);
+        } catch (Exception ignore) {
+        }
+    }
+
+    private String startNFC() {
+        try {
+
+            nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
+        } catch (Exception ignore) {
+
+        }
+        return null;
     }
 
     private void initFireBase() {
@@ -757,7 +841,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-
+        habilitarModoLeitor();
 
         try {
             startTimerPhoenix();
@@ -793,6 +877,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     protected void onPause() {
         try {
+            desabilitarModoLeitor();
             StaticValue.OPEN_GPS = true;
             System.err.println(StaticValue.latitudeMain + " " + StaticValue.longitudeMain + "       5555555555");
             super.onPause();
@@ -951,6 +1036,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        startNFC();
         initFireBase();
         try {
             registerReceiver(new NetworkChangeReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -1629,9 +1715,6 @@ public class MainActivity extends BaseActivity implements
 
     public static boolean isBluetoothOn = false;
     UtilDialogs.MessageYesNoDialog messageDialog;
-
-
-
 
 
     private static final int REQ_PERMISSION = 1233;

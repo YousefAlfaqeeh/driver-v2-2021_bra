@@ -1175,6 +1175,14 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
         return -1;
     }
 
+    protected int getPositionOfThisStudentInAdapter_NFC(String nfc_id) {
+        for (int i = 0; i < roundAdapter.getValues().size(); i++) {
+            if (roundAdapter.getValues().get(i).getNfc_id() .equals(nfc_id)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     protected void showCheckToast(final String url, String studentName, String text) {
 

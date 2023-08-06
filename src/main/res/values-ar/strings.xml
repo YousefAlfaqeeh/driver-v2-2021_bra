@@ -34,6 +34,7 @@
 
     <string name="logout">خروج</string>
     <string name="check_in">تحميل</string>
+    <string name="nfc_check_in">تحميل بواسطة NFC</string>
     <string name="check_out">إنزال</string>
     <string name="start_round">بداية الرحلة</string>
     <string name="call_father">  اﻷب</string>
@@ -157,5 +158,6 @@
     <string name="location_manager">لتتمكن من متابعة الاستخدام يجب عليك تشغيل خاصية GPS </string>
     <string name="turn_on_gps">تشغيل خدمة ال GPS</string>
     <string name="is_absent_today">%1$s غائب اليوم</string>
+    <string name="result">"الطالب : "</string>
 
 </resources>
