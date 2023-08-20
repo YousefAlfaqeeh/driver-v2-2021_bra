@@ -125,8 +125,15 @@ public class LoginPresenter extends BasePresenter implements IRestCallBack {
 //                    UtilityDriver.setStringShared(UtilityDriver.SERIAL_ID,"20-19394");
 //                    UtilityDriver.setStringShared(UtilityDriver.SID_TRACK_LINK, "35b801894b909b05a6f520980b2bdf37");
 //                    end
+
+                    /**/
+                    boolean auto_round_ending = response.optBoolean("auto_round_ending",true);
+                    UtilityDriver.setBooleanShared(UtilityDriver.AUTO_ROUND_ENDING, auto_round_ending);
+                    /**/
+                    /**/
                     String latitude = response.getString("school_lat");
                     String longitude = response.getString("school_lng");
+                    /**/
                     if (!UtilityDriver.isEmptyString(latitude)) {
                         UtilityDriver.setStringShared(UtilityDriver.SCHOOL_LATITUDE, latitude);
                     } else {
@@ -137,6 +144,13 @@ public class LoginPresenter extends BasePresenter implements IRestCallBack {
                     } else {
                         UtilityDriver.setStringShared(UtilityDriver.SCHOOL_LONGITUDE, "0");
                     }
+                    /**/
+                    /**/
+                    String lat_end = response.optString("lat_end",UtilityDriver.getStringShared(UtilityDriver.SCHOOL_LATITUDE));
+                    String lng_end = response.optString("lng_end",UtilityDriver.getStringShared(UtilityDriver.SCHOOL_LONGITUDE));
+                    UtilityDriver.setStringShared(UtilityDriver.LAT_END, lat_end);
+                    UtilityDriver.setStringShared(UtilityDriver.LNG_END, lng_end);
+                    /**/
                     UtilityDriver.setStringShared(UtilityDriver.SCHOOL_NEARBY_DISTANCE, response.getString("nearby_distance"));
                     UtilityDriver.setStringShared(UtilityDriver.BUS_NUMBER, response.getString("bus_number"));
 

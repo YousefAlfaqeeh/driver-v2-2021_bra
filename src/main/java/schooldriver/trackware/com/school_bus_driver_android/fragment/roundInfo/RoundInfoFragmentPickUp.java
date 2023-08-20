@@ -38,7 +38,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
     private RecyclerViewAdapter.AdapterFilter<StudentBean> filter = new RecyclerViewAdapter.AdapterFilter<StudentBean>() {
         @Override
         public boolean filter(StudentBean type) {
-            if (studentHaseBeaconsButStillInBus.contains(type.getId()) && roundBean.isRoundEndedForEver() && type.getCheckEnum().equals(CheckEnum.CHECK_IN) && type.isCheckedByBeacon() && !type.isAbsent()) {
+            if (studentHaseBeaconsButStillInBus.contains(type.getId()) && roundBean.isRoundEndedForEver() && type.isCheckedIn() && type.isCheckedByBeacon() && !type.isAbsent()) {
                 return true;
             } else {
                 return false;
@@ -55,9 +55,9 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
         try {
             if (sentNearby.contains(studentBean.getId()))
                 return;
-            if (studentBean.getCheckEnum() == CheckEnum.CHECK_IN)
+            if (studentBean.isCheckedIn())
                 return;
-            if (studentBean.getCheckEnum() == CheckEnum.CHECK_OUT)
+            if (studentBean.isCheckedOut())
                 return;
             if (studentBean.isAbsent())
                 return;
@@ -140,72 +140,6 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
         roundAdapter.addAll(roundBean.getListStudentBean());
 
-//        roundAdapter.sort(new Comparator<StudentBean>() {
-//            @Override
-//            public int compare(StudentBean t1, StudentBean t2) {
-//                return t1.compareTo(t1);
-//            }
-//        });
-        /**/
-
-
-//    getMainActivity().
-//
-//    registerBeaconReceiver(new BroadcastReceiver() {
-//        @Override
-//        public void onReceive (Context context,final Intent intent){
-////                new Handler().postDelayed(new Runnable() {
-////                    @Override
-////                    public void run() {
-//            try {
-//
-////                    if (!finishedAdding)
-////                        return;
-//
-//
-//                if (intent.hasExtra(BeaconService.STUDENT_IN) && roundStarted && intent.getIntExtra(BeaconService.STUDENT_IN, -1) != -1 && /*finishedAdding &&*/ !studentHaseBeaconsButStillInBus.contains(intent.getIntExtra(BeaconService.STUDENT_IN, -1))) {
-//                    /**/
-//                    int studentId = intent.getIntExtra(BeaconService.STUDENT_IN, -1);
-//                    studentHaseBeaconsButStillInBus.add(studentId);
-//                    final int sPosition = getPositionOfThisStudentInAdapter(studentId);
-//                    final StudentBean student = roundAdapter.getValues().get(sPosition);
-//                    /**/
-//
-//                    /**/
-//                    if (student.getCheckEnum() != CheckEnum.CHECK_IN && !student.isAbsent() && /*finishedAdding &&*/ student.getId() == intent.getIntExtra(BeaconService.STUDENT_IN, -1)) {
-////                            finishedAdding = false;
-//                        student.setCheckedByBeacon(true);
-//                        checkChangeRoot(student);//order
-//                        doCheckIn_OnList(student, sPosition);
-//                        doCheckIn_OnAPI(student);
-//                        /**/
-//                        showCheckToast(student.getAvatar(), student.getNameStudent(), getString(R.string.check_in));
-////                            new Handler().postDelayed(new Runnable() {
-////                                @Override
-////                                public void run() {
-////                                    finishedAdding = true;
-////                                }
-////                            }, 1000);
-//
-//                    }
-//                } else if (intent.hasExtra(BeaconService.STUDENT_OUT) && intent.getIntExtra(BeaconService.STUDENT_OUT, -1) != -1) {
-//                    int studentId = intent.getIntExtra(BeaconService.STUDENT_OUT, -1);
-//                    studentHaseBeaconsButStillInBus.remove(studentId);
-//                }
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//
-////                    }
-////                },500);
-//        }
-//    });
-
-
-//    getMainActivity().
-
 
         getMainActivity().setOnNFCActionDone(nfc_data -> {
             try {
@@ -223,7 +157,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                 if (nfc_student.isAbsent() || nfc_student.isNoShow()) {
                     return;
                 }
-                if (nfc_student.getCheckEnum() == CheckEnum.CHECK_IN) {
+                if (nfc_student.isCheckedIn()) {
                     return;
                 }
 
@@ -274,22 +208,6 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                                         .setDialogeTitle(R.string.absence);
                             }
 
-
-//                            new UtilDialogs.ReasonDialog().show(getActivity()).
-//                                    setDialogeTitle(R.string.conf_student_absent)
-////                .setDialogeTitleTextColor(R.color.red_tabs)
-//                                    .setYesButtonText(R.string.yes_value)
-//                                    .setImageWithColor(R.drawable.absent_msg_icon, 0)
-//                                    .initReasonsViews(UtilDialogs.ReasonDialog.REASON_ABSENT)
-//                                    .setAfterResonSelectedLisiner(new OnActionDoneListener<String>() {
-//                                        @Override
-//                                        public void OnActionDone(String reason) {
-//                                            doAbsent(item, position, reason);
-//                                        }
-//                                    }, null);
-
-//                                .loadImageFromURL(absentKidsBean.getAvatar());
-
                         }
                     }
                 } catch (Exception e) {
@@ -306,10 +224,13 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
     }
 
     @Override
-    protected void whenSchoolInRange() {
+    protected void whenEndRoundLocationInRange() {
         try {
             if (canEndRound() && end_round_view.getVisibility() == View.VISIBLE && end_round_view.isEnabled()) {
-                end_round_view.performClick();
+                if (UtilityDriver.getBooleanShared(UtilityDriver.AUTO_ROUND_ENDING)){
+                    end_round_view.performClick();
+                }
+
             }
         } catch (Exception ignore) {
         }
@@ -342,7 +263,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                                 return;
                             }
                             student.setCheckedByBeacon(true);
-                            if (student.getCheckEnum() != CheckEnum.CHECK_IN) {
+                            if (!student.isCheckedIn()) {
                                 /**/
                                 checkChangeRoot(student);//order
                                 doCheckIn_OnList(student, sPosition, true);
@@ -412,12 +333,6 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                 viewHolder.setEnabled(roundBean.isRoundStartedNow());
                 viewHolder.setRoundEnded(roundBean.isRoundEndedForEver());
                 viewHolder.setStudentImage(item.getAvatar());
-//                viewHolder.changeLocationEnabled(roundBean.isChangeStudentLocation());
-//
-//                viewHolder.callEnabled(item);
-//                viewHolder.send_arrive_alarm.setEnabled(roundBean.isRoundStartedNow() && !item.isAbsent() && !item.isNoShow() && !item.getCheckEnum().equals(CheckEnum.CHECK_IN) && !item.getCheckEnum().equals(CheckEnum.CHECK_OUT));
-
-//                viewHolder.send_arrive_alarm.setEnabled(roundStarted && !item.isAbsent() && !item.isNoShow() && !item.getCheckEnum().equals(CheckEnum.CHECK_IN) && !item.getCheckEnum().equals(CheckEnum.CHECK_OUT));
 
                 viewHolder.editMode(isInEditMode());
                 /**/
@@ -452,7 +367,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                 });
 
 
-                if (roundBean.isRoundEndedForEver() && item.getCheckEnum().equals(CheckEnum.CHECK_IN) && item.isCheckedByBeacon() && studentHaseBeaconsButStillInBus.contains(item.getId())) { // ending Mood
+                if (roundBean.isRoundEndedForEver() && item.isCheckedIn() && item.isCheckedByBeacon() && studentHaseBeaconsButStillInBus.contains(item.getId())) { // ending Mood
                     viewHolder.studentStillInBus();
 //                        viewHolder.mustManualCheckOut();
                 } else {
@@ -465,7 +380,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 //                    else if (item.isAbsent()) {
 //                        viewHolder.absenceByParentDone();
 //                    }
-                    else if (item.getCheckEnum().equals(CheckEnum.CHECK_IN)) {
+                    else if (item.isCheckedIn()) {
                         viewHolder.checkedInDone();
                     }
 
@@ -482,7 +397,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
                         studentToolDialog.changeLocationEnabled(roundBean.isChangeStudentLocation());
                         studentToolDialog.callEnabled(item);
 //                        studentToolDialog.changeColor(R.color.green_tabs);
-                        studentToolDialog.send_arrive_alarm.setEnabled(roundBean.isRoundStartedNow() && !item.isAbsent() && !item.isNoShow() && !item.getCheckEnum().equals(CheckEnum.CHECK_IN) && !item.getCheckEnum().equals(CheckEnum.CHECK_OUT));
+                        studentToolDialog.send_arrive_alarm.setEnabled(roundBean.isRoundStartedNow() && !item.isAbsent() && !item.isNoShow() && !item.isCheckedIn() && !item.getCheckEnum().equals(CheckEnum.CHECK_OUT));
                         studentToolDialog.imgCall.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -652,7 +567,7 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
     private boolean canEndRound() {
         for (int i = 0; i < roundAdapter.getValues().size(); i++) { //is all student checked-Out or Absent ?
             boolean isAbsent = roundAdapter.getValues().get(i).isAbsent();
-            boolean isCheckedIn = roundAdapter.getValues().get(i).getCheckEnum() == CheckEnum.CHECK_IN;
+            boolean isCheckedIn = roundAdapter.getValues().get(i).isCheckedIn();
             if (!(isAbsent || isCheckedIn)) {
                 return false;
             }

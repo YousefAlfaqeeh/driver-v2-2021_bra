@@ -92,6 +92,58 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
         labNameRound.setText(roundBean.getNameRound());
         /**/
         roundAdapter.addAll(roundBean.getListStudentBean());
+
+        getMainActivity().setOnNFCActionDone(nfc_data -> {
+            try {
+                /**/
+                if (!roundBean.isRoundStartedNow()) {
+                    final int sPosition = getPositionOfThisStudentInAdapter_NFC(nfc_data);
+                    if (sPosition == -1) {
+                        return;
+                    }
+                    StudentBean nfc_student = roundAdapter.getValues().get(sPosition);
+                    if (nfc_student.isAbsent() || nfc_student.isNoShow()) {
+                        return;
+                    }
+
+                    if (nfc_student.isCheckedIn()) {
+                        doCheckOut(nfc_student, sPosition);
+                        checkChangeRoot(nfc_student);//order
+                        showCheckToast(nfc_student.getAvatar(), nfc_student.getNameStudent(), getString(R.string.check_out));
+                        return;
+                    }
+
+                } else {
+                    final int sPosition = getPositionOfThisStudentInAdapter_NFC(nfc_data);
+                    if (sPosition == -1) {
+                        return;
+                    }
+                    /**/
+                    StudentBean nfc_student = roundAdapter.getValues().get(sPosition);
+                    if (nfc_student.isAbsent() || nfc_student.isNoShow()) {
+                        return;
+                    }
+                    if (nfc_student.isCheckedIn()) {
+                        return;
+                    }
+                    try {
+                        showCheckToast(nfc_student.getAvatar(), nfc_student.getNameStudent(), getString(R.string.nfc_check_in));
+                    } catch (Exception ignore) {
+                    }
+
+
+                    doCheckIn_OnList(nfc_student, sPosition, false);
+                    pinding_Pickup_Requists.add(new PindingStudentHolder().setStudentBean(nfc_student));
+//                roundInfoHolderDropOff.checkinDone();
+                    refreshList();
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
         getMainActivity().onScannerFind_in = new OnActionDoneListener<StudentBean>() {
             @Override
             public void OnActionDone(StudentBean studentFromBeacon) {
@@ -151,7 +203,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
                     if (student.isNoShow())
                         return;
                     /**/
-                    boolean isCheckedInByBeacon = removed && student.getCheckEnum() == CheckEnum.CHECK_IN && student.isCheckedByBeacon();
+                    boolean isCheckedInByBeacon = removed && student.isCheckedIn() && student.isCheckedByBeacon();
                     if (roundBean.isRoundStartedNow() && isCheckedInByBeacon) {
                         doCheckOut(student, sPosition);
                         checkChangeRoot(student);//order
@@ -177,76 +229,6 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
             }
         };
-
-//        getMainActivity().registerBeaconReceiver(new BroadcastReceiver() {
-//            @Override
-//            public synchronized void onReceive(Context context, final Intent intent) {
-////                new Handler().postDelayed(new Runnable() {
-////                    @Override
-////                    public void run() {
-//                try {
-//
-//
-//                    if (intent.hasExtra(BeaconService.STUDENT_IN) && intent.getIntExtra(BeaconService.STUDENT_IN, -1) != -1 && !studentHaseBeaconsButStillInBus.contains(intent.getIntExtra(BeaconService.STUDENT_IN, -1))) {
-//                    /**/
-//                        int studentId = intent.getIntExtra(BeaconService.STUDENT_IN, -1);
-//                        final int sPosition = getPositionOfThisStudentInAdapter(studentId);
-//                        StudentBean student = roundAdapter.getValues().get(sPosition);
-//                    /**/
-//                        boolean isNewStudent = studentHaseBeaconsButStillInBus.add(studentId);
-//                    /**/
-//                        if (!roundStarted && (student.getCheckEnum() != CheckEnum.CHECK_IN && !student.isNoShow() /*&& finishedAdding*/)) {
-//
-////                                    finishedAdding = false;
-//                            student.setCheckedByBeacon(true);
-//                            doCheckIn_OnList(student, sPosition);
-//                            pinding_Pickup_Requists.add(new PindingStudentHolder().setStudentBean(student).setByBeacon(true));
-//                            showCheckToast(student.getAvatar(), student.getNameStudent(), getString(R.string.check_in));
-////                                doCheckIn_OnAPI(roundAdapter.getValues().get(sPosition));
-////                                    new Handler().postDelayed(new Runnable() {
-////                                        @Override
-////                                        public void run() {
-////                                            finishedAdding = true;
-////                                        }
-////                                    },3000);
-//
-//
-//                        }
-//                    } else if (intent.hasExtra(BeaconService.STUDENT_OUT) && intent.getIntExtra(BeaconService.STUDENT_OUT, -1) != -1) {
-//                    /**/
-//                        int studentId = intent.getIntExtra(BeaconService.STUDENT_OUT, -1);
-//                        final int sPosition = getPositionOfThisStudentInAdapter(studentId);
-//                        final StudentBean student = roundAdapter.getValues().get(sPosition);
-//                    /**/
-//                        studentHaseBeaconsButStillInBus.remove(studentId);
-//                    /**/
-//                        if (roundStarted) {
-//                            if (student.getCheckEnum() == CheckEnum.CHECK_IN && !student.isNoShow() && student.isCheckedByBeacon() /*&& finishedAdding*/) {
-////                                        finishedAdding = false;
-//                                doCheckOut(student, sPosition);
-//                                checkChangeRoot(student);//order
-//                                showCheckToast(student.getAvatar(), student.getNameStudent(), getString(R.string.check_out));
-////                                        new Handler().postDelayed(new Runnable() {
-////                                            @Override
-////                                            public void run() {
-////                                                finishedAdding = true;
-////                                            }
-////                                        },3000);
-//
-//                            }
-//                        }
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-////                    }
-////                }, 500);
-//            }
-//
-//        });
-        /**/
-
 
         /**/
         checkAbsentToday();
@@ -394,7 +376,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
                 viewHolder.check_in_view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showConfirmCheckInDialog(item, position,viewHolder);
+                        showConfirmCheckInDialog(item, position, viewHolder);
                     }
                 });
                 viewHolder.no_show_view.setOnClickListener(new View.OnClickListener() {
@@ -665,7 +647,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
     private UtilDialogs.MessageYesNoDialog confirmCheckInDialog;
 
-    private void showConfirmCheckInDialog(final StudentBean item, final int position,RoundInfoHolderDropOff roundInfoHolderDropOff) {
+    private void showConfirmCheckInDialog(final StudentBean item, final int position, RoundInfoHolderDropOff roundInfoHolderDropOff) {
         if (confirmCheckInDialog != null)
             confirmCheckInDialog.dismiss();
         confirmCheckInDialog = new UtilDialogs.MessageYesNoDialog().show(getActivity()).
@@ -681,7 +663,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
                         pinding_Pickup_Requists.add(new PindingStudentHolder().setStudentBean(item));
                         roundInfoHolderDropOff.checkinDone();
                         //                        doCheckIn_OnAPI(item);
-                        if (dialog != null){
+                        if (dialog != null) {
                             dialog.dismiss();
                         }
                         refreshList();

@@ -124,6 +124,21 @@ public class StudentBean implements Parcelable, Comparable<StudentBean> /*extend
         return show;
     }
 
+    public boolean isCheckedIn() {
+       return getCheckEnum() == CheckEnum.CHECK_IN;
+    }
+
+    public boolean isCheckedOut() {
+        return getCheckEnum() == CheckEnum.CHECK_OUT;
+    }
+
+    public void setCheckedIn() {
+        this.checkEnum = CheckEnum.CHECK_IN;
+    }
+
+    public void setCheckedOut() {
+        this.checkEnum = CheckEnum.CHECK_OUT;
+    }
     public void setIsNoShow(boolean show) {
         this.show = show;
     }

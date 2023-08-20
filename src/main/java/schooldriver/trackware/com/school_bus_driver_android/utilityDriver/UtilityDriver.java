@@ -81,6 +81,9 @@ public class UtilityDriver implements IRestCallBack {
     public static final String STAND_STILL_WATCH = "STAND_STILL_WATCH";
     public static final String CHANEL_REFRESH_RATE = "CHANEL_REFRESH_RATE";
     public static final String SCHOOL_LATITUDE = "SCHOOL_LATITUDE";
+    public static final String LAT_END = "LAT_END";
+    public static final String LNG_END = "LNG_END";
+    public static final String AUTO_ROUND_ENDING = "AUTO_ROUND_ENDING";
     public static final String SCHOOL_LONGITUDE = "SCHOOL_LONGITUDE";
     public static final String NETWORK_PHONE = "NETWORK_PHONE";
     public static final String MESSAGE_IPHONE = "MESSAGEMESSAGE";

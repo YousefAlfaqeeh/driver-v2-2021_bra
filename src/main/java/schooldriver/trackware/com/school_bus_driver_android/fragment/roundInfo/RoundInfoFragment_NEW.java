@@ -91,7 +91,10 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
     /**/
     protected double school_latitude = -0.1;
     protected double school_longitude = -0.1;
-
+    /**/
+    protected double lat_end = -0.1;
+    protected double lng_end = -0.1;
+    /**/
     protected void findViews(View view) {
         labTimer = view.findViewById(R.id.labTimer);
         labNameRound = view.findViewById(R.id.labNameRound);
@@ -124,6 +127,14 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
         } catch (Exception ignore) {
             school_latitude = -0.1;
             school_longitude = -0.1;
+        }
+
+        try {
+            lat_end = Double.parseDouble(UtilityDriver.getStringShared(UtilityDriver.LAT_END));
+            lng_end = Double.parseDouble(UtilityDriver.getStringShared(UtilityDriver.LNG_END));
+        } catch (Exception ignore) {
+            lat_end = -0.1;
+            lng_end = -0.1;
         }
 
     }
@@ -358,6 +369,9 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                     if (isIn_100M_Range(currentLongitude, currentLatitude, school_longitude, school_longitude)) {
                         whenSchoolInRange();
                     }
+                    if (isIn_100M_Range(currentLongitude, currentLatitude, lng_end, lat_end)) {
+                        whenSchoolInRange();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
 
@@ -369,6 +383,10 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
     }
 
    protected void whenSchoolInRange(){
+
+
+    }
+    protected void whenEndRoundLocationInRange(){
 
 
     }
@@ -722,59 +740,6 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                         }
                     };
                     Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, "http://tamapps.trak-link.net/checker/Details2");
-//                    String url1 = "https://tam.trak-link.net/wialon/ajax.html?svc=token/login&params={\"token\":\"006e88fb7d566f322840883846cf56caD8CAA24F9DDD9BF5EAF96B56AAD325102805F610\n" +
-//                            "\n\"}";
-//                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-//                            (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
-//
-//                                @Override
-//                                public void onResponse(JSONObject response) {
-//                                    try {
-//                                        String url = "";
-//                                        UtilityDriver.setStringShared(UtilityDriver.SID_TRACK_LINK, response.getString("eid"));
-//                                        url = "https://tam.trak-link.net/wialon/ajax.html?svc=core/search_items&params={\"spec\":{\"itemsType\":\"avl_unit\",\"propName\":\"sys_name\",\"propValueMask\":\"*" + UtilityDriver.getStringShared(UtilityDriver.SERIAL_ID) + "*\",\"sortType\":\"sys_name\"},\"force\":1,\"flags\":1,\"from\":0,\"to\":0}&sid=" + UtilityDriver.getStringShared(UtilityDriver.SID_TRACK_LINK);
-//                                       Log.v("UtilityDriver.ROUND_ST",url);
-//                                        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest
-//                                                (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
-//
-//                                                    @Override
-//                                                    public void onResponse(JSONObject response) {
-//                                                        try {
-//
-//                                                            JSONArray jsonArray = new JSONArray(response.getString("items"));
-//                                                            JSONObject object = jsonArray.getJSONObject(0);
-//                                                            UtilityDriver.setStringShared(UtilityDriver.TRACKLINK_ID, object.getString("id"));
-//                                                            UtilityDriver.setStringShared(UtilityDriver.ROUND_ST, "true");
-//
-//                                                        } catch (JSONException e) {
-//                                                            Log.d("response1111111", e.getMessage());
-//                                                            e.printStackTrace();
-//                                                        }
-//
-//                                                    }
-//                                                }, new Response.ErrorListener() {
-//
-//                                                    @Override
-//                                                    public void onErrorResponse(VolleyError error) {
-//                                                        Log.d("response111111331", error.getMessage());
-//                                                    }
-//                                                });
-//                                        Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest1, url);
-//
-//                                    } catch (JSONException e) {
-//                                        e.printStackTrace();
-//                                        Log.d("response111111122", e.getMessage());
-//                                    }
-//
-//                                }
-//                            }, new Response.ErrorListener() {
-//
-//                                @Override
-//                                public void onErrorResponse(VolleyError error) {
-//                                    Log.d("response1111111", error.getMessage());
-//                                }
-//                            });
-//                    Application.getInstanceVolly().addToRequestQueue(jsonObjectRequest, url1);
 
                     /**/
                     hideBackButton();
@@ -978,33 +943,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
                     }
                 }, null).createRadioButton(reasonsList);
-        ;
 
-
-//        new UtilDialogs.MessageYesNoDialog().show(getActivity()).
-//                setDialogeTitle(R.string.resume_round_confirmation)
-//                .setDialogeTitleTextColor(R.color.color_green)
-//                .setYesButtonText(R.string.resume_round_confirmation_yes_)
-//                .showOutherButton()
-//                .setOutherButtonText(R.string.resume_round_confirmation_no_)
-////                .setDialogeMessage(getString(R.string.start_the_round))
-//                .setImageWithColor(R.drawable.stop, 0)
-//                .setYesButtonClickListener(new OnActionDoneListener<UtilDialogs.MessageYesNoDialog>() {
-//                    @Override
-//                    public void OnActionDone(UtilDialogs.MessageYesNoDialog dialog) {
-//
-//                        dialog.dismiss();
-//                        showConfirmStartRoundDialog();
-//
-//                    }
-//                }).setOutherButtonClickListener(new OnActionDoneListener<UtilDialogs.MessageYesNoDialog>() {
-//            @Override
-//            public void OnActionDone(UtilDialogs.MessageYesNoDialog action) {
-//                action.dismiss();
-//                showCancelRoundDialog().hideYesButton();
-//
-//            }
-//        });
 
     }
 
@@ -1126,7 +1065,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
     protected void doCheckIn_OnList(StudentBean studentBean, int position, boolean moveToLast) {
         studentBean.setAbsent(false);
-        studentBean.setCheckEnum(CheckEnum.CHECK_IN);
+        studentBean.setCheckedIn();
         if (moveToLast)
             moveToLast(studentBean, position);
         else
@@ -1138,7 +1077,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
     protected void doCheckIn_OnAPI(StudentBean studentBean) {
         String time_between_stop_and_now = getMainActivity().timeBetweenStopAndNow();
-        studentBean.setCheckEnum(CheckEnum.CHECK_IN);
+        studentBean.setCheckedIn();
         ApiController.setStudentBusCheck(getActivity(), studentBean.getId(), statusCheckIn, roundBean.getId(), studentBean.isNoShow(), null, time_between_stop_and_now);
 //        if (PathUrl.send_CheckIn_Notification) {
 //            sendNotificationsForMotherAndFather(studentBean, roundBean, statusCheckIn, roundBean.getTypeRoundEnum());
@@ -1155,7 +1094,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
 
     protected void doCheckOut(StudentBean studentBean, int position) {
-        studentBean.setCheckEnum(CheckEnum.CHECK_OUT);
+        studentBean.setCheckedOut();
         String time_between_stop_and_now = getMainActivity().timeBetweenStopAndNow();
         ApiController.setStudentBusCheck(getActivity(), (int) studentBean.getId(), statusCheckOut, (int) roundBean.getId(), studentBean.isNoShow(), null, time_between_stop_and_now);
 //        if (PathUrl.send_CheckOut_Notification) {
@@ -1195,7 +1134,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
     protected int getPositionOfThisStudentInAdapter_NFC(String nfc_id) {
         for (int i = 0; i < roundAdapter.getValues().size(); i++) {
-            if (roundAdapter.getValues().get(i).getNfc_id().equals(nfc_id)) {
+            if (nfc_id.contains(roundAdapter.getValues().get(i).getNfc_id())) {
                 return i;
             }
         }
@@ -1351,7 +1290,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
         if (isCorrectCheckOrder(currentCheckedStudent.getId())) {
             Integer picked_student = currentCheckedStudent.getId();
             Integer original_student = getMustTakenStudent().getId();
-            if (getMustTakenStudent().getCheckEnum().equals(CheckEnum.CHECK_OUT) || getMustTakenStudent().isNoShow() || getMustTakenStudent().isAbsent())
+            if (getMustTakenStudent().isCheckedOut() || getMustTakenStudent().isNoShow() || getMustTakenStudent().isAbsent())
                 return;
 
             new ConfigNotify(
