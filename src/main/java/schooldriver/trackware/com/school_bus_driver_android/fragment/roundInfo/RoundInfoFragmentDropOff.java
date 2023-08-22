@@ -96,7 +96,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
         getMainActivity().setOnNFCActionDone(nfc_data -> {
             try {
                 /**/
-                if (!roundBean.isRoundStartedNow()) {
+                if (roundBean.isRoundStartedNow()) {
                     final int sPosition = getPositionOfThisStudentInAdapter_NFC(nfc_data);
                     if (sPosition == -1) {
                         return;
@@ -724,7 +724,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
 
                         /// new timer
-                        if (checkBeforeEndRound()) {
+                        if (checkBeforeEndRound() || UtilityDriver.getBooleanShared(UtilityDriver.AUTO_ROUND_ENDING)) {
                             showConfirmEndRoundDialog();
                         }
 
