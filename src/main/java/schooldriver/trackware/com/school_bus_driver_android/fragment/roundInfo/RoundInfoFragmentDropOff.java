@@ -136,6 +136,10 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
                     pinding_Pickup_Requists.add(new PindingStudentHolder().setStudentBean(nfc_student));
 //                roundInfoHolderDropOff.checkinDone();
                     refreshList();
+
+                    if (checkBeforeEndRound() && UtilityDriver.getBooleanShared(UtilityDriver.AUTO_ROUND_ENDING)) {
+                        showConfirmEndRoundDialog();
+                    }
                 }
 
 
@@ -724,7 +728,7 @@ public class RoundInfoFragmentDropOff extends RoundInfoFragment_NEW {
 
 
                         /// new timer
-                        if (checkBeforeEndRound() || UtilityDriver.getBooleanShared(UtilityDriver.AUTO_ROUND_ENDING)) {
+                        if (checkBeforeEndRound() && UtilityDriver.getBooleanShared(UtilityDriver.AUTO_ROUND_ENDING)) {
                             showConfirmEndRoundDialog();
                         }
 
