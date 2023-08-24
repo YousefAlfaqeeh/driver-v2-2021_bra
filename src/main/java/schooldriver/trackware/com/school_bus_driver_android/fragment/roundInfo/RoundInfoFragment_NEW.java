@@ -339,6 +339,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                     Log.d("mustListTakenStudent", String.valueOf(school_order));
                     if (school_order.equals("false")) {
                         for (int i = 0; i <= mustListTakenStudent.size(); i++) {
+                            try {
 //                            Log.d("mustListTakenStudent.size()1111ss", String.valueOf(mustListTakenStudent.get(i).getLongitude()));
                             if (isIn_500M_Range(currentLongitude, currentLatitude, mustListTakenStudent.get(i).getLongitude(), mustListTakenStudent.get(i).getLatitude())) {
                                 Log.d("isIn_500M_Range1111ss", String.valueOf(isIn_500M_Range(currentLongitude, currentLatitude, mustListTakenStudent.get(i).getLongitude(), mustListTakenStudent.get(i).getLatitude())));
@@ -352,10 +353,17 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                                     }
                                 }
                             }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
+
                         }
                     }
                     /**/
                     else {
+                        try {
                         Log.d("isIn_500M_Range_else", String.valueOf(mustTakenStudent.getLongitude()));
                         Log.d("isIn_500M_Range_else222", String.valueOf(mustTakenStudent.getNameStudent()));
                         if (isIn_500M_Range(currentLongitude, currentLatitude, mustTakenStudent.getLongitude(), mustTakenStudent.getLatitude())) {
@@ -363,14 +371,17 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                             sendNearByNotification(mustTakenStudent, roundBean.getIdAsString());
                             sendNotificationForNextStudent(mustTakenStudent);
                         }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
                     }
 
                     // check if in school range
                     if (isIn_100M_Range(currentLongitude, currentLatitude, school_longitude, school_longitude)) {
                         whenSchoolInRange();
-                    }
-                    if (isIn_100M_Range(currentLongitude, currentLatitude, lng_end, lat_end)) {
-                        whenSchoolInRange();
+                    } else if (isIn_100M_Range(currentLongitude, currentLatitude, lng_end, lat_end)) {
+                        whenEndRoundLocationInRange();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
