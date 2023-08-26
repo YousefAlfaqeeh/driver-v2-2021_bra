@@ -148,8 +148,8 @@ public class MainActivity extends BaseActivity implements
             runOnUiThread(() -> {
                 try {
                     if (ndefMessage != null && ndefMessage.getRecords().length > 0) {
-                        byte[] payload = ndefMessage.getRecords()[0].getPayload();
-                        final String conteudoTag = new String(payload);
+//                        byte[] payload = ndefMessage.getRecords()[0].getPayload();
+                        final String conteudoTag = new String(ndefMessage.getRecords()[0].getPayload()).replaceAll("[^0-9]", "");
                         if (onNFCActionDone == null)
                             return;
 

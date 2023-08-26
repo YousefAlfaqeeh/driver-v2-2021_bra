@@ -595,10 +595,10 @@ public class RoundInfoFragmentPickUp extends RoundInfoFragment_NEW {
 
                         roundInfoHolderPickUp.addTimer(new OnActionDoneListener<StudentBean>() {
                             @Override
-                            public void OnActionDone(StudentBean Action) {
-                                checkChangeRoot(item);//order
-                                doCheckIn_OnList(item, position, true);
-                                doCheckIn_OnAPI(item);
+                            public void OnActionDone(StudentBean studentBean_) {
+                                checkChangeRoot(studentBean_);//order
+                                doCheckIn_OnList(studentBean_, getPositionOfThisStudentInAdapter(studentBean_.getId()), true);
+                                doCheckIn_OnAPI(studentBean_);
                                 refreshList();
 
                             }

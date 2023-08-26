@@ -9,13 +9,13 @@ public class PathUrl {
     public static boolean send_NoShow_Notification = true;
     public static boolean send_Absent_Notification = true;
 
-//    public static String DEV_PROD = "prod";
-    public static   String DEV_PROD = "dev";
+    public static String DEV_PROD = "prod";
+//    public static   String DEV_PROD = "dev";
 //    public static String URL = "https://boknyyx648.execute-api.eu-central-1.amazonaws.com/" + DEV_PROD;
 
 
-    public static String URL = "http://apipy-stg.trackware.com/" ;//ddddddddddddddddddddddddd
-//    public static String URL = "http://apipy.trackware.com/" ;//ddddddddddddddddddddddddd
+//    public static String URL = "http://apipy-stg.trackware.com/" ;//ddddddddddddddddddddddddd dev / staging
+    public static String URL = "http://apipy.trackware.com/" ;//ddddddddddddddddddddddddd live / production
 
     
 

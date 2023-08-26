@@ -377,6 +377,8 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
                         }
                     }
 
+//                     lat_end = 32.040686;
+//                     lng_end = 36.072368;
                     // check if in school range
                     if (isIn_100M_Range(currentLongitude, currentLatitude, school_longitude, school_longitude)) {
                         whenSchoolInRange();
@@ -1145,7 +1147,7 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 
     protected int getPositionOfThisStudentInAdapter_NFC(String nfc_id) {
         for (int i = 0; i < roundAdapter.getValues().size(); i++) {
-            if (nfc_id.contains(roundAdapter.getValues().get(i).getNfc_id())) {
+            if (nfc_id.equals(roundAdapter.getValues().get(i).getNfc_id())) {
                 return i;
             }
         }
