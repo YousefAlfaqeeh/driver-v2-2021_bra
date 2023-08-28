@@ -380,9 +380,10 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
 //                     lat_end = 32.040686;
 //                     lng_end = 36.072368;
                     // check if in school range
-                    if (isIn_100M_Range(currentLongitude, currentLatitude, school_longitude, school_longitude)) {
+                    if (isIn_100M_Range(currentLongitude, currentLatitude, school_longitude, school_latitude)) {
                         whenSchoolInRange();
-                    } else if (isIn_100M_Range(currentLongitude, currentLatitude, lng_end, lat_end)) {
+                    }
+                    if (isIn_100M_Range(currentLongitude, currentLatitude, lng_end, lat_end)) {
                         whenEndRoundLocationInRange();
                     }
                 } catch (Exception e) {
@@ -645,8 +646,10 @@ public abstract class RoundInfoFragment_NEW extends BaseFragment {
     protected UtilDialogs.MessageYesNoDialog confirmEndRoundDialog;
 
     protected void showConfirmEndRoundDialog() {
-        if (confirmEndRoundDialog != null)
-            confirmEndRoundDialog.dismiss();
+        if (confirmEndRoundDialog != null && confirmEndRoundDialog.isShowing()){
+            return;
+        }
+//        confirmEndRoundDialog.dismiss();
         confirmEndRoundDialog = new UtilDialogs.MessageYesNoDialog().show(getActivity()).addTimer(new OnActionDoneListener<RoundBean>() {
                     @Override
                     public void OnActionDone(RoundBean actionRoundBean) {

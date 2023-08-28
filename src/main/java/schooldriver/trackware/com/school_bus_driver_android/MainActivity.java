@@ -127,7 +127,7 @@ public class MainActivity extends BaseActivity implements
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
 
